@@ -40,7 +40,7 @@
                 android:layout_marginStart="30dp" android:layout_below="@+id/textView2"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-                android:text="+880"
+                android:text="+234"
                 android:layout_width="240dp"
                 android:layout_height="36dp"
                 android:maxLength="14"

@@ -78,9 +78,6 @@ class SendMoneyActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         }
-
-
-
     }
 
 
@@ -246,8 +243,5 @@ class SendMoneyActivity : AppCompatActivity() {
             }
         //get client balance end
     }
-
-
-
 
 }

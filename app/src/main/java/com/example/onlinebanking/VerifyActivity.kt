@@ -13,7 +13,6 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_send_money_activity.*
 import kotlinx.android.synthetic.main.activity_verify.*
 import java.util.concurrent.TimeUnit
@@ -26,7 +25,7 @@ class VerifyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify)
-        textFirebase()
+
 
         auth = FirebaseAuth.getInstance()
         val phoneNumber: String = intent.getStringExtra("phoneNumber")
@@ -142,34 +141,33 @@ class VerifyActivity : AppCompatActivity() {
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                       val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                       docRef.get()
+                           .addOnSuccessListener { doc ->
+                               if(doc["balance"] == null)
+                               {
+                                   docRef.update("balance",1000)
+                               }
+                               if(doc["pin"] == null)
+                               {
+                                   intent = Intent(this,SetNewPinActivity::class.java)
+                                   intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
+                                   startActivity(intent)
+                                   Log.d("VerifyActivity", "signInWithCredential:success")
+                               }
+                               else
+                               {
+                                   intent = Intent(this,UserActivity::class.java)
+                                   intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
+                                   startActivity(intent)
+                                   Log.d("VerifyActivity", "signInWithCredential:success")
+                               }
+
+                           }
+                           .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
+
+
                     // Sign in success, update UI with the signed-in user's information
-                    val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
-                        docRef.get()
-                        .addOnSuccessListener { doc ->
-                            if(doc["balance"] == null)
-                            {
-                                docRef.update("balance",1000)
-                            }
-                            textFirebase()
-
-                            if(doc["pin"] == null)
-                            {
-                                intent = Intent(this,SetNewPinActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                startActivity(intent)
-                                Log.d("VerifyActivity", "signInWithCredential:success")
-                            }
-                            else
-                            {
-                                intent = Intent(this,UserActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                startActivity(intent)
-                                Log.d("VerifyActivity", "signInWithCredential:success")
-                            }
-
-                        }
-                        .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
-
                 } else {
                     // Sign in failed, display a message and update the UI
                     verify_progressBar.visibility = View.INVISIBLE
@@ -183,24 +181,4 @@ class VerifyActivity : AppCompatActivity() {
                 }
             }
     }
-
-
-    private fun textFirebase(){
-        val city = hashMapOf(
-            "name" to "Noida",
-            "state" to "UP",
-            "country" to "India"
-        )
-        val userId = FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()
-        val db = FirebaseFirestore.getInstance()
-        db.collection("users")
-            .document(userId)
-            .set(city).addOnSuccessListener {
-                Toast.makeText(this@VerifyActivity, "Success", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener{
-                Toast.makeText(this@VerifyActivity, "failed", Toast.LENGTH_SHORT).show()
-            }
-        Log.d("RegistrationActivity","user id $userId")
-    }
-
 }
