@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Online Banking</string>
+
+    <string-array name="planets_array">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>MotorBike</item>
+        <item>Truck</item>
+        <item>Mini Truck</item>
+        <item>Bi-cycle</item>
+    </string-array>
+
+
+</resources>

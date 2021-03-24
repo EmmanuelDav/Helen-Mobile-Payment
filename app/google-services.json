@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "144274709507",
+    "firebase_url": "https://androidbash-firebaseadmo-5055c.firebaseio.com",
+    "project_id": "androidbash-firebaseadmo-5055c",
+    "storage_bucket": "androidbash-firebaseadmo-5055c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144274709507:android:44c6e6ab3baceab3b20236",
+        "android_client_info": {
+          "package_name": "com.example.onlinebanking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144274709507-s7gish8p1maou5mfiq0ua20h3rd4fivm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsPwV9Ja-ezpgEtvPug-ZPQUjXSl3hT4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144274709507-s7gish8p1maou5mfiq0ua20h3rd4fivm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

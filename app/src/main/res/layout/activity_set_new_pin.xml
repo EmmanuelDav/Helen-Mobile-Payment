@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SetNewPinActivity" android:background="@drawable/green_leaf_2">
+    <EditText
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:maxLength="6"
+            android:paddingRight="30dp"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:ems="10"
+            android:textColor="@android:color/white"
+            android:background="@drawable/edittext_bg_custom"
+            android:drawableLeft="@drawable/edittext_theme_enter_password"
+            android:hint="enter pin"
+            android:id="@+id/set_new_pin_1"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_dollar"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/set_new_pin_2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="70dp" android:layout_marginEnd="70dp"/>
+    <EditText
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:maxLength="6"
+            android:paddingRight="30dp"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:ems="10"
+            android:textColor="@android:color/white"
+            android:background="@drawable/edittext_bg_custom"
+            android:drawableLeft="@drawable/edittext_theme_enter_password"
+            android:hint="re-enter pin"
+            android:id="@+id/set_new_pin_2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/set_new_pin_1"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/button_confirm_pin"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="70dp" android:layout_marginEnd="70dp" android:layout_marginTop="4dp"/>
+    <Button
+            android:text="Confirm"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_confirm_pin"
+            android:fontFamily="monospace"
+
+            android:background="@drawable/button_bg_custom"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/set_new_pin_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="70dp" android:layout_marginEnd="70dp"
+            android:layout_marginTop="10dp"/>
+    <TextView
+            android:text="Set new Pin for your account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+
+            android:id="@+id/enter_pin_textview" android:textSize="16sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/button_confirm_pin"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar_set_pin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="102dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="102dp"/>
+    <ImageView
+            android:layout_width="116dp"
+            android:layout_height="100dp" app:srcCompat="@drawable/coin"
+            android:id="@+id/imageView_dollar"
+            android:layout_marginTop="126dp"
+            android:layout_marginBottom="46dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/set_new_pin_1" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar_set_pin"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/enter_pin_textview" android:layout_marginBottom="70dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
