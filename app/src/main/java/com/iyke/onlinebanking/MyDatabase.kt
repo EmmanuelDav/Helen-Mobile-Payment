@@ -6,8 +6,6 @@ import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.concurrent.TimeUnit
-import com.google.firebase.auth.AuthResult
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeoutException
 

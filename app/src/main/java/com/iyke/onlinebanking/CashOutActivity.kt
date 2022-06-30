@@ -15,7 +15,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_cash_out.*
 import kotlinx.android.synthetic.main.activity_send_money_activity.*
-import kotlinx.android.synthetic.main.activity_send_money_activity.button_sm_proceed
 import kotlin.random.Random
 
 class CashOutActivity : AppCompatActivity() {

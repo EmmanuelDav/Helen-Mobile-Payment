@@ -1,11 +1,8 @@
 package com.iyke.onlinebanking
 
-import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 
 class CheckInternet(private val context: Context) {
 
