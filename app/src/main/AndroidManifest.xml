@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.onlinebanking">
+          package="com.iyke.onlinebanking">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -11,25 +11,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".StatementActitvity">
+        <activity android:name="com.iyke.onlinebanking.StatementActitvity">
         </activity>
-        <activity android:name=".CashOutActivity">
+        <activity android:name="com.iyke.onlinebanking.CashOutActivity">
         </activity>
-        <activity android:name=".TollFeeActivity">
+        <activity android:name="com.iyke.onlinebanking.TollFeeActivity">
         </activity>
-        <activity android:name=".SendMoneyActivity">
+        <activity android:name="com.iyke.onlinebanking.SendMoneyActivity">
         </activity>
-        <activity android:name=".ConfirmPinDialog">
+        <activity android:name="com.iyke.onlinebanking.ConfirmPinDialog">
         </activity>
-        <activity android:name=".SetNewPinActivity">
+        <activity android:name="com.iyke.onlinebanking.SetNewPinActivity">
         </activity>
-        <activity android:name=".UserActivity">
+        <activity android:name="com.iyke.onlinebanking.UserActivity">
         </activity>
-        <activity android:name=".VerifyActivity">
+        <activity android:name="com.iyke.onlinebanking.VerifyActivity">
         </activity>
-        <activity android:name=".RegistrationActivity">
+        <activity android:name="com.iyke.onlinebanking.RegistrationActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.iyke.onlinebanking.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

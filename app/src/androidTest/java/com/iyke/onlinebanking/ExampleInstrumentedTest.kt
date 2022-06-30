@@ -1,4 +1,4 @@
-package com.example.onlinebanking
+package com.iyke.onlinebanking
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

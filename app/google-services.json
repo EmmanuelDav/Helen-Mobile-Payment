@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "144274709507",
-    "firebase_url": "https://androidbash-firebaseadmo-5055c.firebaseio.com",
-    "project_id": "androidbash-firebaseadmo-5055c",
-    "storage_bucket": "androidbash-firebaseadmo-5055c.appspot.com"
+    "project_number": "649805191880",
+    "firebase_url": "https://helene-socials-default-rtdb.firebaseio.com",
+    "project_id": "helene-socials",
+    "storage_bucket": "helene-socials.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:144274709507:android:44c6e6ab3baceab3b20236",
+        "mobilesdk_app_id": "1:649805191880:android:031f9addc650d714bd63fd",
         "android_client_info": {
           "package_name": "com.example.onlinebanking"
         }
       },
       "oauth_client": [
         {
-          "client_id": "144274709507-s7gish8p1maou5mfiq0ua20h3rd4fivm.apps.googleusercontent.com",
+          "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsPwV9Ja-ezpgEtvPug-ZPQUjXSl3hT4c"
+          "current_key": "AIzaSyDqhmdN7U9cLCvALzm7jd6o9LT8fa-SFqE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "144274709507-s7gish8p1maou5mfiq0ua20h3rd4fivm.apps.googleusercontent.com",
+              "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
