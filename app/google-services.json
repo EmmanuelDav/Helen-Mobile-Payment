@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:649805191880:android:8cdcee6e8ffc16aebd63fd",
+        "mobilesdk_app_id": "1:649805191880:android:45a96425711d35b0bd63fd",
         "android_client_info": {
-          "package_name": "com.example.onlinebanking"
+          "package_name": "com.iyke.onlinebanking"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "649805191880-g17oug2pbdto4rfg6rh68dojkco0tvg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iyke.onlinebanking",
+            "certificate_hash": "5be4049dcb388cd51a519b2506bd9ec6813ae785"
+          }
+        },
         {
           "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
           "client_type": 3

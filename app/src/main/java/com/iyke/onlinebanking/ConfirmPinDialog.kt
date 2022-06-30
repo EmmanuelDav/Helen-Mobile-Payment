@@ -22,7 +22,7 @@ class ConfirmPinDialog(private val activity: Activity) : Dialog(activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_confirm_pin)
-        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setCanceledOnTouchOutside(false)
         setOnCancelListener {
             dismiss()

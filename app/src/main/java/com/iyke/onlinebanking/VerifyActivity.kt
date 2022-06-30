@@ -28,14 +28,16 @@ class VerifyActivity : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
-        val phoneNumber: String = intent.getStringExtra("phoneNumber")
+        val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
         sendVerificationCode(phoneNumber)
 
         button_verify.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
+
                 MotionEvent.ACTION_DOWN -> {
                     button_verify.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
+
                 MotionEvent.ACTION_UP -> {
                     button_verify.setBackgroundResource(R.drawable.button_bg_custom)
 
@@ -114,17 +116,14 @@ class VerifyActivity : AppCompatActivity() {
             // ...
         }
 
-        override fun onCodeSent(
-            verificationId: String?,
-            token: PhoneAuthProvider.ForceResendingToken
-        ) {
+        override fun onCodeSent(p0: String, token: PhoneAuthProvider.ForceResendingToken) {
             // The SMS verification code has been sent to the provided phone number, we
             // now need to ask the user to enter the code and then construct a credential
             // by combining the code with a verification ID.
-            Log.d("VerifyActivity", "onCodeSent:" + verificationId!!)
+            Log.d("VerifyActivity", "onCodeSent:" + p0)
 
             // Save verification ID and resending token so we can use them later
-            storedVerificationId = verificationId
+            storedVerificationId = p0
             //resendToken = token
 
             // ...
