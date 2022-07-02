@@ -180,8 +180,5 @@ class UserActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         }
-
-
     }
-
 }

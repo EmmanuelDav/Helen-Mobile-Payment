@@ -140,7 +140,18 @@ class VerifyActivity : AppCompatActivity() {
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                       val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+
+                    val city = hashMapOf(
+                        "balance" to "null",
+                        "pin" to "null",
+                    )
+
+                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                        .set(city)
+                        .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully written!") }
+                        .addOnFailureListener { e -> Log.w("TAG", "Error writing document", e) }
+
+                    val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
                        docRef.get()
                            .addOnSuccessListener { doc ->
                                if(doc["balance"] == null)
