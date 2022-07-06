@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Online Banking</string>
+    <string name="description"><![CDATA[We provide our users with accounts in their country of residence and country of origin for personal and business banking needs. You can send money to Nigeria, Ghana & Kenya on HPay at the best rate.]]></string>
 
     <string-array name="planets_array">
         <item>Car</item>

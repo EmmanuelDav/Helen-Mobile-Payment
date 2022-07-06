@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.iyke.onlinebanking">
+        package="com.iyke.onlinebanking">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
             android:allowBackup="true"
@@ -11,32 +11,40 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.iyke.onlinebanking.StatementActitvity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.CashOutActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.TollFeeActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.SendMoneyActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.ConfirmPinDialog">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.SetNewPinActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.UserActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.VerifyActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.RegistrationActivity">
-        </activity>
-        <activity android:name="com.iyke.onlinebanking.activities.MainActivity"
+        <activity
+                android:name=".activities.ForgottenPasswordActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.SignInActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.SignUpActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.MainActivity"
+                android:exported="false" />
+        <activity android:name="com.iyke.onlinebanking.StatementActitvity" />
+        <activity android:name=".activities.CashOutActivity" />
+        <activity android:name=".activities.TollFeeActivity" />
+        <activity android:name=".activities.SendMoneyActivity" />
+        <activity android:name="com.iyke.onlinebanking.ConfirmPinDialog" />
+        <activity android:name=".activities.SetNewPinActivity" />
+        <activity android:name=".activities.UserActivity" />
+        <activity android:name=".activities.VerifyActivity" />
+        <activity android:name=".activities.RegistrationActivity" />
+        <activity
+                android:name=".activities.WelcomeActivity"
                 android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
