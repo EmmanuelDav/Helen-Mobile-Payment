@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
@@ -13,26 +13,28 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.activity_cash_out.*
+import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.ConfirmPinDialog
+import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_send_money_activity.*
 import kotlin.random.Random
 
-class CashOutActivity : AppCompatActivity() {
+class SendMoneyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cash_out)
+        setContentView(R.layout.activity_send_money_activity)
 
-        editText_co_client_number.setSelection(4)
+        editText_sm_client_number.setSelection(4)
 
 
-        button_co_qr.setOnTouchListener OnTouchListener@{ v, event ->
+        button_sm_qr.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    button_co_qr.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    button_sm_qr.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_co_qr.setBackgroundResource(R.drawable.button_bg_custom)
+                    button_sm_qr.setBackgroundResource(R.drawable.button_bg_custom)
 
                     //initiate barcode scanner
                     IntentIntegrator(this).initiateScan()
@@ -43,13 +45,13 @@ class CashOutActivity : AppCompatActivity() {
             return@OnTouchListener true
         }
 
-        button_co_proceed.setOnTouchListener OnTouchListener@{ v, event ->
+        button_sm_proceed.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    button_co_proceed.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    button_sm_proceed.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_co_proceed.setBackgroundResource(R.drawable.button_bg_custom)
+                    button_sm_proceed.setBackgroundResource(R.drawable.button_bg_custom)
 
                     //hide keyboard
                     val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -60,16 +62,16 @@ class CashOutActivity : AppCompatActivity() {
                         return@OnTouchListener true
                     }
 
-                    if (editText_co_client_number.length() < 14)
+                    if (editText_sm_client_number.length() < 14)
                     {
-                        editText_co_client_number.error = "invalid phone number"
-                        editText_co_client_number.requestFocus()
+                        editText_sm_client_number.error = "invalid phone number"
+                        editText_sm_client_number.requestFocus()
                         return@OnTouchListener true
                     }
 
-                    if(editText_co_enter_amount.length() == 0)
+                    if(editText_sm_enter_amount.length() == 0)
                     {
-                        editText_co_enter_amount.error = "enter amount"
+                        editText_sm_enter_amount.error = "enter amount"
                         return@OnTouchListener true
                     }
 
@@ -79,8 +81,8 @@ class CashOutActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         }
-
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -89,13 +91,13 @@ class CashOutActivity : AppCompatActivity() {
         {
             if(result.contents == null)
             {
-                Toast.makeText(this,"barcode scanning cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"barcode scanning cancelled",Toast.LENGTH_SHORT).show()
             }
             else
             {
-               // editText_co_client_number.setPrefix("")
-                editText_co_client_number.setText(result.contents.toString())
-                Toast.makeText(this,"scan complete", Toast.LENGTH_SHORT).show()
+              //  editText_sm_client_number.setPrefix("")
+                editText_sm_client_number.setText(result.contents.toString())
+                Toast.makeText(this,"scan complete",Toast.LENGTH_SHORT).show()
             }
         }
         else
@@ -105,11 +107,10 @@ class CashOutActivity : AppCompatActivity() {
         }
     }
 
-
     private fun verifyAmount()
     {
         //check amount
-        progressBar_co_proceed.visibility = View.VISIBLE
+        progressBar_sm_proceed.visibility = View.VISIBLE
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
         docRef.get()
@@ -117,9 +118,9 @@ class CashOutActivity : AppCompatActivity() {
                 if (document["balance"] != null)
                 {
                     Log.d("SendMoneyActivity", "DocumentSnapshot data: ${document.data}")
-                    if(document["balance"].toString().toInt() >= editText_co_enter_amount.text.toString().toInt())
+                    if(document["balance"].toString().toInt() >= editText_sm_enter_amount.text.toString().toInt())
                     {
-                        progressBar_co_proceed.visibility = View.INVISIBLE
+                        progressBar_sm_proceed.visibility = View.INVISIBLE
                         Toast.makeText(this,"Possible",Toast.LENGTH_SHORT).show()
 
                         //call security check
@@ -128,16 +129,16 @@ class CashOutActivity : AppCompatActivity() {
                         callBox.setOnDismissListener {
                             if(callBox.confirmed)
                             {
-                                cashOut(document["balance"].toString().toInt())
+                                sendMoney(document["balance"].toString().toInt())
                             }
                         }
                         //security check finish
 
                     }
-                    if(document["balance"].toString().toInt() < editText_co_enter_amount.text.toString().toInt())
+                    if(document["balance"].toString().toInt() < editText_sm_enter_amount.text.toString().toInt())
                     {
-                        progressBar_co_proceed.visibility = View.INVISIBLE
-                        editText_co_enter_amount.error = "insufficient balance"
+                        progressBar_sm_proceed.visibility = View.INVISIBLE
+                        editText_sm_enter_amount.error = "insufficient balance"
 
                     }
 
@@ -145,33 +146,34 @@ class CashOutActivity : AppCompatActivity() {
                 else
                 {
                     Log.d("SendMoneyActivity", "No such document")
-                    progressBar_co_proceed.visibility = View.INVISIBLE
+                    progressBar_sm_proceed.visibility = View.INVISIBLE
                     Toast.makeText(this,"documents not found",Toast.LENGTH_SHORT).show()
 
                 }
             }
             .addOnFailureListener { exception ->
                 Log.d("SendMoneyActivity", "get failed with ", exception)
-                progressBar_co_proceed.visibility = View.INVISIBLE
+                progressBar_sm_proceed.visibility = View.INVISIBLE
                 Toast.makeText(this,"Balance checking failed",Toast.LENGTH_SHORT).show()
             }
 
     }
 
-    private fun cashOut(myBalance: Int)
+
+    private fun sendMoney(myBalance: Int)
     {
-        progressBar_co_proceed.visibility = View.VISIBLE
+        progressBar_sm_proceed.visibility = View.VISIBLE
         //get client balance start
         val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("agents").document(editText_co_client_number.text.toString())
+        val docRef = db.collection("users").document(editText_sm_client_number.text.toString())
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document["balance"] != null)
                 {
                     //update client balance
-                    db.collection("agents").document(editText_co_client_number.text.toString()).update("balance", document["balance"].toString().toInt()+ editText_co_enter_amount.text.toString().toInt())
+                    db.collection("users").document(editText_sm_client_number.text.toString()).update("balance", document["balance"].toString().toInt()+ editText_sm_enter_amount.text.toString().toInt())
                         .addOnSuccessListener {
-
+                            
                         }
                         .addOnFailureListener {
                             Toast.makeText(this,"client balance update failed",Toast.LENGTH_SHORT).show()
@@ -181,7 +183,7 @@ class CashOutActivity : AppCompatActivity() {
 
 
                     //update my balance
-                    db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()).update("balance", myBalance - editText_co_enter_amount.text.toString().toInt())
+                    db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()).update("balance", myBalance - editText_sm_enter_amount.text.toString().toInt())
                         .addOnSuccessListener {
                         }
                         .addOnFailureListener {
@@ -191,12 +193,12 @@ class CashOutActivity : AppCompatActivity() {
 
                     //update my statement
                     val myStatementData = hashMapOf(
-                        "amount" to editText_co_enter_amount.text.toString().toInt(),
-                        "client_number" to editText_co_client_number.text.toString(),
+                        "amount" to editText_sm_enter_amount.text.toString().toInt(),
+                        "client_number" to editText_sm_client_number.text.toString(),
                         "from" to "me",
                         "time" to Timestamp.now()
                     )
-                    val txId = "TID-CO-"+ Random.nextBytes(9)
+                    val txId = "TID-SM-"+Random.nextBytes(9)
                     db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()).collection("statements").document(txId).set(myStatementData)
                         .addOnSuccessListener {
                         }
@@ -207,12 +209,12 @@ class CashOutActivity : AppCompatActivity() {
 
                     //update client statement
                     val clientStatementData = hashMapOf(
-                        "amount" to editText_co_enter_amount.text.toString().toInt(),
+                        "amount" to editText_sm_enter_amount.text.toString().toInt(),
                         "client_number" to FirebaseAuth.getInstance().currentUser?.phoneNumber.toString(),
                         "from" to "client",
                         "time" to Timestamp.now()
                     )
-                    db.collection("agents").document(editText_co_client_number.text.toString()).collection("statements").document(txId).set(clientStatementData)
+                    db.collection("users").document(editText_sm_client_number.text.toString()).collection("statements").document(txId).set(clientStatementData)
                         .addOnSuccessListener {
                         }
                         .addOnFailureListener {
@@ -222,8 +224,8 @@ class CashOutActivity : AppCompatActivity() {
 
                     //transaction successful
 
-                    Toast.makeText(this,"Cash Out successful",Toast.LENGTH_SHORT).show()
-                    progressBar_co_proceed.visibility = View.INVISIBLE
+                    Toast.makeText(this,"Transaction successful",Toast.LENGTH_SHORT).show()
+                    progressBar_sm_proceed.visibility = View.INVISIBLE
                     finish()
 
 
@@ -231,15 +233,15 @@ class CashOutActivity : AppCompatActivity() {
                 }
                 else
                 {
-                    Log.d("CashOutActivity", "No such document")
-                    progressBar_co_proceed.visibility = View.INVISIBLE
-                    Toast.makeText(this,"agent not found",Toast.LENGTH_SHORT).show()
+                    Log.d("SendMoneyActivity", "No such document")
+                    progressBar_sm_proceed.visibility = View.INVISIBLE
+                    Toast.makeText(this,"recipient not found",Toast.LENGTH_SHORT).show()
 
                 }
             }
             .addOnFailureListener { exception ->
-                Log.d("CashOutActivity", "get failed with ", exception)
-                progressBar_co_proceed.visibility = View.INVISIBLE
+                Log.d("SendMoneyActivity", "get failed with ", exception)
+                progressBar_sm_proceed.visibility = View.INVISIBLE
                 Toast.makeText(this,"Transaction failed, internet error, couldn't get client balance",Toast.LENGTH_SHORT).show()
             }
         //get client balance end

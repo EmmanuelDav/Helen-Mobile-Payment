@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/green_leaf_2"
-        tools:context=".SendMoneyActivity">
+        tools:context=".activities.SendMoneyActivity">
 
 
     <ImageView

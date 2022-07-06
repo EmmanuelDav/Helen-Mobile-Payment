@@ -13,23 +13,23 @@
             android:theme="@style/AppTheme">
         <activity android:name="com.iyke.onlinebanking.StatementActitvity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.CashOutActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.CashOutActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.TollFeeActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.TollFeeActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.SendMoneyActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.SendMoneyActivity">
         </activity>
         <activity android:name="com.iyke.onlinebanking.ConfirmPinDialog">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.SetNewPinActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.SetNewPinActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.UserActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.UserActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.VerifyActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.VerifyActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.RegistrationActivity">
+        <activity android:name="com.iyke.onlinebanking.activities.RegistrationActivity">
         </activity>
-        <activity android:name="com.iyke.onlinebanking.MainActivity"
+        <activity android:name="com.iyke.onlinebanking.activities.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

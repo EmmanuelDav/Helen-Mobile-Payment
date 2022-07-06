@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,9 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.activity_send_money_activity.*
+import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.ConfirmPinDialog
+import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_toll_fee.*
 import kotlin.random.Random
 

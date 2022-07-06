@@ -1,10 +1,13 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import com.google.firebase.auth.FirebaseAuth
+import com.iyke.onlinebanking.ConfirmPinDialog
+import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.StatementActitvity
 import kotlinx.android.synthetic.main.activity_user.*
 import kotlin.system.exitProcess
 
@@ -28,7 +31,7 @@ class UserActivity : AppCompatActivity() {
                     callBox.setOnDismissListener {
                         if(callBox.confirmed)
                         {
-                            intent = Intent(this,SetNewPinActivity::class.java)
+                            intent = Intent(this, SetNewPinActivity::class.java)
                             startActivity(intent)
                         }
                     }
@@ -45,7 +48,7 @@ class UserActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     imageView_logout.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
                     FirebaseAuth.getInstance().signOut()
-                    intent = Intent(this,RegistrationActivity::class.java)
+                    intent = Intent(this, RegistrationActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                     startActivity(intent)
                 }
@@ -72,7 +75,7 @@ class UserActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     imageView_send_money.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
-                    intent = Intent(this,SendMoneyActivity::class.java)
+                    intent = Intent(this, SendMoneyActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -110,7 +113,7 @@ class UserActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     imageView_cashout.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
-                    intent = Intent(this,CashOutActivity::class.java)
+                    intent = Intent(this, CashOutActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -160,7 +163,7 @@ class UserActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     imageView_toll_fee.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
-                    intent = Intent(this,TollFeeActivity::class.java)
+                    intent = Intent(this, TollFeeActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -174,7 +177,7 @@ class UserActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     imageView_statement.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
-                    intent = Intent(this,StatementActitvity::class.java)
+                    intent = Intent(this, StatementActitvity::class.java)
                     startActivity(intent)
                 }
             }

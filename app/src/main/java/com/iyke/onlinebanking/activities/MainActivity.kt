@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
@@ -11,9 +11,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_registration.*
-import kotlinx.android.synthetic.main.activity_send_money_activity.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
         else
         {
-            intent = Intent(this,RegistrationActivity::class.java)
+            intent = Intent(this, RegistrationActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
             startActivity(intent)
         }
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                                 else
                                 {
-                                    intent = Intent(this,UserActivity::class.java)
+                                    intent = Intent(this, UserActivity::class.java)
                                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                                     startActivity(intent)
                                 }

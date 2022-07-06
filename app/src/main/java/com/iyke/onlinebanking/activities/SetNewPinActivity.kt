@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_send_money_activity.*
+import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_set_new_pin.*
 
 class SetNewPinActivity : AppCompatActivity() {
@@ -60,7 +61,7 @@ class SetNewPinActivity : AppCompatActivity() {
                     val db = FirebaseFirestore.getInstance()
                     db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()).update("pin",set_new_pin_1.text.toString())
                         .addOnSuccessListener {
-                            intent = Intent(this,UserActivity::class.java)
+                            intent = Intent(this, UserActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                             startActivity(intent)
                             Toast.makeText(this,"Pin setup successful",Toast.LENGTH_SHORT).show()

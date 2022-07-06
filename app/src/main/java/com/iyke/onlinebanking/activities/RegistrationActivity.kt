@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -38,7 +40,7 @@ class RegistrationActivity : AppCompatActivity() {
                     val phoneNumber: String = editText_phone_register.text.toString()
                     if (phoneNumber.length == 14)
                     {
-                        val intent = Intent(this,VerifyActivity::class.java)
+                        val intent = Intent(this, VerifyActivity::class.java)
                         intent.putExtra("phoneNumber",phoneNumber)
                         startActivity(intent)
                     }
