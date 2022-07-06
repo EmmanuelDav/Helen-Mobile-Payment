@@ -26,9 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_below="@+id/welcome"
             android:layout_marginTop="20dp"
+            android:textColor="@color/textGrey"
             android:text="@string/description"
             android:textSize="20sp"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -39,9 +40,7 @@
             android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:paddingStart="90dp"
-                android:paddingEnd="90dp"
+                android:layout_width="match_parent"
                 android:padding="17dp"
                 android:textSize="15sp"
                 android:textColor="@color/white"

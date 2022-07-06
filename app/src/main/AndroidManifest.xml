@@ -15,7 +15,7 @@
                 android:name=".activities.ForgottenPasswordActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.SignInActivity"
+                android:name=".activities.WelcomeActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.SignUpActivity"
@@ -33,7 +33,7 @@
         <activity android:name=".activities.VerifyActivity" />
         <activity android:name=".activities.RegistrationActivity" />
         <activity
-                android:name=".activities.WelcomeActivity"
+                android:name=".activities.SignInActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
