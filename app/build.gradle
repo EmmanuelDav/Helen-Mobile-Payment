@@ -7,7 +7,7 @@ android {
     compileSdkVersion 32
     defaultConfig {
         applicationId "com.iyke.onlinebanking"
-        minSdkVersion 25
+        minSdkVersion 19
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
@@ -19,6 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
 }
 
 dependencies {
@@ -41,4 +49,5 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-firestore:6.2.1'
     implementation "com.xwray:groupie:2.4.0"
     implementation "com.xwray:groupie-kotlin-android-extensions:2.4.0"
+    implementation 'com.hbb20:ccp:2.5.0'
 }

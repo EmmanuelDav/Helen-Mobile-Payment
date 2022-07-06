@@ -4,12 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/button_bg_custom.xml" value="0.1575" />
+        <entry key="app/src/main/res/drawable/edittext.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/rounded.xml" value="0.1575" />
         <entry key="app/src/main/res/font/martel_extralight.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/activity_cash_out.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/activity_forgotten_password.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24722222222222223" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.2796875" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_send_money_activity.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/activity_set_new_pin.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
