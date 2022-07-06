@@ -1,9 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.SignUpActivity">
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        tools:context=".activities.WelcomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="Create an account"
+            android:textSize="30sp"
+            android:id="@+id/welcome"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/welcome"
+            android:id="@+id/subtext"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/textGrey"
+            android:text="Create an account so you can use HPay"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subtext"
+            android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/welcome"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/grey"
+                android:textSize="20sp"
+                android:hint="Type your email"
+                app:startIconDrawable="@drawable/ic_baseline_email_24"
+                app:startIconTint="@color/green"
+                android:textStyle="bold"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/welcome"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/grey"
+                android:hint="Type your Username"
+                android:textSize="20sp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconDrawable="@drawable/ic_baseline_person_pin_24"
+                app:startIconTint="@color/green"
+                android:textStyle="bold"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/welcome"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/grey"
+                android:hint="Set your password"
+                android:textSize="20sp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:startIconTint="@color/green"
+                app:passwordToggleEnabled="true"
+                android:textStyle="bold"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/welcome"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/grey"
+                android:hint="Confirm your password"
+                android:textSize="20sp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:startIconTint="@color/green"
+                app:passwordToggleEnabled="true"
+                android:textStyle="bold"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:paddingStart="90dp"
+                android:paddingEnd="90dp"
+                android:padding="17dp"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/green"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="100dp"
+                    android:backgroundTint="@color/grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="3dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:text="  Or Sign Up with  "
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:backgroundTint="@color/grey"
+                    android:layout_height="3dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="70dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/google_logo"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/rounded"
+                android:layout_height="70dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content"
+                    android:text="I already have an account" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/green"
+                    android:text="Sign in" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

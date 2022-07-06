@@ -7,6 +7,7 @@
         tools:context=".activities.RegistrationActivity"
         android:background="@drawable/green_leaf_2">
 
+
     <ImageView
             android:layout_width="116dp"
             android:layout_height="100dp"
