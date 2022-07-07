@@ -29,42 +29,42 @@ class VerifyActivity : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
-        val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
-        sendVerificationCode(phoneNumber)
+      //  val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
+      //  sendVerificationCode(phoneNumber)
 
-        button_verify.setOnTouchListener OnTouchListener@{ v, event ->
-            when (event.action){
-
-                MotionEvent.ACTION_DOWN -> {
-                    button_verify.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    button_verify.setBackgroundResource(R.drawable.button_bg_custom)
-
-                    val code: String = editText_ver_code.text.toString().trim()
-                    if (code.length < 6 || code.isEmpty()) {
-                        editText_ver_code.error = "invalid code"
-                        return@OnTouchListener true
-                    }
-
-                    //hide keyboard
-                    val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
-
-                    if(!CheckInternet(this).checkNow())
-                    {
-                        return@OnTouchListener true
-                    }
-
-                    verify_progressBar.visibility = View.VISIBLE
-                    verifyCode(code)
-
-
-                }
-            }
-            return@OnTouchListener true
-        }
+//        button_verify.setOnTouchListener OnTouchListener@{ v, event ->
+//            when (event.action){
+//
+//                MotionEvent.ACTION_DOWN -> {
+//                    button_verify.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+//                }
+//
+//                MotionEvent.ACTION_UP -> {
+//                    button_verify.setBackgroundResource(R.drawable.button_bg_custom)
+//
+//                    val code: String = editText_ver_code.text.toString().trim()
+//                    if (code.length < 6 || code.isEmpty()) {
+//                        editText_ver_code.error = "invalid code"
+//                        return@OnTouchListener true
+//                    }
+//
+//                    //hide keyboard
+//                    val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//                    inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
+//
+//                    if(!CheckInternet(this).checkNow())
+//                    {
+//                        return@OnTouchListener true
+//                    }
+//
+//                    verify_progressBar.visibility = View.VISIBLE
+//                    verifyCode(code)
+//
+//
+//                }
+//            }
+//            return@OnTouchListener true
+//        }
 
     }
 
@@ -92,9 +92,9 @@ class VerifyActivity : AppCompatActivity() {
             Log.d("VerifyActivity", "onVerificationCompleted:$credential")
 
             val code = credential.smsCode
-            editText_ver_code.setText(code)
+           // editText_ver_code.setText(code)
             Log.d("VerifyActivity", "code complete:" + code.toString())
-            verify_progressBar.visibility = View.VISIBLE
+          //  verify_progressBar.visibility = View.VISIBLE
             signInWithPhoneAuthCredential(credential)
         }
 
@@ -181,7 +181,7 @@ class VerifyActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                 } else {
                     // Sign in failed, display a message and update the UI
-                    verify_progressBar.visibility = View.INVISIBLE
+                   // verify_progressBar.visibility = View.INVISIBLE
                     Log.w("VerifyActivity", "signInWithCredential:failure", task.exception)
                     Toast.makeText(this@VerifyActivity,"signInWithCredential:failure",Toast.LENGTH_SHORT).show()
                     finish() //finish this activity and get back to registration activity

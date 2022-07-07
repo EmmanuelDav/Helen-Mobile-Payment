@@ -40,8 +40,6 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-
-
     <com.google.android.material.textfield.TextInputEditText
             android:text="+234"
             android:layout_height="wrap_content"
