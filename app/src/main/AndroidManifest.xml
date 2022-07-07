@@ -21,7 +21,7 @@
                 android:name=".activities.SignInActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.MainActivity"
+                android:name=".activities.SetPinActivity"
                 android:exported="false" />
         <activity android:name="com.iyke.onlinebanking.StatementActitvity" />
         <activity android:name=".activities.CashOutActivity" />
@@ -33,7 +33,7 @@
         <activity android:name=".activities.RegistrationActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
-                android:name=".activities.VerifyActivity"
+                android:name=".activities.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
