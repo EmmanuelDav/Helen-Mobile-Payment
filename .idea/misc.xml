@@ -27,8 +27,9 @@
         <entry key="app/src/main/res/layout/dialog_confirm_pin.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/fragment_card.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.22958529286019666" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22958529286019666" />
+        <entry key="app/src/main/res/layout/item_recent.xml" value="0.25" />
         <entry key="app/src/main/res/layout/spinner_select_vehicle.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/statement_row.xml" value="0.2796875" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.22873022659256093" />
