@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.6'
     implementation 'com.google.firebase:firebase-analytics:21.0.0'
     implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.andrognito.pinlockview:pinlockview:2.1.0'
     androidTestImplementation 'androidx.test:runner:1.4.0'

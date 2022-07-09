@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_receive.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_sent.xml" value="0.22958529286019666" />
+        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/item_recent.xml" value="0.25" />
         <entry key="app/src/main/res/layout/spinner_select_vehicle.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/statement_row.xml" value="0.2796875" />
