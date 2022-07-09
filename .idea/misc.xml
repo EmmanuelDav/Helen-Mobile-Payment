@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/button_bg_custom.xml" value="0.1575" />
+        <entry key="app/src/main/res/drawable/color_combination.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/edittext.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/ic_round_notifications_none_24.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/menu_bottom_text_custom.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/menu_grid_bg_custom.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/phone_number_textview.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/rounded.xml" value="0.1575" />
         <entry key="app/src/main/res/font/martel_extralight.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/activity_cash_out.xml" value="0.2796875" />
@@ -24,6 +27,7 @@
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_verify.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/card_items.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_confirm_pin.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/fragment_card.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.22958529286019666" />
