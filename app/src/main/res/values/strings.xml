@@ -10,6 +10,13 @@
         <item>Mini Truck</item>
         <item>Bi-cycle</item>
     </string-array>
+
+    <string-array name="periods">
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+        <item>Years</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

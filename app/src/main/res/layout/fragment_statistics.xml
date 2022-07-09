@@ -1,17 +1,133 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:layout_margin="8dp"
         android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/first"
+            android:layout_margin="10dp"
+            android:paddingTop="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="May 12 - Jun 12"
+                android:textSize="18sp"
+                android:id="@+id/daysOfTheWeek"
+                android:textColor="@color/black"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:fontFamily="@font/source_sans_pro"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/spinnerPeriods"
+                android:gravity="end"
+                android:layout_alignParentEnd="true"
+                android:spinnerMode="dropdown"
+                android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/first"
+            android:id="@+id/second"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:textSize="25sp"
+                android:text="$4,500,80.20"
+                android:layout_gravity="center"
+                android:layout_below="@+id/current"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:fontFamily="@font/source_sans_pro"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="  Current balance "
+                android:layout_alignParentTop="true"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:id="@+id/current"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/second"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="350dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chart"
+            android:orientation="horizontal"
+
+            android:id="@+id/linearLayoutCompat4"
+           android:layout_margin="10dp">
 
 
-    <com.github.mikephil.charting.charts.PieChart
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="All Transactions"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:fontFamily="@font/source_sans_pro"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:id="@+id/subtext"
+                android:textColor="@color/textGrey"
+                android:text="See all"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:layout_height="26dp" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/activity_main_piechart"
-            android:layout_below="@+id/chart" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutCompat4"
+            android:id="@+id/recentActivities"
+            tools:listitem="@layout/item_recent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
+
 </RelativeLayout>
