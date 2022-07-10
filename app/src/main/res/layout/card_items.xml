@@ -34,7 +34,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:id="@+id/subtext"
+                    android:id="@+id/seeAll"
                     android:textColor="@color/grey"
                     android:text="Balance"
                     android:layout_marginTop="3dp"

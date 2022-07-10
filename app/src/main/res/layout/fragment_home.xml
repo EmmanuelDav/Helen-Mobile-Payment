@@ -20,7 +20,7 @@
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_margin="5dp"
-                android:id="@+id/subtext"
+                android:id="@+id/seeAll"
                 android:textColor="@color/textGrey"
                 android:text="Hello Iyke "
                 android:textSize="20sp"
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/materialCardView">
+            android:id="@+id/view1">
 
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -114,6 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:id="@+id/addFunds"
                     app:srcCompat="@drawable/ic_baseline_add_24"
                     app:backgroundTint="@color/whiteW"
                     android:layout_centerVertical="true"
@@ -130,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +166,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -207,7 +208,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -249,7 +250,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -291,7 +292,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -344,7 +345,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -385,7 +386,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -426,7 +427,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -466,7 +467,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
-                        android:id="@+id/subtext"
+                        android:id="@+id/seeAll"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/whiteW"
@@ -507,7 +508,6 @@
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:id="@+id/subtext"
                 android:textColor="@color/textGrey"
                 android:text="See all"
                 android:textSize="16sp"

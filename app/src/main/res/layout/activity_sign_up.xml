@@ -26,7 +26,7 @@
     <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_below="@+id/welcome"
-            android:id="@+id/subtext"
+            android:id="@+id/seeAll"
             android:layout_marginTop="20dp"
             android:textColor="@color/textGrey"
             android:text="Create an account so you can use HPay"
@@ -37,7 +37,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/subtext"
+            android:layout_below="@+id/seeAll"
             android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout

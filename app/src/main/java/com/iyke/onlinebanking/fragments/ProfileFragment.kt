@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.navigation.Navigation
+import com.google.android.material.textview.MaterialTextView
 import com.iyke.onlinebanking.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +38,19 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val v =  inflater.inflate(R.layout.fragment_profile, container, false)
+        v.findViewById<LinearLayoutCompat>(R.id.helpPrivacy).setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_help_PrivacyFragment)
+        }
+        v.findViewById<LinearLayoutCompat>(R.id.connection).setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_connectionFragment)
+        }
+        v.findViewById<LinearLayoutCompat>(R.id.editProfile).setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+
+
+        return v
     }
 
     companion object {

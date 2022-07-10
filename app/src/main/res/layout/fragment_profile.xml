@@ -12,6 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
+
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -53,6 +54,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/editProfile"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
@@ -101,6 +103,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/editProfile"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -148,6 +151,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/connection"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -242,6 +246,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/helpPrivacy"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -289,6 +294,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+                           android:id="@+id/helpPrivacy"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton

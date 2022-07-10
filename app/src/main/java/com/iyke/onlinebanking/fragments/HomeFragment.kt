@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.navigation.Navigation
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.iyke.onlinebanking.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +44,12 @@ class HomeFragment : Fragment() {
         val  v =inflater.inflate(R.layout.fragment_home, container, false)
          v.findViewById<MaterialCardView>(R.id.sendMoney).setOnClickListener {
              Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_transactFragment)
+         }
+         v.findViewById<ImageButton>(R.id.addFunds).setOnClickListener {
+             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
+         }
+         v.findViewById<LinearLayoutCompat>(R.id.linearLayoutCompat4).setOnClickListener {
+             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_historyFragment)
          }
         return v
     }

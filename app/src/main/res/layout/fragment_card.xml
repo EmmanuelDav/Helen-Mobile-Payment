@@ -26,6 +26,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
                 app:icon="@drawable/ic_baseline_add_24"
+                android:id="@+id/addCards"
                 android:background="@drawable/edittext"
                 app:backgroundTint="@color/whiteW"
                 app:iconTint="@color/black"
