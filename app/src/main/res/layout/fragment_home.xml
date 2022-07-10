@@ -140,6 +140,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:alpha="0.9"
+                android:id="@+id/sendMoney"
                 app:cardBackgroundColor="#6d2cb1"
                 android:layout_margin="5dp"
                 app:cardCornerRadius="10dp"

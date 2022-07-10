@@ -9,7 +9,11 @@
             android:id="@+id/homeFragment"
             android:name="com.iyke.onlinebanking.fragments.HomeFragment"
             android:label="fragment_home"
-            tools:layout="@layout/fragment_home" />
+            tools:layout="@layout/fragment_home" >
+        <action
+                android:id="@+id/action_homeFragment_to_transactFragment"
+                app:destination="@id/transactFragment" />
+    </fragment>
     <fragment
             android:id="@+id/cardFragment"
             android:name="com.iyke.onlinebanking.fragments.CardFragment"
@@ -24,4 +28,9 @@
             android:id="@+id/statisticsFragment"
             android:name="com.iyke.onlinebanking.fragments.StatisticsFragment"
             android:label="StatisticsFragment" />
+    <fragment
+            android:id="@+id/transactFragment"
+            android:name="com.iyke.onlinebanking.fragments.TransactFragment"
+            android:label="fragment_transact"
+            tools:layout="@layout/fragment_transact" />
 </navigation>

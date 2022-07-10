@@ -24,7 +24,7 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_statement_actitvity.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/activity_toll_fee.xml" value="0.2796875" />
-        <entry key="app/src/main/res/layout/activity_user.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_user.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_verify.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.2" />
         <entry key="app/src/main/res/layout/card_items.xml" value="0.25" />
@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/layout/fragment_receive.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_sent.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.22958529286019666" />
+        <entry key="app/src/main/res/layout/fragment_transact.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/item_recent.xml" value="0.25" />
         <entry key="app/src/main/res/layout/spinner_select_vehicle.xml" value="0.2796875" />
         <entry key="app/src/main/res/layout/statement_row.xml" value="0.2796875" />

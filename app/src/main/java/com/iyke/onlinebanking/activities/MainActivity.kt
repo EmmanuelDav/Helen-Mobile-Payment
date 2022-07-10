@@ -2,6 +2,7 @@ package com.iyke.onlinebanking.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.iyke.onlinebanking.R
@@ -14,5 +15,16 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = bottom_navigatin_view
         val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.cardFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.statisticsFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.profileFragment -> bottomNavigationView.visibility = View.VISIBLE
+                else -> bottomNavigationView.visibility = View.GONE
+            }
+        }
     }
+
 }
