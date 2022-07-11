@@ -43,7 +43,6 @@ class CardFragment : Fragment() {
         v.findViewById<MaterialButton>(R.id.addCards).setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_cardFragment_to_addCardFragemnt)
         }
-
         return v
     }
 
