@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
         tools:context=".fragments.Help_PrivacyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="Private Policy"
+            android:textSize="30sp"
+            android:textColor="@color/green"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/seeAll"
+            android:layout_gravity="center"
+            android:textColor="@color/textGrey"
+            android:text="Personal Information from HPay"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="26dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="Background"
+            android:textSize="20sp"
+            android:textColor="@color/green"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="start"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start"
+            android:textColor="@color/textGrey"
+            android:text="@string/background1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start"
+            android:textColor="@color/textGrey"
+            android:text="@string/background2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:text="What Information do we collect"
+            android:textSize="20sp"
+            android:textColor="@color/green"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="start"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start"
+            android:textColor="@color/textGrey"
+            android:text="@string/background3"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

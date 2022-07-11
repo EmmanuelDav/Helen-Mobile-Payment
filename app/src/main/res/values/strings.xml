@@ -19,5 +19,8 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="background1">We’re HPay Microfinance Bank Limited (‘we’, ‘our’, ‘us’) and operate under the name HPay. \n We’re registered with the Corporate Affairs Commission with the number RC796975.</string>
+    <string name="background2">This policy describes what information we collect about you, how we collect and use the information you share with us, and with whom we share that information. You don’t have to share any information with us, but to use our services, we’ll need some information from you. This policy also contains information about when we share your personal information with third parties (such as our service providers and credit bureaus).</string>
+    <string name="background3">We collect and use any information you supply when you interact with any of our touch points. When you open an account with us, you share details like your name, BVN, ID, address and a picture. By using our card or the app to transact, you also share details of your transactions with us. Additionally, we may request explicit permission to see other information like your address book, location, photos and data from your camera.</string>
 
 </resources>
