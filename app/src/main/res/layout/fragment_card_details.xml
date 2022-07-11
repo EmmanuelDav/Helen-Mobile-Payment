@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        tools:context=".activities.WelcomeActivity">
+
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:id="@+id/seeAll"
+            android:textAlignment="center"
+            android:drawableStart="@drawable/ic_baseline_chevron_left_24"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/textGrey"
+            android:text="Card information"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="Card label"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="HPay"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="Card Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="Ikechukwu Emmanuel David"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="Card Number"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="0345069***7688"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="Expiring Date"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="06/23"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="CVV"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="001"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="Zip Code"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="1234"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/seeAll"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/semiGreen"
+                android:text="City"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:textColor="@color/textGrey"
+                android:layout_marginTop="10dp"
+                android:text="Owerri"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_height="3dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:padding="17dp"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/green"
+            android:text="Freeze Card"
+            android:textAllCaps="false"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
