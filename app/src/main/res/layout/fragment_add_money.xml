@@ -22,6 +22,7 @@
             android:textStyle="bold"
             android:layout_height="wrap_content" />
 
+
     <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:text="Enter amount"
@@ -36,8 +37,8 @@
 
     <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            app:cardBackgroundColor="@color/white"
             android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/whiteW"
             app:cardCornerRadius="5dp"
             android:layout_height="wrap_content">
 
@@ -47,11 +48,45 @@
                 android:layout_gravity="center_horizontal"
                 app:icon="@drawable/ic_baseline_add_24"
                 android:id="@+id/addCards"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/whiteW"
                 app:iconTint="@color/black"
                 android:textColor="@color/black"
                 android:textAlignment="center"
                 android:hint="Enter Amount" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:text="With message"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/textGrey"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                app:icon="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/white"
+                app:iconTint="@color/black"
+
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:hint="Here is the 100 dollars I promised " />
+
 
     </com.google.android.material.card.MaterialCardView>
 
