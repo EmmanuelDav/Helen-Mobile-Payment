@@ -41,7 +41,7 @@
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
-                android:text="+234 7068589978"
+                android:text="(+234) 706 858 9988"
                 android:textColor="@color/textGrey"
                 android:textSize="14sp"
                 android:gravity="center"
