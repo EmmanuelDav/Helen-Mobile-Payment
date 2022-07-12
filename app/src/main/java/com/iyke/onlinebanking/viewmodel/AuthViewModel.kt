@@ -14,7 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.iyke.onlinebanking.Constants.EMAIL
+import com.iyke.onlinebanking.Constants.NAME
 import com.iyke.onlinebanking.Constants.PREFERENCE
+import com.iyke.onlinebanking.Constants.PROFILE
 import com.iyke.onlinebanking.activities.VerifyPhoneNumber
 
 
@@ -61,9 +64,9 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private fun saveUserDataWithSharedPreference(email: String, name: String, profilePic: String) {
         context.getSharedPreferences(PREFERENCE, MODE_PRIVATE).let {
             val myEdit = it.edit()
-            myEdit.putString("email", email)
-            myEdit.putString("full_Name", name)
-            myEdit.putString("picture", profilePic)
+            myEdit.putString(EMAIL, email)
+            myEdit.putString(NAME, name)
+            myEdit.putString(PROFILE, profilePic)
             myEdit.apply()
         }
     }

@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/indicatorDots"
             android:layout_centerHorizontal="true"
+            android:background="@color/white"
             android:layout_margin="20dp"
             android:layout_marginStart="70dp"
             android:layout_marginEnd="70dp"
@@ -68,43 +69,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
             app:layout_constraintVertical_bias="0.45" />
-
-
-    <TextView
-            android:text="Wait for verification code or check your inbox for code"
-            android:gravity="center"
-            android:layout_width="321dp"
-            android:layout_height="98dp"
-            android:fontFamily="monospace"
-            android:id="@+id/wait_for_verify_textView"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="30dp"
-            android:textColor="@android:color/white" />
-
-    <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:paddingStart="90dp"
-            android:paddingEnd="90dp"
-            android:padding="17dp"
-            android:textSize="15sp"
-            android:layout_margin="18dp"
-            android:id="@+id/button_verify"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/green"
-            android:text="Verify"
-            android:textAllCaps="false"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            tools:ignore="RtlSymmetry"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="18dp"
-            app:layout_constraintTop_toBottomOf="@+id/pinCodeView" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

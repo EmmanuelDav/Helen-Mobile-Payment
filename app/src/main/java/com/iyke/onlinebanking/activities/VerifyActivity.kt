@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +12,24 @@ import com.andrognito.pinlockview.IndicatorDots
 import com.andrognito.pinlockview.PinLockListener
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.Constants.BALANCE
+import com.iyke.onlinebanking.Constants.EMAIL
+import com.iyke.onlinebanking.Constants.NAME
+import com.iyke.onlinebanking.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.Constants.PIN
+import com.iyke.onlinebanking.Constants.PREFERENCE
+import com.iyke.onlinebanking.Constants.PROFILE
+import com.iyke.onlinebanking.Constants.USERS
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_verify.*
 import java.util.concurrent.TimeUnit
+
 
 class VerifyActivity : AppCompatActivity() {
 
@@ -35,54 +45,14 @@ class VerifyActivity : AppCompatActivity() {
 
         pinCodeView.setPinLockListener(mPinLockListener)
         pinCodeView.attachIndicatorDots(indicatorDots)
-        pinCodeView.customKeySet = intArrayOf(2, 3, 1, 5, 9, 6, 7, 0, 8, 4)
-        pinCodeView.enableLayoutShuffling()
-
         pinCodeView.pinLength = 5
         pinCodeView.textColor = ContextCompat.getColor(this, R.color.black)
-
         indicatorDots.indicatorType = IndicatorDots.IndicatorType.FILL_WITH_ANIMATION
         sendVerificationCode(phoneNumber)
-
-//        button_verify.setOnTouchListener OnTouchListener@{ v, event ->
-//            when (event.action){
-//
-//                MotionEvent.ACTION_DOWN -> {
-//                    button_verify.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
-//                }
-//
-//                MotionEvent.ACTION_UP -> {
-//                    button_verify.setBackgroundResource(R.drawable.button_bg_custom)
-//
-//                    val code: String = indicatorDots.text.toString().trim()
-//                    if (code.length < 6 || code.isEmpty()) {
-//                        indicatorDots.error = "invalid code"
-//                        return@OnTouchListener true
-//                    }
-//
-//                    //hide keyboard
-//                    val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                    inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
-//
-//                    if(!CheckInternet(this).checkNow())
-//                    {
-//                        return@OnTouchListener true
-//                    }
-//
-//                    verify_progressBar.visibility = View.VISIBLE
-//                    verifyCode(code)
-//
-//
-//                }
-//            }
-//            return@OnTouchListener true
-//        }
-
     }
 
     private val mPinLockListener: PinLockListener = object : PinLockListener {
         override fun onComplete(pin: String) {
-            //hide keyboard
             val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
 
@@ -178,39 +148,37 @@ class VerifyActivity : AppCompatActivity() {
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    val sh = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
+                    val email = sh.getString(EMAIL, "")
+                    val name = sh.getString(NAME, "")
+                    val profilePic = sh.getString(PROFILE, "")
 
-                    val city = hashMapOf(
-                        "balance" to "null",
-                        "pin" to "null",
+
+                    val data = hashMapOf(
+                        EMAIL to email,
+                        NAME to name,
+                        PROFILE to profilePic,
+                        PHONE_NUMBER to auth.currentUser!!.phoneNumber,
+                        BALANCE to null,
+                        PIN to null
                     )
 
-                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
-                        .set(city)
+                    FirebaseFirestore.getInstance().collection(USERS).document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                        .set(data)
                         .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w("TAG", "Error writing document", e) }
 
                     val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
                        docRef.get()
                            .addOnSuccessListener { doc ->
-                               if(doc["balance"] == null)
+                               if(doc[BALANCE] == null)
                                {
-                                   docRef.update("balance",1000)
+                                   docRef.update(BALANCE,1000)
                                }
-                               if(doc["pin"] == null)
-                               {
-                                   intent = Intent(this, SetNewPinActivity::class.java)
-                                   intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                   startActivity(intent)
-                                   Log.d("VerifyActivity", "signInWithCredential:success")
-                               }
-                               else
-                               {
-                                   intent = Intent(this, UserActivity::class.java)
-                                   intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                   startActivity(intent)
-                                   Log.d("VerifyActivity", "signInWithCredential:success")
-                               }
-
+                               intent = Intent(this, MainActivity::class.java)
+                               intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
+                               startActivity(intent)
+                               Log.d("VerifyActivity", "signInWithCredential:success")
                            }
                            .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
 

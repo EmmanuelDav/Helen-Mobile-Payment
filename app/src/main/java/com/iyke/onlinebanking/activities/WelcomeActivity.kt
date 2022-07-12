@@ -9,6 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.auth.secrets.clientId
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.activity_welcome.*
 
@@ -26,7 +27,7 @@ class WelcomeActivity : AppCompatActivity() {
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.clientId))
+            .requestIdToken(clientId)
             .requestEmail()
             .build()
 
