@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--first of all we are going to create thumb item where we will
+    keep state_checked="true" that means when toggleButton is turned on.
+    It is filled with white color having border-color green. Its height and
+    width both are made 100 dp.-->
+    <item android:state_checked="true">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+            <stroke android:width="1dp" android:color="#34c759" />
+            <size android:width="80dp" android:height="80dp" />
+        </shape>
+    </item>
+
+    <!--first of all we are going to create thumb item where we will
+    keep state_checked="false" that means when toggleButton is turned off.
+    It is filled with white color having border-color white. Its height and
+    width both are made 100 dp.-->
+    <item android:state_checked="false">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+            <stroke android:width="1dp" android:color="#8c8c8c" />
+            <size android:width="80dp" android:height="80dp" />
+        </shape>
+    </item>
+
+</selector>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--we are going to create track the track and implement its functionality
+    when the toggleButton is turned on. I have made its shape rectangular and color
+    is set to green. Height is fitted to 20 dp and corners-radius is made 100 dp for
+    rounded shape at every corner of rectangle.
+    -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#34c759" />
+            <corners android:radius="100dp" />
+            <stroke android:width="1dp" android:color="#8c8c8c" />
+            <size android:height="10dp" />
+        </shape>
+    </item>
+
+    <!--we are going to create track the track and implement its functionalities
+    when the toggleButton is turned off.I have made its shape rectangular and color
+    is set to white. Height is fitted to 20 dp and corners-radius is made 100 dp for
+    rounded shape at every corner of rectangle.
+    -->
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <corners android:radius="100dp" />
+            <stroke android:width="1dp" android:color="#8c8c8c" />
+            <size android:height="10dp" />
+        </shape>
+    </item>
+
+</selector>

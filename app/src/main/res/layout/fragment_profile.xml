@@ -8,10 +8,24 @@
         android:orientation="vertical"
         tools:context=".fragments.ProfileFragment">
 
+    <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="54dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@color/white"
+            android:tint="@color/green"
+            android:background="@drawable/rounded"
+            android:id="@+id/materialButton" />
+
+
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
 
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -92,7 +106,6 @@
                 app:drawableTint="@color/semiGreen"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
@@ -140,7 +153,6 @@
                 app:drawableTint="@color/semiGreen"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
@@ -228,18 +240,16 @@
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatToggleButton
+        <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="0dp"
-                android:text="emmanueldav987@..."
                 android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:background="@color/whiteW"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:textOff="off"
+                android:padding="10dp"
+                android:textOn="on"
+                android:thumb="@drawable/thumb"
+                app:showText="true"
+                app:track="@drawable/track" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -294,7 +304,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                           android:id="@+id/helpPrivacy"
+            android:id="@+id/helpPrivacy"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
