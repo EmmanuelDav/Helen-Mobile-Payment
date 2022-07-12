@@ -36,8 +36,11 @@ class WelcomeActivity : AppCompatActivity() {
         createAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
+        login.setOnClickListener{
+            startActivity(Intent(this, SignInActivity::class.java))
+        }
 
-        login.setOnClickListener {
+        googleLogin.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
         }
 

@@ -2,13 +2,16 @@ package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.andrognito.pinlockview.IndicatorDots
+import com.andrognito.pinlockview.PinLockListener
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -26,13 +29,20 @@ class VerifyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify)
-        verify.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
-        }
 
-       // auth = FirebaseAuth.getInstance()
-      //  val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
-      //  sendVerificationCode(phoneNumber)
+        auth = FirebaseAuth.getInstance()
+        val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
+
+        pinCodeView.setPinLockListener(mPinLockListener)
+        pinCodeView.attachIndicatorDots(indicatorDots)
+        pinCodeView.customKeySet = intArrayOf(2, 3, 1, 5, 9, 6, 7, 0, 8, 4)
+        pinCodeView.enableLayoutShuffling()
+
+        pinCodeView.pinLength = 5
+        pinCodeView.textColor = ContextCompat.getColor(this, R.color.black)
+
+        indicatorDots.indicatorType = IndicatorDots.IndicatorType.FILL_WITH_ANIMATION
+        sendVerificationCode(phoneNumber)
 
 //        button_verify.setOnTouchListener OnTouchListener@{ v, event ->
 //            when (event.action){
@@ -44,9 +54,9 @@ class VerifyActivity : AppCompatActivity() {
 //                MotionEvent.ACTION_UP -> {
 //                    button_verify.setBackgroundResource(R.drawable.button_bg_custom)
 //
-//                    val code: String = editText_ver_code.text.toString().trim()
+//                    val code: String = indicatorDots.text.toString().trim()
 //                    if (code.length < 6 || code.isEmpty()) {
-//                        editText_ver_code.error = "invalid code"
+//                        indicatorDots.error = "invalid code"
 //                        return@OnTouchListener true
 //                    }
 //
@@ -68,6 +78,31 @@ class VerifyActivity : AppCompatActivity() {
 //            return@OnTouchListener true
 //        }
 
+    }
+
+    private val mPinLockListener: PinLockListener = object : PinLockListener {
+        override fun onComplete(pin: String) {
+            //hide keyboard
+            val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
+
+            if(!CheckInternet(applicationContext).checkNow())
+            {
+
+            }
+            verifyCode(pin)
+        }
+
+        override fun onEmpty() {
+            Log.d("debugger", "Pin empty")
+        }
+
+        override fun onPinChange(pinLength: Int, intermediatePin: String) {
+            Log.d(
+                "debugger",
+                "Pin changed, new length $pinLength with intermediate pin $intermediatePin"
+            )
+        }
     }
 
 
