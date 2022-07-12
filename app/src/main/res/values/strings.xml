@@ -23,4 +23,5 @@
     <string name="background2">This policy describes what information we collect about you, how we collect and use the information you share with us, and with whom we share that information. You don’t have to share any information with us, but to use our services, we’ll need some information from you. This policy also contains information about when we share your personal information with third parties (such as our service providers and credit bureaus).</string>
     <string name="background3">We collect and use any information you supply when you interact with any of our touch points. When you open an account with us, you share details like your name, BVN, ID, address and a picture. By using our card or the app to transact, you also share details of your transactions with us. Additionally, we may request explicit permission to see other information like your address book, location, photos and data from your camera.</string>
 
+    <string name="clientId">649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com</string>
 </resources>

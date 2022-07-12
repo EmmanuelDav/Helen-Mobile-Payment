@@ -3,6 +3,7 @@ package com.iyke.onlinebanking.viewmodel
 import android.R.attr.name
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.iyke.onlinebanking.Constants.PREFERENCE
+import com.iyke.onlinebanking.activities.VerifyPhoneNumber
 
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
@@ -40,7 +42,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             })
     }
 
-    fun registerWithEmailAndPassword(email: String?, password: String?,name: String) {
+    fun registerWithEmailAndPassword(email: String?, password: String?, name: String) {
         firebaseAuth.createUserWithEmailAndPassword(email!!, password!!)
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
@@ -56,7 +58,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             })
     }
 
-    private fun saveUserDataWithSharedPreference(email: String, name:String, profilePic:String){
+    private fun saveUserDataWithSharedPreference(email: String, name: String, profilePic: String) {
         context.getSharedPreferences(PREFERENCE, MODE_PRIVATE).let {
             val myEdit = it.edit()
             myEdit.putString("email", email)
@@ -66,16 +68,22 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    private fun firebaseLogin(idToken: String) {
+    fun firebaseLogin(idToken: String) {
         GoogleAuthProvider.getCredential(idToken, null).let { it ->
             firebaseAuth.signInWithCredential(it)
-                .addOnCompleteListener(OnCompleteListener {
-                    if (it.isSuccessful){
-                        saveUserDataWithSharedPreference(firebaseAuth.currentUser!!.email.toString(),
+                .addOnCompleteListener(OnCompleteListener { it ->
+                    if (it.isSuccessful) {
+                        saveUserDataWithSharedPreference(
+                            firebaseAuth.currentUser!!.email.toString(),
                             firebaseAuth.currentUser!!.displayName.toString(),
-                            firebaseAuth.currentUser!!.photoUrl.toString())
+                            firebaseAuth.currentUser!!.photoUrl.toString()
+                        )
+                        Intent(context, VerifyPhoneNumber::class.java).let { e ->
+                            e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            context.startActivity(e)
+                        }
                     }
-                }).addOnFailureListener{
+                }).addOnFailureListener {
                     Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
                 }
         }
