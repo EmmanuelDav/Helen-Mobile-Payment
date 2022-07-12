@@ -131,7 +131,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
-                    android:text="  Or Sign Up with  "
+                    android:text="  Or Sign In with  "
                     android:textSize="18sp"
                     android:layout_height="wrap_content" />
 
