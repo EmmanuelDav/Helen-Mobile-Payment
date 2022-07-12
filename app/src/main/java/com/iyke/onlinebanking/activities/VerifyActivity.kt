@@ -26,9 +26,11 @@ class VerifyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify)
+        verify.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
 
-
-        auth = FirebaseAuth.getInstance()
+       // auth = FirebaseAuth.getInstance()
       //  val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
       //  sendVerificationCode(phoneNumber)
 

@@ -134,6 +134,7 @@
                 android:paddingEnd="90dp"
                 android:padding="17dp"
                 android:textSize="15sp"
+                android:id="@+id/next"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green"
                 android:text="Next"
@@ -198,6 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
+                    android:id="@+id/login"
                     android:textSize="18sp"
                     android:textColor="@color/green"
                     android:text="Sign in" />

@@ -48,7 +48,7 @@ class UserActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     imageView_logout.setBackgroundResource(R.drawable.icon_menu_bg_custom_1)
                     FirebaseAuth.getInstance().signOut()
-                    intent = Intent(this, RegistrationActivity::class.java)
+                    intent = Intent(this, VerifyPhoneNumber::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                     startActivity(intent)
                 }

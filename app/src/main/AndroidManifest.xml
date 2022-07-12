@@ -15,10 +15,13 @@
                 android:name=".activities.ForgottenPasswordActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.WelcomeActivity"
+                android:name=".activities.MainActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.SignInActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.VerifyActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.SetPinActivity"
@@ -29,10 +32,10 @@
         <activity android:name=".activities.SendMoneyActivity" />
         <activity android:name=".activities.SetNewPinActivity" />
         <activity android:name=".activities.UserActivity" />
-        <activity android:name=".activities.RegistrationActivity" />
+        <activity android:name=".activities.VerifyPhoneNumber" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
-                android:name=".activities.MainActivity"
+                android:name=".activities.WelcomeActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

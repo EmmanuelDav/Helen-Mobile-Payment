@@ -105,6 +105,7 @@
                 android:paddingEnd="90dp"
                 android:padding="17dp"
                 android:textSize="15sp"
+                android:id="@+id/signIn"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green"
                 android:text="Sign in"
@@ -170,6 +171,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
+                    android:id="@+id/signUp"
                     android:textColor="@color/green"
                     android:text="Sign up" />
         </androidx.appcompat.widget.LinearLayoutCompat>

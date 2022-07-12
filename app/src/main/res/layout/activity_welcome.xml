@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:padding="17dp"
                 android:textSize="15sp"
+                android:id="@+id/createAccount"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green"
                 android:text="Create an account"
@@ -108,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
+                    android:id="@+id/login"
                     android:textColor="@color/green"
                     android:text="Login" />
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val  v =inflater.inflate(R.layout.fragment_home, container, false)
          v.findViewById<MaterialCardView>(R.id.sendMoney).setOnClickListener {
-             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_transactFragment)
+             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
          }
          v.findViewById<ImageButton>(R.id.addFunds).setOnClickListener {
              Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)

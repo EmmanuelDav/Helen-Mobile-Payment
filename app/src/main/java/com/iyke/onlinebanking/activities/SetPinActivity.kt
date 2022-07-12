@@ -29,7 +29,7 @@ class SetPinActivity : AppCompatActivity() {
         }
         else
         {
-            intent = Intent(this, RegistrationActivity::class.java)
+            intent = Intent(this, VerifyPhoneNumber::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
             startActivity(intent)
         }
