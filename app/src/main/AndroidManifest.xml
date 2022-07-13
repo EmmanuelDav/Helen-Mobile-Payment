@@ -27,7 +27,7 @@
         <activity
                 android:name=".activities.SetPinActivity"
                 android:exported="false" />
-        <activity android:name="com.iyke.onlinebanking.StatementActitvity" />
+        <activity android:name=".StatementActitvity" />
         <activity android:name=".activities.CashOutActivity" />
         <activity android:name=".activities.TollFeeActivity" />
         <activity android:name=".activities.SendMoneyActivity" />

@@ -1,6 +1,7 @@
 package com.iyke.onlinebanking.viewmodel
 
 import android.R.attr.name
+import android.app.Activity
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -14,15 +15,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.Constants.EMAIL
 import com.iyke.onlinebanking.Constants.NAME
 import com.iyke.onlinebanking.Constants.PREFERENCE
 import com.iyke.onlinebanking.Constants.PROFILE
+import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.activities.MainActivity
 import com.iyke.onlinebanking.activities.VerifyPhoneNumber
+import com.iyke.onlinebanking.activities.WelcomeActivity
 
 
-class AuthViewModel(application: Application) : AndroidViewModel(application) {
+class AuthViewModel( application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
     private var authStateListener: AuthStateListener? = null
@@ -30,7 +34,9 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    fun loginWithEmailAndPassword(email: String?, password: String) {
+    fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {
+        val callBox = ProgressDialog(activity)
+        callBox.show()
         firebaseAuth.signInWithEmailAndPassword(email!!, password)
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
@@ -39,17 +45,21 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                         e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context.startActivity(e)
                     }
+                    callBox.dismiss()
                 } else {
                     Toast.makeText(
                         context.applicationContext,
                         "Login Failure: " + task.exception!!.message.toString(),
                         Toast.LENGTH_SHORT
                     ).show()
+                    callBox.dismiss()
                 }
             })
     }
 
-    fun registerWithEmailAndPassword(email: String?, password: String?, name: String) {
+    fun registerWithEmailAndPassword(email: String?, password: String?, name: String, activity: Activity) {
+        val callBox = ProgressDialog(activity)
+        callBox.show()
         firebaseAuth.createUserWithEmailAndPassword(email!!, password!!)
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
@@ -59,8 +69,9 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                         e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context.startActivity(e)
                     }
-
+                    callBox.dismiss()
                 } else {
+                    callBox.dismiss()
                     Toast.makeText(
                         context.applicationContext,
                         "Registration Failure: " + task.exception!!.message.toString(),
@@ -80,7 +91,9 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun firebaseLogin(idToken: String) {
+    fun firebaseLogin(idToken: String, activity: Activity) {
+        val callBox = ProgressDialog(activity)
+        callBox.show()
         GoogleAuthProvider.getCredential(idToken, null).let { it ->
             firebaseAuth.signInWithCredential(it)
                 .addOnCompleteListener(OnCompleteListener { it ->
@@ -94,9 +107,11 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                             e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             context.startActivity(e)
                         }
+                        callBox.dismiss()
                     }
                 }).addOnFailureListener {
                     Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
+                    callBox.dismiss()
                 }
         }
     }

@@ -52,7 +52,7 @@ class WelcomeActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            authViewModel.firebaseLogin(account.idToken!!)
+            authViewModel.firebaseLogin(account.idToken!!, this)
         }
     }
 }

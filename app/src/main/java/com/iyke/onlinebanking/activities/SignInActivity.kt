@@ -54,7 +54,7 @@ class SignInActivity : AppCompatActivity() {
 
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                authViewModel.loginWithEmailAndPassword(email,password)
+                authViewModel.loginWithEmailAndPassword(email,password, this)
             }
         }
 
@@ -75,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
         if (requestCode == Constants.RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            authViewModel.firebaseLogin(account.idToken!!)
+            authViewModel.firebaseLogin(account.idToken!!,this)
         }
     }
 }
