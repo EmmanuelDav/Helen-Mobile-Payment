@@ -168,7 +168,7 @@ class VerifyActivity : AppCompatActivity() {
                         .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w("TAG", "Error writing document", e) }
 
-                    val docRef = FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                    val docRef = FirebaseFirestore.getInstance().collection(USERS).document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
                        docRef.get()
                            .addOnSuccessListener { doc ->
                                if(doc[BALANCE] == null)

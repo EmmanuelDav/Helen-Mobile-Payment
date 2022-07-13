@@ -9,4 +9,6 @@ object Constants {
     const val PHONE_NUMBER = "PHONE_NUMBER"
     const val BALANCE = "balance"
     const val PIN = "pin"
+    const val RC_SIGN_IN = 101
+
 }

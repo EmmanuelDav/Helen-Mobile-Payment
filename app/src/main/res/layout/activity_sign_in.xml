@@ -54,6 +54,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/emailInput"
                     android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,6 +74,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/passwordInput"
                     android:layout_height="match_parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,6 +151,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/google_logo"
                 android:layout_marginBottom="50dp"
+                android:id="@+id/googleLogin"
                 android:background="@drawable/rounded"
                 android:layout_height="70dp" />
 

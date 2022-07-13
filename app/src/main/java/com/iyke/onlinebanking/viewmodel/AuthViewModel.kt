@@ -18,6 +18,7 @@ import com.iyke.onlinebanking.Constants.EMAIL
 import com.iyke.onlinebanking.Constants.NAME
 import com.iyke.onlinebanking.Constants.PREFERENCE
 import com.iyke.onlinebanking.Constants.PROFILE
+import com.iyke.onlinebanking.activities.MainActivity
 import com.iyke.onlinebanking.activities.VerifyPhoneNumber
 
 
@@ -34,7 +35,10 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
                     userLiveData.postValue(firebaseAuth.currentUser)
-
+                    Intent(context, MainActivity::class.java).let { e ->
+                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(e)
+                    }
                 } else {
                     Toast.makeText(
                         context.applicationContext,
@@ -51,6 +55,11 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                 if (task.isSuccessful) {
                     saveUserDataWithSharedPreference(email, name, "null")
                     userLiveData.postValue(firebaseAuth.currentUser)
+                    Intent(context, VerifyPhoneNumber::class.java).let { e ->
+                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(e)
+                    }
+
                 } else {
                     Toast.makeText(
                         context.applicationContext,

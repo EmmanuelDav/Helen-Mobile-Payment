@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.iyke.onlinebanking.Constants.RC_SIGN_IN
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.auth.secrets.clientId
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
@@ -16,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
 
-    private val RC_SIGN_IN = 101
     lateinit var authViewModel: AuthViewModel
 
 

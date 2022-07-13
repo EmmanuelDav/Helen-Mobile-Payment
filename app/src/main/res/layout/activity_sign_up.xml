@@ -55,6 +55,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/emailInput"
                     android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +64,7 @@
                 android:layout_below="@+id/welcome"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/grey"
-                android:hint="Type your Username"
+                android:hint="Type your Name"
                 android:textSize="20sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:startIconDrawable="@drawable/ic_baseline_person_pin_24"
@@ -73,6 +74,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/nameInput"
                     android:layout_height="match_parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +95,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/passwordInput"
                     android:layout_height="match_parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +116,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/confirmPasswordInput"
                     android:layout_height="match_parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -177,6 +181,7 @@
                 android:layout_width="70dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/google_logo"
+                android:id="@+id/googleLogin"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/rounded"
                 android:layout_height="70dp" />
