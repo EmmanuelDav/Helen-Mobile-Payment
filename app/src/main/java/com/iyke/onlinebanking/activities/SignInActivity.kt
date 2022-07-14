@@ -68,6 +68,9 @@ class SignInActivity : AppCompatActivity() {
         googleLogin.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, Constants.RC_SIGN_IN)
         }
+        forPassword.setOnClickListener {
+            startActivity(Intent(this, ForgottenPasswordActivity::class.java))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
