@@ -26,7 +26,7 @@ import com.iyke.onlinebanking.activities.VerifyPhoneNumber
 import com.iyke.onlinebanking.activities.WelcomeActivity
 
 
-class AuthViewModel( application: Application) : AndroidViewModel(application) {
+class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
     private var authStateListener: AuthStateListener? = null
@@ -57,7 +57,12 @@ class AuthViewModel( application: Application) : AndroidViewModel(application) {
             })
     }
 
-    fun registerWithEmailAndPassword(email: String?, password: String?, name: String, activity: Activity) {
+    fun registerWithEmailAndPassword(
+        email: String?,
+        password: String?,
+        name: String,
+        activity: Activity
+    ) {
         val callBox = ProgressDialog(activity)
         callBox.show()
         firebaseAuth.createUserWithEmailAndPassword(email!!, password!!)
@@ -82,6 +87,7 @@ class AuthViewModel( application: Application) : AndroidViewModel(application) {
     }
 
     private fun saveUserDataWithSharedPreference(email: String, name: String, profilePic: String) {
+
         context.getSharedPreferences(PREFERENCE, MODE_PRIVATE).let {
             val myEdit = it.edit()
             myEdit.putString(EMAIL, email)

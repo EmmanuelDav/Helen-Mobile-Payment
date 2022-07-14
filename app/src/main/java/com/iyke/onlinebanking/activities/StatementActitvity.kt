@@ -4,9 +4,11 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.iyke.onlinebanking.model.Statement
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
@@ -49,7 +51,7 @@ class StatementActitvity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (doc in documents)
                 {
-                    val statement = Statement(doc["amount"].toString(), doc["from"].toString(), doc["client_number"].toString(), doc["time"] as com.google.firebase.Timestamp)
+                    val statement = Statement(doc["amount"].toString(), doc["from"].toString(), doc["client_number"].toString(), doc["time"] as Timestamp)
                     adapter.add(StatementItem(statement))
                 }
                 recyclerView_statements.adapter = adapter

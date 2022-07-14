@@ -163,12 +163,12 @@ class VerifyActivity : AppCompatActivity() {
                         PIN to null
                     )
 
-                    FirebaseFirestore.getInstance().collection(USERS).document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                    FirebaseFirestore.getInstance().collection(USERS).document(email!!)
                         .set(data)
                         .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w("TAG", "Error writing document", e) }
 
-                    val docRef = FirebaseFirestore.getInstance().collection(USERS).document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                    val docRef = FirebaseFirestore.getInstance().collection(USERS).document(email)
                        docRef.get()
                            .addOnSuccessListener { doc ->
                                if(doc[BALANCE] == null)
