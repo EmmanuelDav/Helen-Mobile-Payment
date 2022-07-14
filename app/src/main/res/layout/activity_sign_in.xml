@@ -25,7 +25,7 @@
     <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_below="@+id/welcome"
-            android:id="@+id/seeAll"
+            android:id="@+id/seeAllA"
             android:layout_marginTop="20dp"
             android:textColor="@color/textGrey"
             android:text="We are happy to see you. you can login and continue your transactions with the speed of light"
@@ -36,7 +36,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/seeAll"
+            android:layout_below="@+id/seeAllA"
             android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout

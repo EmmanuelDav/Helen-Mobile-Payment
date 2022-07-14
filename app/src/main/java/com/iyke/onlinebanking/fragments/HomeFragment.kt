@@ -1,76 +1,53 @@
 package com.iyke.onlinebanking.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.textview.MaterialTextView
+import com.google.firebase.auth.FirebaseAuth
+import com.iyke.onlinebanking.Constants
+import com.iyke.onlinebanking.Constants.BALANCE
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.databinding.FragmentHomeBinding
+import com.iyke.onlinebanking.viewmodel.ActivitiesViewModel
+import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+   
+    lateinit var activityViewModel: ActivitiesViewModel
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val  v =inflater.inflate(R.layout.fragment_home, container, false)
-         v.findViewById<MaterialCardView>(R.id.sendMoney).setOnClickListener {
-             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
-         }
-         v.findViewById<ImageButton>(R.id.addFunds).setOnClickListener {
-             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
-         }
-         v.findViewById<LinearLayoutCompat>(R.id.linearLayoutCompat4).setOnClickListener {
-             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_historyFragment)
-         }
-        return v
+    ): View {
+        val v:FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        activityViewModel = ViewModelProvider(this).get(ActivitiesViewModel::class.java)
+        auth = FirebaseAuth.getInstance()
+
+        v.sendMoney.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
+        }
+        v.addFunds.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
+        }
+        v.linearLayoutCompat4.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_historyFragment)
+        }
+        activityViewModel.userRef.document(auth.currentUser!!.phoneNumber.toString()).get()
+            .addOnSuccessListener { doc ->
+                v.balance.text = doc[BALANCE].toString()
+            }
+            .addOnFailureListener { Log.d("VerifyActivity", "Log in failed because ${it.message}") }
+        return v.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

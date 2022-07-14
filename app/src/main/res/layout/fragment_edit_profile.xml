@@ -34,8 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
-            android:hint="Name"
-            android:layout_below="@+id/seeAll">
+            android:hint="Name">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,8 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
-            android:hint="Email"
-            android:layout_below="@+id/seeAll">
+            android:hint="Email">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -72,8 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
-            android:hint="Phone Number"
-            android:layout_below="@+id/seeAll">
+            android:hint="Phone Number">
 
 
         <com.google.android.material.textfield.TextInputEditText

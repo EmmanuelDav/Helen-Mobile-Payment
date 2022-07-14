@@ -57,7 +57,6 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
-            android:id="@+id/item_name"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:text="₦2,000"

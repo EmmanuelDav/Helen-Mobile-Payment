@@ -1,531 +1,522 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.VerifyActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/linearLayoutCompat"
-            app:layout_constraintHorizontal_bias="0.06">
+    <data>
 
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_margin="5dp"
-                android:id="@+id/seeAll"
-                android:textColor="@color/textGrey"
-                android:text="Hello Iyke "
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_height="26dp" />
+    </data>
 
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Welcome Back! "
-                android:textSize="25sp"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="54dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_round_notifications_none_24"
-            app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:backgroundTint="@color/white"
-            android:background="@drawable/rounded"
-            android:layout_marginTop="70dp"
-            app:layout_constraintHorizontal_bias="0.87"
-            android:id="@+id/materialButton" />
-
-    <com.google.android.material.card.MaterialCardView
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:backgroundTint="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/materialButton"
-            app:layout_constraintEnd_toEndOf="@+id/materialButton"
-            app:layout_constraintTop_toTopOf="@+id/materialButton"
-            app:layout_constraintBottom_toBottomOf="@+id/materialButton"
-            app:layout_constraintVertical_bias="0.32"
-            app:layout_constraintHorizontal_bias="0.63" />
-
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="18dp"
-            app:cardCornerRadius="20dp"
-            android:alpha="0.9"
-            android:backgroundTint="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/view1">
+            android:layout_height="match_parent"
+            tools:context=".activities.VerifyActivity">
 
-        <RelativeLayout
-                android:layout_width="match_parent"
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="20dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/linearLayoutCompat"
+                app:layout_constraintHorizontal_bias="0.06">
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="  Current balance "
-                    android:layout_alignParentTop="true"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/textGrey"
+                    android:text="Hello Iyke "
                     android:textSize="20sp"
-                    android:id="@+id/current"
+                    android:textStyle="bold"
+                    android:layout_height="26dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Welcome Back! "
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_round_notifications_none_24"
+                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:backgroundTint="@color/white"
+                android:background="@drawable/rounded"
+                android:layout_marginTop="70dp"
+                app:layout_constraintHorizontal_bias="0.87"
+                android:id="@+id/materialButton" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:backgroundTint="@color/red"
+                app:layout_constraintStart_toStartOf="@+id/materialButton"
+                app:layout_constraintEnd_toEndOf="@+id/materialButton"
+                app:layout_constraintTop_toTopOf="@+id/materialButton"
+                app:layout_constraintBottom_toBottomOf="@+id/materialButton"
+                app:layout_constraintVertical_bias="0.32"
+                app:layout_constraintHorizontal_bias="0.63" />
+
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_margin="18dp"
+                app:cardCornerRadius="20dp"
+                android:alpha="0.9"
+                android:backgroundTint="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/view1">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="  Current balance "
+                        android:layout_alignParentTop="true"
+                        android:textSize="20sp"
+                        android:id="@+id/current"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content" />
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/whiteW"
+                        android:id="@+id/balance"
+                        android:textSize="25sp"
+                        android:text="$4,500,80"
+                        android:layout_below="@+id/current"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:fontFamily="@font/source_sans_pro"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:id="@+id/addFunds"
+                        app:srcCompat="@drawable/ic_baseline_add_24"
+                        app:backgroundTint="@color/whiteW"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/edittext"
+                        android:layout_alignParentEnd="true"
+                        app:layout_constraintHorizontal_bias="0.87" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/view1"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/constraintLayout">
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:alpha="0.9"
+                    android:id="@+id/sendMoney"
+                    app:cardBackgroundColor="#6d2cb1"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_send_money"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Send"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="#0cbb8f"
+                    android:alpha="0.90"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_cashout"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Withdraw"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#55abe0"
+                    app:cardCornerRadius="10dp"
+                    android:alpha="0.90"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/icon_donation"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Donate"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#190c64"
+                    app:cardCornerRadius="10dp"
+                    android:alpha="0.90"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_mobile_recharge"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Pay QR"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                android:id="@+id/linearLayoutCompat2">
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#e01365"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_lend_money"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Lend"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#c3ad04"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_statement"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Statement"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#d0c4f6"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_bill"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Pay Bills"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#6417b2"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="5dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/icon_make_payment"
+                            android:layout_centerVertical="true" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/whiteW"
+                            android:text="Loan"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_height="26dp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/linearLayoutCompat4">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Recent Activities"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
             <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/whiteW"
-                    android:textSize="25sp"
-                    android:text="$4,500,80"
-                    android:layout_below="@+id/current"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:fontFamily="@font/source_sans_pro"
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/textGrey"
+                    android:text="See all"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end"
                     android:textStyle="bold"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_height="26dp" />
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:id="@+id/addFunds"
-                    app:srcCompat="@drawable/ic_baseline_add_24"
-                    app:backgroundTint="@color/whiteW"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/edittext"
-                    android:layout_alignParentEnd="true"
-                    app:layout_constraintHorizontal_bias="0.87" />
-
-        </RelativeLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/view1"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/constraintLayout">
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:alpha="0.9"
-                android:id="@+id/sendMoney"
-                app:cardBackgroundColor="#6d2cb1"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_send_money"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Send"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#0cbb8f"
-                android:alpha="0.90"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_cashout"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Withdraw"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#55abe0"
-                app:cardCornerRadius="10dp"
-                android:alpha="0.90"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/icon_donation"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Donate"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#190c64"
-                app:cardCornerRadius="10dp"
-                android:alpha="0.90"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_mobile_recharge"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Pay QR"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            android:id="@+id/linearLayoutCompat2">
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#e01365"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_lend_money"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Lend"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#c3ad04"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_statement"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Statement"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#d0c4f6"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_bill"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Pay Bills"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#6417b2"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayoutCompat3">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="5dp"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/icon_make_payment"
-                        android:layout_centerVertical="true" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/seeAll"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/whiteW"
-                        android:text="Loan"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_height="26dp" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/linearLayoutCompat4">
-
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Recent Activities"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
+        <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:textColor="@color/textGrey"
-                android:text="See all"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"
-                android:gravity="end"
-                android:textStyle="bold"
-                android:layout_height="26dp" />
+                android:layout_height="wrap_content"
+                android:id="@+id/recentActivities"
+                tools:listitem="@layout/item_recent"
+                android:layout_margin="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recentActivities"
-            tools:listitem="@layout/item_recent"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

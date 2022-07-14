@@ -1,5 +1,7 @@
 package com.iyke.onlinebanking
 
+import com.google.firebase.auth.FirebaseAuth
+
 object Constants {
     const val USERS = "users"
     const val PREFERENCE = "MySharedPref"
@@ -10,5 +12,6 @@ object Constants {
     const val BALANCE = "balance"
     const val PIN = "pin"
     const val RC_SIGN_IN = 101
+
 
 }

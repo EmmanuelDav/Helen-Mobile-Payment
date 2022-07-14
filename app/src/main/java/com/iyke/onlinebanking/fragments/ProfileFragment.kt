@@ -39,15 +39,15 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v =  inflater.inflate(R.layout.fragment_profile, container, false)
-        v.findViewById<LinearLayoutCompat>(R.id.helpPrivacy).setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_help_PrivacyFragment)
-        }
+//        v.findViewById<LinearLayoutCompat>(R.id.helpPrivacy).setOnClickListener {
+//            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_help_PrivacyFragment)
+//        }
         v.findViewById<LinearLayoutCompat>(R.id.connection).setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_connectionFragment)
         }
-        v.findViewById<LinearLayoutCompat>(R.id.editProfile).setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_editProfileFragment)
-        }
+//        v.findViewById<LinearLayoutCompat>(R.id.editProfile).setOnClickListener {
+//            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_editProfileFragment)
+//        }
 
 
         return v

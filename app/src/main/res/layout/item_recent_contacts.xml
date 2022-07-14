@@ -28,7 +28,6 @@
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
-                android:id="@+id/item_name"
                 android:layout_alignParentTop="true"
                 android:text="Iyke Emmanuel"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -43,7 +42,6 @@
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:text="(+234) 706 858 9988"
-                android:layout_below="@+id/item_name"
                 android:textColor="@color/textGrey"
                 android:textSize="14sp"
                 android:layout_toRightOf="@+id/item_image"
@@ -58,7 +56,6 @@
 
     <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="30dp"
-            android:id="@+id/item_name"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             app:srcCompat="@drawable/flag"

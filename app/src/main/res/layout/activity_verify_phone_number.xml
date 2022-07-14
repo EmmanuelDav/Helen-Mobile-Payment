@@ -19,7 +19,6 @@
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_margin="10dp"
-                android:id="@+id/seeAll"
                 android:textColor="@color/textGrey"
                 android:text=" one more step to go "
                 android:textSize="20sp"

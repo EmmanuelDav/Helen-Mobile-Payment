@@ -19,8 +19,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:backgroundTint="@color/white"
             android:tint="@color/green"
-            android:background="@drawable/rounded"
-            android:id="@+id/materialButton" />
+            android:background="@drawable/rounded" />
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -68,7 +67,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editProfile"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
@@ -82,8 +80,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
                 android:tint="@color/green"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -116,7 +113,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editProfile"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -129,8 +125,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -177,8 +172,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -225,8 +219,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded"/>
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -256,7 +249,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/helpPrivacy"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -269,8 +261,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded"/>
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -304,7 +295,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/helpPrivacy"
             android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -317,8 +307,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"
-                android:id="@+id/materialButton" />
+                android:background="@drawable/rounded"/>
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
