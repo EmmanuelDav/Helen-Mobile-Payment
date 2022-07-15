@@ -27,12 +27,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: FragmentHomeBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        
+        val v: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
-
-
         val callBox = ProgressDialog(requireActivity())
         callBox.show()
         val bundle = Bundle()

@@ -66,7 +66,7 @@
             android:label="HistoryFragment" />
     <fragment
             android:id="@+id/addCardFragemnt"
-            android:name="com.iyke.onlinebanking.fragments.AddCardFragemnt"
+            android:name="com.iyke.onlinebanking.fragments.AddCardFragement"
             android:label="fragment_add_card_fragemnt"
             tools:layout="@layout/fragment_add_card_fragemnt" />
     <fragment

@@ -1,58 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".fragments.SentFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:text="Contact"
-            app:drawableTint="@color/green"
-            android:textSize="25sp"
-            android:gravity="center"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_gravity="start"
-            android:layout_marginBottom="40dp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:layout_height="wrap_content" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatEditText
-            android:drawableStart="@drawable/ic_baseline_search_24"
-            android:layout_width="match_parent"
-            android:background="@drawable/edittext"
-            android:hint="Search Contact"
-            android:textColorHint="@color/semiGreen"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:textAlignment="center"
-            app:backgroundTint="@color/white"
-            app:drawableTint="@color/semiGreen"
-            android:layout_height="60dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:text="Recent Contacts"
-            app:drawableTint="@color/green"
-            android:textSize="20sp"
-            android:gravity="start"
-            android:layout_margin="5dp"
-            android:textColor="@color/textGrey"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:textStyle="bold"
-            android:layout_height="wrap_content" />
-
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayoutCompat4"
-            android:id="@+id/recentActivities"
-            tools:listitem="@layout/item_recent_contacts"/>
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            tools:context=".fragments.SentFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:id="@+id/exitSend"
+                android:tint="@color/green"
+                android:src="@drawable/ic_baseline_chevron_left_24" />
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:text="Contact"
+                app:drawableTint="@color/green"
+                android:textSize="25sp"
+                android:gravity="center"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_gravity="start"
+                android:layout_marginBottom="40dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:layout_width="match_parent"
+                android:background="@drawable/edittext"
+                android:hint="Search Contact"
+                android:textColorHint="@color/semiGreen"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textAlignment="center"
+                app:backgroundTint="@color/white"
+                app:drawableTint="@color/semiGreen"
+                android:layout_height="60dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:text="Recent Contacts"
+                app:drawableTint="@color/green"
+                android:textSize="20sp"
+                android:gravity="start"
+                android:layout_margin="5dp"
+                android:textColor="@color/textGrey"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayoutCompat4"
+                android:id="@+id/recentActivities"
+                tools:listitem="@layout/item_recent_contacts" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

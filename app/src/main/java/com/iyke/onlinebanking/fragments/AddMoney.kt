@@ -30,6 +30,7 @@ class AddMoney : Fragment() {
 //        if (arguments!!.getString("amount") == "sendMoney"){
 //            v.confirmAddMoney.text = "No"
 //        }
+        v.exitAddM.setOnClickListener{ findNavController().popBackStack() }
         v.confirmAddMoney.setOnClickListener {
             val progressDialog = ProgressDialog(requireActivity())
             progressDialog.show()
@@ -37,7 +38,10 @@ class AddMoney : Fragment() {
                 val docRef = FirebaseFirestore.getInstance().collection(Constants.USERS).document(FirebaseAuth.getInstance().currentUser!!.email.toString())
                 docRef.get()
                     .addOnSuccessListener { doc ->
-                        docRef.update(BALANCE,addMmoney.text.toString()+doc[BALANCE].toString())
+                        val formalBa =  doc[BALANCE].toString()
+                        val input = addMmoney.text.toString()
+                        val total:Int = formalBa.toInt() + input.toInt()
+                        docRef.update(BALANCE,total)
                         progressDialog.dismiss()
                         Toast.makeText(context, "$${addMmoney.text.toString()} Added added", Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()

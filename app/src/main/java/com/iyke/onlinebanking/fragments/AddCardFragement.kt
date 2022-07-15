@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.databinding.FragmentEditProfileBinding
+import com.iyke.onlinebanking.databinding.FragmentAddCardFragemntBinding
 
-class EditProfileFragment : Fragment() {
-
+class AddCardFragement : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        var v:FragmentEditProfileBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_edit_profile, container, false)
-        v.exitEdit.setOnClickListener{ findNavController().popBackStack() }
+        // Inflate the layout for this fragment
+        val v: FragmentAddCardFragemntBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_add_card_fragemnt, container, false)
+        v.exitAddC.setOnClickListener{
+            findNavController().popBackStack()
+        }
         return v.root
     }
-
 }
