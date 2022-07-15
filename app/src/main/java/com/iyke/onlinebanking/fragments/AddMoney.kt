@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.Constants
@@ -35,8 +37,10 @@ class AddMoney : Fragment() {
                 val docRef = FirebaseFirestore.getInstance().collection(Constants.USERS).document(FirebaseAuth.getInstance().currentUser!!.email.toString())
                 docRef.get()
                     .addOnSuccessListener { doc ->
-                        docRef.update(BALANCE,addMmoney.text.toString())
-
+                        docRef.update(BALANCE,addMmoney.text.toString()+doc[BALANCE].toString())
+                        progressDialog.dismiss()
+                        Toast.makeText(context, "$${addMmoney.text.toString()} Added added", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
                         Log.d("VerifyActivity", "signInWithCredential:success")
                     }
                     .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
