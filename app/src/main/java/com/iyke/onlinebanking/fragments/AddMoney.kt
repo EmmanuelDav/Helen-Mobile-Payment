@@ -1,60 +1,49 @@
 package com.iyke.onlinebanking.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.iyke.onlinebanking.Constants
+import com.iyke.onlinebanking.Constants.BALANCE
+import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.databinding.FragmentAddMoneyBinding
+import kotlinx.android.synthetic.main.fragment_add_money.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddMoney.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddMoney : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_money, container, false)
-    }
+    ): View {
+        val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_money, container, false)
+        if (arguments!!.getString("amount") == "sendMoney"){
+            v.confirmAddMoney.text = "No"
+        }
+        v.confirmAddMoney.setOnClickListener {
+            val progressDialog = ProgressDialog(requireActivity())
+            progressDialog.show()
+            if (addMmoney.text.toString() != null){
+                val docRef = FirebaseFirestore.getInstance().collection(Constants.USERS).document(FirebaseAuth.getInstance().currentUser!!.email.toString())
+                docRef.get()
+                    .addOnSuccessListener { doc ->
+                        docRef.update(BALANCE,addMmoney.text.toString())
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddMoney.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddMoney().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+                        Log.d("VerifyActivity", "signInWithCredential:success")
+                    }
+                    .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
+            }else{
+                Toast.makeText(context, "No Amount added", Toast.LENGTH_SHORT).show()
             }
+        }
+        return v.root
     }
 }

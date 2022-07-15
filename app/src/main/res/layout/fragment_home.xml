@@ -28,7 +28,7 @@
                     android:layout_margin="5dp"
                     android:id="@+id/userName"
                     android:textColor="@color/textGrey"
-                    android:text="Hello Iyke "
+                    android:text=""
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_height="26dp" />
@@ -105,7 +105,6 @@
                         android:textColor="@color/whiteW"
                         android:id="@+id/balance"
                         android:textSize="25sp"
-                        android:text="$4,500,80"
                         android:layout_below="@+id/current"
                         style="@style/TextAppearance.MaterialComponents.Headline6"
                         android:fontFamily="@font/source_sans_pro"
