@@ -24,10 +24,10 @@ class AddMoney : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_money, container, false)
-        if (arguments!!.getString("amount") == "sendMoney"){
-            v.confirmAddMoney.text = "No"
-        }
+       val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_money, container, false)
+//        if (arguments!!.getString("amount") == "sendMoney"){
+//            v.confirmAddMoney.text = "No"
+//        }
         v.confirmAddMoney.setOnClickListener {
             val progressDialog = ProgressDialog(requireActivity())
             progressDialog.show()

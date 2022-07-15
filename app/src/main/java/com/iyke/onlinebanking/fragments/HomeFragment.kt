@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         bundle.putString("amount", "sendMoney")
 
         v.sendMoney.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney,bundle)
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_sentFragment,bundle)
         }
         v.addFunds.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
