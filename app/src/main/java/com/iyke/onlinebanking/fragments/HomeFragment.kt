@@ -30,20 +30,6 @@ class HomeFragment : Fragment() {
         val v: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
         v.lifecycleOwner = this
-
-        val bundle = Bundle()
-        bundle.putString("amount", "sendMoney")
-
-        v.sendMoney.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_homeFragment_to_sentFragment, bundle)
-        }
-        v.addFunds.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
-        }
-        v.linearLayoutCompat4.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_historyFragment)
-        }
         v.viewmodel = userDataViewModel
         v.executePendingBindings()
         v.viewmodel?.fetchUserDetails()
