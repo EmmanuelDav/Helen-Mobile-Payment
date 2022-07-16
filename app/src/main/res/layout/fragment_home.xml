@@ -106,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:textColor="@color/whiteW"
                         android:id="@+id/balance"
+                        android:text="@{`$ `+viewmodel.userData.balance}"
                         android:textSize="25sp"
                         android:layout_below="@+id/current"
                         style="@style/TextAppearance.MaterialComponents.Headline6"

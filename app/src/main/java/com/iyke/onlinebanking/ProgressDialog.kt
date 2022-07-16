@@ -10,7 +10,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_progress_dialog.*
 
-class ProgressDialog(private val  activity:Activity ) : Dialog(activity) {
+class ProgressDialog(  activity:Activity ) : Dialog(activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress_dialog)
@@ -21,4 +21,5 @@ class ProgressDialog(private val  activity:Activity ) : Dialog(activity) {
             dismiss()
         }
     }
+
 }

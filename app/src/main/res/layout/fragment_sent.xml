@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+                name="model"
+                type="com.iyke.onlinebanking.viewmodel.UserDataViewModel" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -64,8 +68,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linearLayoutCompat4"
-                android:id="@+id/recentActivities"
-                tools:listitem="@layout/item_recent_contacts" />
+                tools:itemListener="@{model.basicListener}"
+                tools:data="@{model.users}"
+                tools:itemList="@{@layout/item_recent_contacts}" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

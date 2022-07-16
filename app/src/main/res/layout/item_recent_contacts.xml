@@ -1,70 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="80dp"
-            android:src="@drawable/me"
-            android:padding="5dp"
-            android:id="@+id/item_image"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            app:strokeWidth="4dp"
-            android:scaleType="centerCrop"
-            app:strokeColor="@color/white"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize30Percent"
-            android:layout_height="80dp" />
+    <data>
+        <variable
+                name="model"
+                type="com.iyke.onlinebanking.model.Users" />
+        <variable
+                name="listener"
+                type="com.iyke.onlinebanking.intface.UserInterface" />
+    </data>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:onClick="@{() ->listener.onItemClick(model)}"
+            android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/item_image"
-            android:orientation="vertical">
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:src="@drawable/me"
+                android:padding="5dp"
+                android:id="@+id/item_image"
                 android:layout_alignParentTop="true"
-                android:text="Iyke Emmanuel"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="5dp" />
+                android:layout_alignParentStart="true"
+                app:strokeWidth="4dp"
+                android:scaleType="centerCrop"
+                app:strokeColor="@color/white"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize30Percent"
+                android:layout_height="80dp" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
-                android:text="(+234) 706 858 9988"
-                android:textColor="@color/textGrey"
-                android:textSize="14sp"
-                android:layout_toRightOf="@+id/item_image"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginTop="5dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/item_image"
+                android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="@{model.name}"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="5dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="@{model.phoneNumber}"
+                    android:textColor="@color/textGrey"
+                    android:textSize="14sp"
+                    android:layout_toRightOf="@+id/item_image"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="5dp" />
 
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/flag"
-            android:layout_centerVertical="true"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/flag"
+                android:layout_centerVertical="true"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

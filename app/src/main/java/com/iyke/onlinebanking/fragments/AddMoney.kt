@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.Constants
@@ -18,7 +19,9 @@ import com.iyke.onlinebanking.Constants.BALANCE
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentAddMoneyBinding
+import kotlinx.android.synthetic.main.activity_send_money_activity.*
 import kotlinx.android.synthetic.main.fragment_add_money.*
+import kotlin.random.Random
 
 class AddMoney : Fragment() {
 
@@ -27,9 +30,7 @@ class AddMoney : Fragment() {
         savedInstanceState: Bundle?
     ): View {
        val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_money, container, false)
-//        if (arguments!!.getString("amount") == "sendMoney"){
-//            v.confirmAddMoney.text = "No"
-//        }
+
         v.exitAddM.setOnClickListener{ findNavController().popBackStack() }
         v.confirmAddMoney.setOnClickListener {
             val progressDialog = ProgressDialog(requireActivity())
