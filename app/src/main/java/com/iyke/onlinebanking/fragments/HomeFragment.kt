@@ -29,13 +29,14 @@ class HomeFragment : Fragment() {
     ): View {
         val v: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
-        val callBox = ProgressDialog(requireActivity())
-        callBox.show()
+        v.lifecycleOwner = this
+
         val bundle = Bundle()
         bundle.putString("amount", "sendMoney")
 
         v.sendMoney.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_sentFragment,bundle)
+            Navigation.findNavController(it)
+                .navigate(R.id.action_homeFragment_to_sentFragment, bundle)
         }
         v.addFunds.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_addMoney)
@@ -43,25 +44,9 @@ class HomeFragment : Fragment() {
         v.linearLayoutCompat4.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_historyFragment)
         }
-
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            Log.d("TAG", "onCreate: user ${user.phoneNumber},,, ${user.email}")
-        } else {
-            Log.d("TAG", "onCreate: nul")
-        }
-
-        val docRef = FirebaseFirestore.getInstance().collection(USERS)
-            .document(FirebaseAuth.getInstance().currentUser?.email.toString())
-        docRef.get().addOnSuccessListener { doc ->
-               v.userName.text = "Hello ${doc[NAME].toString()}"
-                v.balance.text = "$${doc[BALANCE].toString()}"
-            callBox.dismiss()
-
-        }.addOnFailureListener { Log.d("VerifyActivity", "Log in failed because ${it.message}")
-            callBox.dismiss()
-        }
-
+        v.viewmodel = userDataViewModel
+        v.executePendingBindings()
+        v.viewmodel?.fetchUserDetails()
         return v.root
     }
 

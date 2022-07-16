@@ -1,7 +1,10 @@
 package com.iyke.onlinebanking.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.Constants.USERS
 import com.iyke.onlinebanking.model.Users
@@ -10,17 +13,19 @@ import com.iyke.onlinebanking.model.Users
 class UserDataViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
-    var user:Users?= null
 
-    fun fetchUserDetails() :Users{
-        db.collection(USERS).get()
-            .addOnSuccessListener { documents ->
-                for (doc in documents) {
-                    user = doc.toObject(Users::class.java)
-                }
-            }
-            .addOnFailureListener { }
-        return user!!
+     var userData = MutableLiveData<Users>()
+
+    fun fetchUserDetails() {
+        var user:Users?= null
+        db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString())
+            .get().addOnSuccessListener { doc ->
+                user = doc.toObject(Users::class.java)
+                userData.value = user
+
+        }.addOnFailureListener { Log.d("VerifyActivity", "Log in failed because ${it.message}")
+
+        }
     }
 
 }
