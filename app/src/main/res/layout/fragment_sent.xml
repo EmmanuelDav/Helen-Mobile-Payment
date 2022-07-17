@@ -67,7 +67,6 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_below="@+id/linearLayoutCompat4"
-                tools:itemCount="5"
                 tools:itemListener="@{model.basicListener}"
                 tools:data="@{model.users}"
                 tools:itemList="@{@layout/item_recent_contacts}" />

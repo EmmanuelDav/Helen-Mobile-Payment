@@ -12,4 +12,5 @@ object Constants {
     const val BALANCE = "balance"
     const val PIN = "pin"
     const val RC_SIGN_IN = 101
+    const val STATEMENT = "statements"
 }

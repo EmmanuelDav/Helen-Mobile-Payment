@@ -94,7 +94,11 @@
             android:label="fragment_sent"
             tools:layout="@layout/fragment_sent" >
         <action
-                android:id="@+id/action_sentFragment_to_addMoney"
-                app:destination="@id/addMoney" />
+                android:id="@+id/action_sentFragment_to_sendMoney2"
+                app:destination="@id/sendMoney2" />
     </fragment>
+    <fragment
+            android:id="@+id/sendMoney2"
+            android:name="com.iyke.onlinebanking.fragments.SendMoney"
+            android:label="SendMoney" />
 </navigation>

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.Timestamp
@@ -19,37 +20,25 @@ import com.iyke.onlinebanking.Constants.BALANCE
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentAddMoneyBinding
+import com.iyke.onlinebanking.viewmodel.UserDataViewModel
 import kotlinx.android.synthetic.main.activity_send_money_activity.*
 import kotlinx.android.synthetic.main.fragment_add_money.*
 import kotlin.random.Random
 
 class AddMoney : Fragment() {
 
+    var userDataViewModel: UserDataViewModel? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_money, container, false)
-
-        v.exitAddM.setOnClickListener{ findNavController().popBackStack() }
-        v.confirmAddMoney.setOnClickListener {
-            val progressDialog = ProgressDialog(requireActivity())
-            progressDialog.show()
-            if (addMmoney.text.toString() != null){
-                val docRef = FirebaseFirestore.getInstance().collection(Constants.USERS).document(FirebaseAuth.getInstance().currentUser!!.email.toString())
-                docRef.get()
-                    .addOnSuccessListener { doc ->
-                        docRef.update(BALANCE,doc[BALANCE].toString().toInt() + addMmoney.text.toString().toInt())
-                        progressDialog.dismiss()
-                        Toast.makeText(context, "$${addMmoney.text.toString()} Added added", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
-                        Log.d("VerifyActivity", "signInWithCredential:success")
-                    }
-                    .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
-            }else{
-                Toast.makeText(context, "No Amount added", Toast.LENGTH_SHORT).show()
-            }
-        }
+        val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_money, container, false)
+        v.lifecycleOwner = this
+        userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
+        v.exitAddM.setOnClickListener { findNavController().popBackStack() }
+        v.model = userDataViewModel
+        v.executePendingBindings()
         return v.root
     }
 }

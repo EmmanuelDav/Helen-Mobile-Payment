@@ -20,35 +20,47 @@
         <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:id="@+id/exit_addM"
+                android:id="@+id/exit_send"
                 android:tint="@color/green"
-                android:src="@drawable/ic_baseline_chevron_left_24"/>
+                android:src="@drawable/ic_baseline_chevron_left_24" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:text="Add money to balance"
+                android:text="You are about to send "
                 android:layout_margin="10dp"
                 app:drawableTint="@color/green"
                 android:textColor="@color/textGrey"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:gravity="center"
-                android:layout_gravity="start"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="80dp"
+                android:src="@drawable/me"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                app:strokeWidth="4dp"
+                android:scaleType="centerCrop"
+                app:strokeColor="@color/white"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize30Percent"
+                android:layout_height="80dp" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:text="Enter amount"
-                android:layout_margin="5dp"
-                android:textSize="15sp"
+                android:text="iyke Emmanuel"
+                android:layout_margin="10dp"
+                app:drawableTint="@color/green"
                 android:textColor="@color/textGrey"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:gravity="start"
-                android:layout_gravity="start"
+                android:textSize="18sp"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
+
 
         <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -62,8 +74,8 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     app:icon="@drawable/ic_baseline_add_24"
-                    android:text="@{model.addMoney}"
                     android:inputType="number"
+                    android:text="@{model.amountAdded}"
                     android:backgroundTint="@color/whiteW"
                     app:iconTint="@color/black"
                     android:textColor="@color/black"
@@ -73,15 +85,46 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:text="With message"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/textGrey"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+
+                android:layout_marginTop="40dp"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    app:icon="@drawable/ic_baseline_add_24"
+                    android:backgroundTint="@color/white"
+                    android:text="@{model.message}"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="Enter message" />
+
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_marginTop="30dp"
                 android:padding="17dp"
                 android:textSize="15sp"
-                android:id="@+id/confirmAddMoney"
                 android:textColor="@color/white"
-                android:onClick="@{model.navigateView}"
                 android:backgroundTint="@color/green"
                 android:text="Confirm"
                 android:textAllCaps="false"
