@@ -4,11 +4,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
                 name="model"
                 type="com.iyke.onlinebanking.viewmodel.UserDataViewModel" />
-
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -67,7 +65,9 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_below="@+id/linearLayoutCompat4"
+                tools:itemCount="5"
                 tools:itemListener="@{model.basicListener}"
                 tools:data="@{model.users}"
                 tools:itemList="@{@layout/item_recent_contacts}" />
