@@ -54,7 +54,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:text="@{statement.time.toString()}"
+                    android:text="@{statement.time.toDate().toString()}"
                     android:layout_below="@+id/item_name"
                     android:textColor="@color/textGrey"
                     android:textSize="14sp"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:text="@{statement.amount}"
+                android:text="@{`$`+statement.amount}"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"

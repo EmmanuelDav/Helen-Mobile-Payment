@@ -77,10 +77,13 @@
 
     <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart"
-            android:layout_margin="10dp"
             android:layout_below="@+id/second"
             android:layout_width="match_parent"
-            android:layout_height="350dp" />
+            android:layout_height="350dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -112,7 +115,6 @@
                 android:textColor="@color/textGrey"
                 android:text="See all"
                 android:textSize="16sp"
-
                 android:layout_gravity="center_vertical"
                 android:gravity="end"
                 android:textStyle="bold"

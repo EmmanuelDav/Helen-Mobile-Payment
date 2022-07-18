@@ -34,6 +34,7 @@ class UniversalRecyclerAdapter<T>(@LayoutRes val resource: Int, var data: ArrayL
     }
     inner class MyViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setupData(model: Any) {
+            binding.setVariable(BR.statement, model)
             binding.setVariable(BR.model, model)
             binding.setVariable(BR.listener, listener)
         }
