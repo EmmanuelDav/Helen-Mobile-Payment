@@ -1,11 +1,9 @@
 package com.iyke.onlinebanking.viewmodel
 
-import android.R.attr.name
 import android.app.Activity
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -15,22 +13,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.iyke.onlinebanking.ConfirmPinDialog
-import com.iyke.onlinebanking.Constants.EMAIL
-import com.iyke.onlinebanking.Constants.NAME
-import com.iyke.onlinebanking.Constants.PREFERENCE
-import com.iyke.onlinebanking.Constants.PROFILE
+import com.iyke.onlinebanking.utils.Constants.EMAIL
+import com.iyke.onlinebanking.utils.Constants.NAME
+import com.iyke.onlinebanking.utils.Constants.PREFERENCE
+import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.activities.MainActivity
 import com.iyke.onlinebanking.activities.VerifyPhoneNumber
-import com.iyke.onlinebanking.activities.WelcomeActivity
 
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
-    private var authStateListener: AuthStateListener? = null
-
     private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 

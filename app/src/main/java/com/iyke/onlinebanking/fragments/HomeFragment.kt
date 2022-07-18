@@ -1,20 +1,12 @@
 package com.iyke.onlinebanking.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.Constants.BALANCE
-import com.iyke.onlinebanking.Constants.NAME
-import com.iyke.onlinebanking.Constants.USERS
-import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentHomeBinding
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel

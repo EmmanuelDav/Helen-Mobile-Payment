@@ -62,7 +62,7 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     app:icon="@drawable/ic_baseline_add_24"
-                    android:text="@{model.addMoney}"
+                    android:text="@={model.addMoney}"
                     android:inputType="number"
                     android:backgroundTint="@color/whiteW"
                     app:iconTint="@color/black"

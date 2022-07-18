@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_verify_phone_number.*
 

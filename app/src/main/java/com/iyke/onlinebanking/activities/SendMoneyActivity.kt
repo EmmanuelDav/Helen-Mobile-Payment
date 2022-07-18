@@ -13,7 +13,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
-import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_send_money_activity.*
@@ -205,6 +205,7 @@ class SendMoneyActivity : AppCompatActivity() {
                         .addOnFailureListener {
                             Toast.makeText(this,"my statement update failed",Toast.LENGTH_SHORT).show()
                         }
+
                     //finish update my statement
 
                     //update client statement

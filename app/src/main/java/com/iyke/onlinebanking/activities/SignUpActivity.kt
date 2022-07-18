@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.iyke.onlinebanking.Constants.RC_SIGN_IN
+import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.auth.secrets
 import com.iyke.onlinebanking.viewmodel.AuthViewModel

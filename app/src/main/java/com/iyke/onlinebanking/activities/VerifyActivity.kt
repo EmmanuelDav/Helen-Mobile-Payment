@@ -17,15 +17,15 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.CheckInternet
-import com.iyke.onlinebanking.Constants.BALANCE
-import com.iyke.onlinebanking.Constants.EMAIL
-import com.iyke.onlinebanking.Constants.NAME
-import com.iyke.onlinebanking.Constants.PHONE_NUMBER
-import com.iyke.onlinebanking.Constants.PIN
-import com.iyke.onlinebanking.Constants.PREFERENCE
-import com.iyke.onlinebanking.Constants.PROFILE
-import com.iyke.onlinebanking.Constants.USERS
+import com.iyke.onlinebanking.utils.CheckInternet
+import com.iyke.onlinebanking.utils.Constants.BALANCE
+import com.iyke.onlinebanking.utils.Constants.EMAIL
+import com.iyke.onlinebanking.utils.Constants.NAME
+import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.utils.Constants.PIN
+import com.iyke.onlinebanking.utils.Constants.PREFERENCE
+import com.iyke.onlinebanking.utils.Constants.PROFILE
+import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_verify.*
 import java.util.concurrent.TimeUnit
@@ -173,7 +173,7 @@ class VerifyActivity : AppCompatActivity() {
                            .addOnSuccessListener { doc ->
                                if(doc[BALANCE] == null)
                                {
-                                   docRef.update(BALANCE,1000)
+                                   docRef.update(BALANCE,"1000")
                                }
                                intent = Intent(this, MainActivity::class.java)
                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities

@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.utils
 
 import com.google.firebase.auth.FirebaseAuth
 

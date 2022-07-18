@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_set_new_pin.*
 

@@ -13,7 +13,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.integration.android.IntentIntegrator
-import com.iyke.onlinebanking.CheckInternet
+import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.R
 import kotlinx.android.synthetic.main.activity_toll_fee.*

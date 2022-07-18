@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

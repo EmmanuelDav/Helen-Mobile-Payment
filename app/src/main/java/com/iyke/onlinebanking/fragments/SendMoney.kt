@@ -26,7 +26,7 @@ class SendMoney : Fragment() {
         v.exitSend.setOnClickListener { findNavController().popBackStack() }
         v.model = userDataViewModel
         v.executePendingBindings()
-        v.model?.sendMooney()
+        v.model?.sendMooney(requireView())
         return v.root
     }
 }

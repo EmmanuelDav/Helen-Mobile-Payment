@@ -11,8 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_send_money_activity.*
+import com.iyke.onlinebanking.utils.CheckInternet
 import kotlinx.android.synthetic.main.dialog_confirm_pin.*
 
 class ConfirmPinDialog(private val activity: Activity) : Dialog(activity) {
