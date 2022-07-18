@@ -508,7 +508,7 @@
                     android:id="@+id/see"
                     android:onClick="@{viewmodel.navigateView}"
                     android:textSize="16sp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
                     android:gravity="end"
                     android:textStyle="bold"
                     android:layout_height="26dp" />
@@ -518,12 +518,14 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recentActivities"
-                tools:listitem="@layout/item_recent"
                 android:layout_margin="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:onclick="@{viewmodel.statementlistener}"
+                tools:statement="@{viewmodel.statements}"
+                tools:layout="@{@layout/item_recent}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

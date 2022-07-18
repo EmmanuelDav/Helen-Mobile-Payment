@@ -13,4 +13,8 @@ object Constants {
     const val PIN = "pin"
     const val RC_SIGN_IN = 101
     const val STATEMENT = "statements"
+    const val AMOUNT = "amount"
+    const val FROM = "from"
+    const val CLIENT_NUMBER = "client_number"
+    const val TIME = "time"
 }

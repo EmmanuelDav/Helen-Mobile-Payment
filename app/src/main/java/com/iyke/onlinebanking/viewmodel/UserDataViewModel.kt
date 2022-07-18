@@ -13,34 +13,41 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.StatementItem
 import com.iyke.onlinebanking.databinding.FragmentSendMoneyBinding
+import com.iyke.onlinebanking.intface.StatementInterface
 import com.iyke.onlinebanking.intface.UserInterface
+import com.iyke.onlinebanking.model.Statement
 import com.iyke.onlinebanking.model.Users
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_statement_actitvity.*
 import kotlin.random.Random
 
 
-class UserDataViewModel(application: Application) : AndroidViewModel(application),UserInterface<Users> {
+class UserDataViewModel(application: Application) : AndroidViewModel(application),UserInterface<Users>,StatementInterface<Statement> {
 
     private val context = getApplication<Application>().applicationContext
 
     var basicListener : UserInterface<Users> = this
+    var statementlistener : StatementInterface<Statement> = this
+
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
     var userData = MutableLiveData<Users>()
     val users = MutableLiveData<ArrayList<Users>>(ArrayList<Users>())
+    val statements = MutableLiveData<ArrayList<Statement>>(ArrayList<Statement>())
     val amountAdded = MutableLiveData<Int>()
     val addMoney = MutableLiveData<String>()
     val message = MutableLiveData<String>()
     private  var clickedUser = Users()
-
     init {
-        addMoney.value = "0"
+        addMoney.value = ""
     }
-
-
 
     private fun addFunds(view: View){
         if (addMoney.value!!.isNotEmpty() ){
@@ -96,7 +103,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
 
     fun sendMooney(v:View){
         val myStatementData = hashMapOf(
-            "amount" to amountAdded,
+            "amount" to amountAdded.value!!.toInt(),
             "client_email" to clickedUser.email,
             "from" to "me",
             "message" to message,
@@ -130,4 +137,23 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
         clickedUser = user
         //Navigation.findNavController(view).navigate(R.id.action_sentFragment_to_sendMoney2)
     }
+
+     fun fetchStatement() {
+        val statementArray = ArrayList<Statement>()
+        db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString()).collection(STATEMENT).orderBy("time", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (doc in documents)
+                {
+                    val statement = Statement(doc["amount"].toString(), doc["from"].toString(), doc["client_number"].toString(), doc["time"] as Timestamp)
+                    statementArray.add(statement)
+                }
+                statements.value = statementArray
+            }.addOnFailureListener {}
+    }
+
+    override fun onItemClick(statement: Statement) {
+
+    }
+
 }

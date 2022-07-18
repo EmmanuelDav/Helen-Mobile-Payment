@@ -52,8 +52,8 @@ class StatementActitvity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (doc in documents)
                 {
-                    val statement = Statement(doc["amount"].toString(), doc["from"].toString(), doc["client_number"].toString(), doc["time"] as Timestamp)
-                    adapter.add(StatementItem(statement))
+                   // val statement = Statement(doc["amount"].toString(), doc["from"].toString(), doc["client_number"].toString(), doc["time"] as Timestamp)
+                    //adapter.add(StatementItem(statement))
                 }
                 recyclerView_statements.adapter = adapter
             }
@@ -82,7 +82,7 @@ class StatementItem(val statement: Statement): Item<ViewHolder>() {
             viewHolder.itemView.textView_srow_type.text = "Debit"
             viewHolder.itemView.textView_srow_client.text = "To: "+statement.client
         }
-        viewHolder.itemView.textView_srow_time.text = statement.time.toDate().toString().subSequence(0, 19)
+       // viewHolder.itemView.textView_srow_time.text = statement.time.toDate().toString().subSequence(0, 19)
     }
 }
 

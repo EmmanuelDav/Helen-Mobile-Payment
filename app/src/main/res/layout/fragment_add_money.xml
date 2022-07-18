@@ -41,7 +41,7 @@
         <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:text="Enter amount"
-                android:layout_margin="5dp"
+                android:layout_margin="15dp"
                 android:textSize="15sp"
                 android:textColor="@color/textGrey"
                 style="@style/TextAppearance.MaterialComponents.Caption"
@@ -52,7 +52,7 @@
 
         <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="15dp"
                 app:cardBackgroundColor="@color/whiteW"
                 app:cardCornerRadius="5dp"
                 android:layout_height="wrap_content">
@@ -78,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="30dp"
                 android:padding="17dp"
+                android:layout_margin="15dp"
                 android:textSize="15sp"
                 android:id="@+id/confirmAddMoney"
                 android:textColor="@color/white"

@@ -2,10 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+                name="statement"
+                type="com.iyke.onlinebanking.model.Statement" />
+
+        <variable
+                name="listener"
+                type="com.iyke.onlinebanking.intface.StatementInterface" />
+
+    </data>
 
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_margin="8dp"
+            android:onClick="@{() ->listener.onItemClick(statement)}"
             android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -30,9 +41,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:id="@+id/item_name"
                     android:layout_alignParentTop="true"
-                    android:text="Youtube Premium"
+                    android:text="@{statement.type}"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
@@ -44,7 +54,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:text="Welcome Back! "
+                    android:text="@{statement.time.toString()}"
                     android:layout_below="@+id/item_name"
                     android:textColor="@color/textGrey"
                     android:textSize="14sp"
@@ -62,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:text="₦2,000"
+                android:text="@{statement.amount}"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"
