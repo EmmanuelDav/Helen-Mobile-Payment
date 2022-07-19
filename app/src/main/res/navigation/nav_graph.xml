@@ -19,6 +19,9 @@
         <action
                 android:id="@+id/action_homeFragment_to_sentFragment"
                 app:destination="@id/sentFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_transactFragment"
+                app:destination="@id/transactFragment" />
     </fragment>
     <fragment
             android:id="@+id/cardFragment"
@@ -101,4 +104,9 @@
             android:id="@+id/sendMoney2"
             android:name="com.iyke.onlinebanking.fragments.SendMoney"
             android:label="SendMoney" />
+    <fragment
+            android:id="@+id/transactFragment"
+            android:name="com.iyke.onlinebanking.fragments.TransactFragment"
+            android:label="fragment_transact"
+            tools:layout="@layout/fragment_transact" />
 </navigation>

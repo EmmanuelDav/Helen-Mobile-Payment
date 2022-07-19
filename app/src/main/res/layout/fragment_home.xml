@@ -517,15 +517,17 @@
 
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="0dp"
+                android:padding="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:onclick="@{viewmodel.statementlistener}"
                 tools:statement="@{viewmodel.statements}"
-                tools:layout="@{@layout/item_recent}"/>
+                android:layout_marginBottom="60dp"
+                tools:layout="@{@layout/item_recent}"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

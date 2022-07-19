@@ -44,6 +44,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_receive.xml" value="0.22958529286019666" />
+        <entry key="app/src/main/res/layout/fragment_send_history.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_send_money.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_sent.xml" value="0.22958529286019666" />
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.22958529286019666" />

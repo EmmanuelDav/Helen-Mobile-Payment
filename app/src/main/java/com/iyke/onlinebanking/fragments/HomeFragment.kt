@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
         v.viewmodel = userDataViewModel
         v.executePendingBindings()
         v.viewmodel?.fetchUserDetails()
-        v.viewmodel?.fetchStatement()
+        v.viewmodel?.fetchStatement(v.root)
         return v.root
     }
 }

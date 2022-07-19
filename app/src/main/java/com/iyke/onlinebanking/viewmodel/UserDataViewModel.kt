@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.Timestamp
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
@@ -26,6 +28,7 @@ import com.iyke.onlinebanking.model.Statement
 import com.iyke.onlinebanking.model.Users
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_send_money_activity.*
 import kotlinx.android.synthetic.main.activity_statement_actitvity.*
 import kotlin.random.Random
 
@@ -45,6 +48,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     var userData = MutableLiveData<Users>()
 
     val users = MutableLiveData<ArrayList<Users>>(ArrayList<Users>())
+    lateinit var homeFragment : View
 
     val amountAdded = MutableLiveData<Int>()
     val addMoney = MutableLiveData<String>()
@@ -63,7 +67,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                     Log.d("VerifyActivity", "${addMoney.value!!.toInt()}  signInWithCredential:success")
 
                     val myStatementData = hashMapOf(
-                        "amount" to addMoney,
+                        "amount" to addMoney.value!!.toInt(),
                         "from" to "my Bank",
                         "time" to Timestamp.now()
                     )
@@ -126,6 +130,43 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
             }
     }
 
+//    private fun verifyAmount()
+//    {
+//        val db = FirebaseFirestore.getInstance()
+//        val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString())
+//        docRef.get()
+//            .addOnSuccessListener { document ->
+//                if (document["balance"] != null)
+//                {
+//                    Log.d("SendMoneyActivity", "DocumentSnapshot data: ${document.data}")
+//                    if(document["balance"].toString().toInt() >= editText_sm_enter_amount.text.toString().toInt())
+//                    {
+//                        Toast.makeText(context,"Possible",Toast.LENGTH_SHORT).show()
+//
+//                        sendMoney(document["balance"].toString().toInt())
+//
+//                    }
+//                    if(document["balance"].toString().toInt() < editText_sm_enter_amount.text.toString().toInt())
+//                    {
+//
+//                    }
+//
+//                }
+//                else
+//                {
+//                    Log.d("SendMoneyActivity", "No such document")
+//                    Toast.makeText(context,"documents not found",Toast.LENGTH_SHORT).show()
+//
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d("SendMoneyActivity", "get failed with ", exception)
+//                Toast.makeText(context,"Balance checking failed",Toast.LENGTH_SHORT).show()
+//            }
+//
+//    }
+
+
     fun fetchUsers(){
         val tempArr = ArrayList<Users>()
         db.collection(USERS).get().addOnSuccessListener { doc ->
@@ -143,7 +184,8 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
         //Navigation.findNavController(view).navigate(R.id.action_sentFragment_to_sendMoney2)
     }
 
-     fun fetchStatement() {
+     fun fetchStatement(fragment: View) {
+         homeFragment = fragment
         val statementArray = ArrayList<Statement>()
         db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString()).collection(STATEMENT).orderBy("time", Query.Direction.DESCENDING)
             .get()
@@ -158,7 +200,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     }
 
     override fun onItemClick(statement: Statement) {
-
+        Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(homeFragment).navigate(R.id.action_homeFragment_to_transactFragment)
     }
-
 }
