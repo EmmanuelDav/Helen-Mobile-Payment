@@ -31,7 +31,7 @@ class SentFragment : Fragment() {
         v.exitSend.setOnClickListener { findNavController().popBackStack() }
         v.model = userDataViewModel
         v.executePendingBindings()
-        v.model?.fetchUsers()
+        v.model?.fetchUsers(v.root)
         return v.root
     }
 }
