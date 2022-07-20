@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.iyke.onlinebanking.ConfirmPinDialog
+import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
@@ -54,6 +55,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     val addMoney = MutableLiveData<String>()
     val message = MutableLiveData<String>()
     private lateinit var clickedUser: Users
+
 
     init {
         addMoney.value = ""

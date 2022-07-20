@@ -27,7 +27,9 @@
                 android:scaleType="centerCrop"
                 app:strokeColor="@color/white"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize30Percent"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                app:profileImage="@{model.profileUri}" />
+
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
