@@ -240,6 +240,8 @@ class SendMoneyActivity : AppCompatActivity() {
 
                 }
             }
+
+
             .addOnFailureListener { exception ->
                 Log.d("SendMoneyActivity", "get failed with ", exception)
                 progressBar_sm_proceed.visibility = View.INVISIBLE

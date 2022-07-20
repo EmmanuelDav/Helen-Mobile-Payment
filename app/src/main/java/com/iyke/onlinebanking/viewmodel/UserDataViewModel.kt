@@ -42,21 +42,14 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     UserInterface<Users>, StatementInterface<Statement> {
 
     private val context = getApplication<Application>().applicationContext
-
     var basicListener: UserInterface<Users> = this
     var statementlistener: StatementInterface<Statement> = this
-
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
-
     val statements = MutableLiveData<ArrayList<Statement>>(ArrayList<Statement>())
-
-
     var userData = MutableLiveData<Users>()
-
     val users = MutableLiveData<ArrayList<Users>>(ArrayList<Users>())
     lateinit var homeFragment: View
     lateinit var sendFragment: View
-
     val amountAdded = MutableLiveData<String>()
     val addMoney = MutableLiveData<String>()
     val message = MutableLiveData<String>()
