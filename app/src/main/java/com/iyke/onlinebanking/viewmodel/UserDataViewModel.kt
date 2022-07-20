@@ -169,9 +169,8 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document[BALANCE] != null) {
-                    db.collection(USERS).document(clickedUser.email).update(
-                        BALANCE,
-                        document[BALANCE].toString().toInt() + amountAdded.value!!.toInt()
+                    db.collection(USERS).document(clickedUser.email)
+                        .update(BALANCE, document[BALANCE].toString().toInt() + amountAdded.value!!.toInt()
                     )
                         .addOnSuccessListener {
 
@@ -185,8 +184,8 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                         }
 
                     db.collection(USERS)
-                        .document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
-                        .update("balance", myBalance - amountAdded.value.toString().toInt())
+                        .document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                        .update("balance", myBalance - amountAdded.value!!.toInt())
                         .addOnSuccessListener {
                         }
                         .addOnFailureListener {
