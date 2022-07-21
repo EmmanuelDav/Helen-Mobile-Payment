@@ -25,7 +25,7 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val context = getApplication<Application>().applicationContext
      val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {
         val callBox = ProgressDialog(activity)

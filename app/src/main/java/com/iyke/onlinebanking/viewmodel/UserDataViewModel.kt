@@ -252,8 +252,10 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
         val tempArr = ArrayList<Users>()
         db.collection(USERS).get().addOnSuccessListener { doc ->
             for (user in doc) {
-                val user = user.toObject(Users::class.java)
-                tempArr.add(user)
+                    val user = user.toObject(Users::class.java)
+                if (user.email != firebaseAuth.currentUser!!.email){
+                    tempArr.add(user)
+                }
             }
             users.value = tempArr
 
