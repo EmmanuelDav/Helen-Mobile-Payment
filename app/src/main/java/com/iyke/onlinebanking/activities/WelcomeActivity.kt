@@ -2,6 +2,7 @@ package com.iyke.onlinebanking.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -51,14 +52,11 @@ class WelcomeActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            if (GoogleSignIn.getLastSignedInAccount(this) == null){
                 authViewModel.firebaseLogin(account.idToken!!, this)
-            }else{
-                Intent(this, MainActivity::class.java).let { e ->
-                    e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    this.startActivity(e)
-                }
-            }
+//                Intent(this, MainActivity::class.java).let { e ->
+//                    e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                    this.startActivity(e)
+//                }
         }
     }
 }

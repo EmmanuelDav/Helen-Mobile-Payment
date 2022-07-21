@@ -10,9 +10,11 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.databinding.FragmentHomeBinding
@@ -22,13 +24,11 @@ class HomeFragment : Fragment() {
 
     var userDataViewModel: UserDataViewModel? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: FragmentHomeBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        val v: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         v.lifecycleOwner = this
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
         v.viewmodel = userDataViewModel

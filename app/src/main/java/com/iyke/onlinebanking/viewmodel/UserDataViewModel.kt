@@ -23,7 +23,6 @@ import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.StatementItem
-import com.iyke.onlinebanking.databinding.FragmentSendMoneyBinding
 import com.iyke.onlinebanking.intface.StatementInterface
 import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.Statement
@@ -39,8 +38,10 @@ import kotlinx.android.synthetic.main.activity_statement_actitvity.*
 import kotlin.random.Random
 
 
-class UserDataViewModel(application: Application) : AndroidViewModel(application),
+class UserDataViewModel(application: Application) : AuthViewModel(application),
     UserInterface<Users>, StatementInterface<Statement> {
+
+
 
     private val context = getApplication<Application>().applicationContext
     var basicListener: UserInterface<Users> = this
