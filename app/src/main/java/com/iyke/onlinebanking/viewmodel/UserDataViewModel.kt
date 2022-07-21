@@ -42,7 +42,6 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     UserInterface<Users>, StatementInterface<Statement> {
 
 
-
     private val context = getApplication<Application>().applicationContext
     var basicListener: UserInterface<Users> = this
     var statementlistener: StatementInterface<Statement> = this
@@ -65,6 +64,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
 
     private fun addFunds(view: View) {
         if (addMoney.value!!.isNotEmpty()) {
+            val progressDialog = ProgressDialog(view.context)
+            progressDialog.show()
             val docRef = FirebaseFirestore.getInstance().collection(USERS)
                 .document(FirebaseAuth.getInstance().currentUser!!.email.toString())
             docRef.get().addOnSuccessListener { doc ->
@@ -89,10 +90,12 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                             Toast.LENGTH_SHORT
                         ).show()
                         Navigation.findNavController(view).popBackStack()
+                        progressDialog.dismiss()
                     }
                     .addOnFailureListener {
                         Toast.makeText(context, "my statement update failed", Toast.LENGTH_SHORT)
                             .show()
+                        progressDialog.dismiss()
                     }
             }
                 .addOnFailureListener {
@@ -160,6 +163,9 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     }
 
     private fun sendMoney(myBalance: Int, view: View) {
+        val progressDialog = ProgressDialog(view.context)
+        progressDialog.show()
+
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection(USERS).document(clickedUser.email)
         docRef.get()
@@ -229,11 +235,12 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                             ).show()
                         }
                     Toast.makeText(context, "Transaction successful", Toast.LENGTH_SHORT).show()
+                    progressDialog.dismiss()
                     Navigation.findNavController(view).popBackStack(R.id.homeFragment, false)
                 } else {
                     Log.d("SendMoneyActivity", "No such document")
                     Toast.makeText(context, "recipient not found", Toast.LENGTH_SHORT).show()
-
+                    progressDialog.dismiss()
                 }
             }
             .addOnFailureListener { exception ->
