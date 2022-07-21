@@ -15,6 +15,6 @@ object Constants {
     const val STATEMENT = "statements"
     const val AMOUNT = "amount"
     const val FROM = "from"
-    const val CLIENT_NUMBER = "client_number"
+    const val CLIENT_NAME = "client_name"
     const val TIME = "time"
 }

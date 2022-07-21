@@ -86,7 +86,7 @@ class SignUpActivity : AppCompatActivity() {
                 authViewModel.firebaseLogin(account.idToken!!, this)
             } else {
                 Intent(this, MainActivity::class.java).let { e ->
-                    e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    e.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     this.startActivity(e)
                 }
             }

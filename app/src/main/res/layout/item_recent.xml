@@ -11,6 +11,8 @@
                 name="listener"
                 type="com.iyke.onlinebanking.intface.StatementInterface" />
 
+        <variable name="client"
+                type="String"/>
     </data>
 
 
@@ -43,7 +45,7 @@
             <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="@{statement.type}"
+                    android:text="@{statement.client}"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
@@ -73,12 +75,11 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:text="@{statement.type == `Client`? `Credited $`+statement.amount : `Debited $`+statement.amount}"
+                android:text="@{+statement.amount }"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
-
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"

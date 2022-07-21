@@ -5,36 +5,25 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.google.firebase.Timestamp
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.StatementItem
 import com.iyke.onlinebanking.intface.StatementInterface
 import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.Statement
 import com.iyke.onlinebanking.model.Users
 import com.iyke.onlinebanking.utils.Constants.AMOUNT
-import com.iyke.onlinebanking.utils.Constants.CLIENT_NUMBER
+import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
 import com.iyke.onlinebanking.utils.Constants.FROM
 import com.iyke.onlinebanking.utils.Constants.TIME
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_send_money_activity.*
-import kotlinx.android.synthetic.main.activity_statement_actitvity.*
 import kotlin.random.Random
 
 
@@ -74,8 +63,9 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                 Log.d("VerifyActivity", "${addMoney.value!!.toInt()}  signInWithCredential:success")
 
                 val myStatementData = hashMapOf(
-                    AMOUNT to addMoney.value!!.toInt(),
-                    FROM to "my Bank",
+                    AMOUNT to "Added $"+addMoney.value!!.toInt(),
+                    FROM to "me",
+                    CLIENT_NAME to "my Bank",
                     TIME to Timestamp.now()
                 )
 
@@ -196,8 +186,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         }
 
                     val myStatementData = hashMapOf(
-                        AMOUNT to amountAdded.value.toString().toInt(),
-                        CLIENT_NUMBER to clickedUser.email,
+                        AMOUNT to "Debited $"+amountAdded.value.toString().toInt(),
+                        CLIENT_NAME to "to "+clickedUser.name,
                         FROM to "me",
                         TIME to Timestamp.now()
                     )
@@ -218,8 +208,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         }
 
                     val clientStatementData = hashMapOf(
-                        AMOUNT to amountAdded.value.toString().toInt(),
-                        CLIENT_NUMBER to FirebaseAuth.getInstance().currentUser?.email.toString(),
+                        AMOUNT to "Credited $"+amountAdded.value.toString().toInt(),
+                        CLIENT_NAME to "from "+FirebaseAuth.getInstance().currentUser?.displayName,
                         FROM to "client",
                         TIME to Timestamp.now()
                     )
@@ -289,7 +279,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                     val statement = Statement(
                         doc[AMOUNT].toString(),
                         doc[FROM].toString(),
-                        doc[CLIENT_NUMBER].toString(),
+                        doc[CLIENT_NAME].toString(),
                         doc[TIME] as Timestamp
                     )
                     statementArray.add(statement)
