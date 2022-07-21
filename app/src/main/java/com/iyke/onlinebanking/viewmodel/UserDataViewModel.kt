@@ -23,6 +23,7 @@ import com.iyke.onlinebanking.model.Users
 import com.iyke.onlinebanking.utils.Constants.AMOUNT
 import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
 import com.iyke.onlinebanking.utils.Constants.FROM
+import com.iyke.onlinebanking.utils.Constants.MESSAGE
 import com.iyke.onlinebanking.utils.Constants.TIME
 import kotlin.random.Random
 
@@ -189,7 +190,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         AMOUNT to "Debited $"+amountAdded.value.toString().toInt(),
                         CLIENT_NAME to "to "+clickedUser.name,
                         FROM to "me",
-                        TIME to Timestamp.now()
+                        TIME to Timestamp.now(),
+                        MESSAGE to message.value.toString()
                     )
                     val txId = "TID-SM-" + Random.nextBytes(9)
                     db.collection(USERS)
@@ -211,7 +213,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         AMOUNT to "Credited $"+amountAdded.value.toString().toInt(),
                         CLIENT_NAME to "from "+FirebaseAuth.getInstance().currentUser?.displayName,
                         FROM to "client",
-                        TIME to Timestamp.now()
+                        TIME to Timestamp.now(),
+                        MESSAGE to message.value.toString()
                     )
                     db.collection(USERS).document(clickedUser.email).collection(STATEMENT)
                         .document(txId).set(clientStatementData)

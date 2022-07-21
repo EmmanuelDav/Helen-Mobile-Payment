@@ -28,6 +28,7 @@ class SendMoney : Fragment() {
         v.executePendingBindings()
         val mBundle: Bundle = requireArguments()
         val user:Users = mBundle.getParcelable<Users>("User")!!
+        v.data = user
         v.model?.getUsers(user)
         return v.root
     }
