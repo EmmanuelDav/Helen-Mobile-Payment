@@ -267,6 +267,8 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun fetchStatement(fragment: View) {
+        val progressDialog = ProgressDialog(fragment.context)
+        progressDialog.show()
         homeFragment = fragment
         val statementArray = ArrayList<Statement>()
         db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString())
@@ -283,6 +285,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                     statementArray.add(statement)
                 }
                 statements.value = statementArray
+                progressDialog.dismiss()
             }.addOnFailureListener {}
     }
 
