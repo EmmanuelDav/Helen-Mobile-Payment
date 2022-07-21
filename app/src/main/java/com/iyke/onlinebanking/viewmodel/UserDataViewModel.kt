@@ -1,6 +1,7 @@
 package com.iyke.onlinebanking.viewmodel
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,11 +12,14 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.iyke.onlinebanking.ConfirmPinDialog
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.activities.SetNewPinActivity
+import com.iyke.onlinebanking.activities.SetPinActivity
 import com.iyke.onlinebanking.intface.StatementInterface
 import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.Statement
@@ -24,6 +28,7 @@ import com.iyke.onlinebanking.utils.Constants.AMOUNT
 import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
 import com.iyke.onlinebanking.utils.Constants.FROM
 import com.iyke.onlinebanking.utils.Constants.MESSAGE
+import com.iyke.onlinebanking.utils.Constants.PIN
 import com.iyke.onlinebanking.utils.Constants.TIME
 import kotlin.random.Random
 
@@ -50,6 +55,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     init {
         addMoney.value = ""
         amountAdded.value = ""
+        message.value=""
     }
 
     private fun addFunds(view: View) {
@@ -133,8 +139,19 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                     if (document[BALANCE].toString().toInt() >= amountAdded.value!!.toInt()) {
                         Toast.makeText(context, "Possible", Toast.LENGTH_SHORT).show()
 
-                        sendMoney(document["balance"].toString().toInt(), view)
+                        if (document[PIN] != null){
+                            val callBox = ConfirmPinDialog(view.context)
+                            callBox.show()
+                            callBox.setOnDismissListener {
+                                if(callBox.confirmed)
+                                {
+                                    sendMoney(document["balance"].toString().toInt(), view)
+                                }
+                            }
 
+                        } else{
+                            view.context.startActivity(Intent(context,SetNewPinActivity::class.java))
+                        }
                     }
                     if (document[BALANCE].toString().toInt() < amountAdded.value!!.toInt()) {
                         Toast.makeText(context, "insufficient fund", Toast.LENGTH_SHORT).show()
@@ -293,7 +310,6 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     }
 
     override fun onItemClick(statement: Statement) {
-        Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(homeFragment)
             .navigate(R.id.action_homeFragment_to_transactFragment)
     }

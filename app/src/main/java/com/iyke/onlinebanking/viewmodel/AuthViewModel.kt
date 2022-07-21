@@ -24,7 +24,7 @@ import com.iyke.onlinebanking.utils.Constants.PROFILE
 open class AuthViewModel(application: Application) : AndroidViewModel(application){
 
     private val context = getApplication<Application>().applicationContext
-     val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
+     private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
      val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {

@@ -3,6 +3,7 @@ package com.iyke.onlinebanking
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -14,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.utils.CheckInternet
 import kotlinx.android.synthetic.main.dialog_confirm_pin.*
 
-class ConfirmPinDialog(private val activity: Activity) : Dialog(activity) {
+class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
 
     var confirmed = false
 
@@ -49,7 +50,7 @@ class ConfirmPinDialog(private val activity: Activity) : Dialog(activity) {
                     progressBar_confirm_pin.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
-                    val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                    val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString())
                     docRef.get()
                         .addOnSuccessListener { document ->
                             if (document != null)

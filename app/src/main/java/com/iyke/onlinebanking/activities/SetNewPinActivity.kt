@@ -59,17 +59,16 @@ class SetNewPinActivity : AppCompatActivity() {
                     progressBar_set_pin.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
-                    db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString()).update("pin",set_new_pin_1.text.toString())
+                    db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString()).update("pin",set_new_pin_1.text.toString())
                         .addOnSuccessListener {
-                            intent = Intent(this, UserActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                            startActivity(intent)
+                            finish()
                             Toast.makeText(this,"Pin setup successful",Toast.LENGTH_SHORT).show()
 
                         }
                         .addOnFailureListener {
                             Toast.makeText(this,"Pin setup failed. try again!",Toast.LENGTH_SHORT).show()
                             Log.d("SettNewPinActivity :","error ${it.message}")
+                            finish()
                         }
 
                 }

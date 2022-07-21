@@ -25,7 +25,7 @@ class SetPinActivity : AppCompatActivity() {
 
         if(FirebaseAuth.getInstance().currentUser != null)
         {
-            editText_phone_login.setText(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+            editText_phone_login.setText(FirebaseAuth.getInstance().currentUser?.email.toString())
         }
         else
         {
@@ -60,7 +60,7 @@ class SetPinActivity : AppCompatActivity() {
                     progressBar_login.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
-                    val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.phoneNumber.toString())
+                    val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString())
                     docRef.get()
                         .addOnSuccessListener { document ->
                             if (document != null)
@@ -73,9 +73,7 @@ class SetPinActivity : AppCompatActivity() {
                                 }
                                 else
                                 {
-                                    intent = Intent(this, UserActivity::class.java)
-                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                    startActivity(intent)
+                                    finish()
                                 }
                             }
                             else
