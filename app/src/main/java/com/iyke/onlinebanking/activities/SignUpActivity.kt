@@ -82,14 +82,7 @@ class SignUpActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            if (GoogleSignIn.getLastSignedInAccount(this) == null) {
-                authViewModel.firebaseLogin(account.idToken!!, this)
-            } else {
-                Intent(this, MainActivity::class.java).let { e ->
-                    e.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    this.startActivity(e)
-                }
-            }
+            authViewModel.firebaseLogin(account.idToken!!, this)
         }
     }
 }

@@ -57,7 +57,7 @@ class SetPinActivity : AppCompatActivity() {
                         return@OnTouchListener true
                     }
 
-                    progressBar_login.visibility = View.VISIBLE
+                   // progressBar_login.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
                     val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString())
@@ -68,7 +68,7 @@ class SetPinActivity : AppCompatActivity() {
                                 Log.d("MainActivity", "DocumentSnapshot data: ${document.data}")
                                 if(document["pin"].toString() != editText2_password.text.toString())
                                 {
-                                    progressBar_login.visibility = View.INVISIBLE
+                                   // progressBar_login.visibility = View.INVISIBLE
                                     editText2_password.error = "incorrect pin"
                                 }
                                 else
@@ -83,7 +83,7 @@ class SetPinActivity : AppCompatActivity() {
                         }
                         .addOnFailureListener { exception ->
                             Log.d("MainActivity", "get failed with ", exception)
-                            progressBar_login.visibility = View.INVISIBLE
+                           // progressBar_login.visibility = View.INVISIBLE
                             Toast.makeText(this,"Login Failed!",Toast.LENGTH_SHORT).show()
                         }
                 }

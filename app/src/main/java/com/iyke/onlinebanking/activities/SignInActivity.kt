@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Patterns
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.utils.Constants
@@ -65,6 +66,8 @@ class SignInActivity : AppCompatActivity() {
 
         val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+
+
         googleLogin.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, Constants.RC_SIGN_IN)
         }
@@ -78,14 +81,7 @@ class SignInActivity : AppCompatActivity() {
         if (requestCode == Constants.RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            if (GoogleSignIn.getLastSignedInAccount(this) == null) {
-                authViewModel.firebaseLogin(account.idToken!!, this)
-            } else {
-                Intent(this, MainActivity::class.java).let { e ->
-                    e.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    this.startActivity(e)
-                }
-            }
+            authViewModel.firebaseLogin(account.idToken!!, this)
         }
     }
 }

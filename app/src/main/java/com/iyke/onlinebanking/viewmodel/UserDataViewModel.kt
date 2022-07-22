@@ -63,7 +63,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
             val progressDialog = ProgressDialog(view.context)
             progressDialog.show()
             val docRef = FirebaseFirestore.getInstance().collection(USERS)
-                .document(FirebaseAuth.getInstance().currentUser!!.email.toString())
+                .document(firebaseAuth.currentUser!!.email.toString())
             docRef.get().addOnSuccessListener { doc ->
 
                 docRef.update(BALANCE, doc[BALANCE].toString().toInt() + addMoney.value!!.toInt())
@@ -78,7 +78,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
 
                 val txId = "TID-SM-" + Random.nextBytes(9)
                 db.collection(USERS)
-                    .document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                    .document(firebaseAuth.currentUser?.email.toString())
                     .collection(STATEMENT).document(txId).set(myStatementData)
                     .addOnSuccessListener {
                         Toast.makeText(
@@ -107,7 +107,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     }
 
     fun fetchUserDetails() {
-        db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString())
+        db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
             .get().addOnSuccessListener { doc ->
                 val user = doc.toObject(Users::class.java)
                 userData.value = user
@@ -132,7 +132,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     private fun verifyAmount(view: View) {
         val db = FirebaseFirestore.getInstance()
         val docRef =
-            db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString())
+            db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document[BALANCE] != null) {
@@ -194,7 +194,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         }
 
                     db.collection(USERS)
-                        .document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                        .document(firebaseAuth.currentUser?.email.toString())
                         .update("balance", myBalance - amountAdded.value!!.toInt())
                         .addOnSuccessListener {
                         }
@@ -212,7 +212,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                     )
                     val txId = "TID-SM-" + Random.nextBytes(9)
                     db.collection(USERS)
-                        .document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                        .document(firebaseAuth.currentUser?.email.toString())
                         .collection(
                             STATEMENT
                         ).document(txId).set(myStatementData)
@@ -228,7 +228,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
 
                     val clientStatementData = hashMapOf(
                         AMOUNT to "Credited $"+amountAdded.value.toString().toInt(),
-                        CLIENT_NAME to "from "+FirebaseAuth.getInstance().currentUser?.displayName,
+                        CLIENT_NAME to "from "+firebaseAuth.currentUser?.displayName,
                         FROM to "client",
                         TIME to Timestamp.now(),
                         MESSAGE to message.value.toString()
@@ -291,7 +291,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
         progressDialog.show()
         homeFragment = fragment
         val statementArray = ArrayList<Statement>()
-        db.collection(USERS).document(FirebaseAuth.getInstance().currentUser?.email.toString())
+        db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
             .collection(STATEMENT).orderBy("time", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->

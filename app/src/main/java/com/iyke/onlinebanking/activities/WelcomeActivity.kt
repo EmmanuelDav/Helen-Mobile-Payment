@@ -37,7 +37,7 @@ class WelcomeActivity : AppCompatActivity() {
         createAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-        login.setOnClickListener{
+        login.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
         }
 
@@ -52,11 +52,7 @@ class WelcomeActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-                authViewModel.firebaseLogin(account.idToken!!, this)
-//                Intent(this, MainActivity::class.java).let { e ->
-//                    e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                    this.startActivity(e)
-//                }
+            authViewModel.firebaseLogin(account.idToken!!, this)
         }
     }
 }

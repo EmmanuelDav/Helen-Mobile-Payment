@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:gravity="center_horizontal"
-              android:background="@drawable/confirm_pin_bg_custom"
-              android:paddingTop="8dp"
-              android:layout_width="280dp"
-              android:layout_height="170dp">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="50dp"
+        android:background="@drawable/edittext"
+        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
             android:text="Enter pin to continue"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"
             android:layout_width="match_parent"
-            android:layout_height="40dp" android:id="@+id/textView" android:textColor="@android:color/white"
-            android:layout_marginTop="-7dp" android:layout_alignParentTop="true"/>
-    <EditText
+            android:layout_height="40dp" android:id="@+id/textView"
+            android:textColor="@color/black"
+            android:layout_marginTop="-7dp"
+            android:layout_alignParentTop="true"/>
 
-            android:layout_width="230dp"
-            android:layout_height="40dp"
-            android:maxLength="6"
 
-            android:inputType="numberPassword"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:paddingRight="44dp"
-            android:ems="10"
-            android:textColor="@android:color/white"
-            android:background="@drawable/edittext_bg_custom"
-            android:drawableLeft="@drawable/edittext_theme_enter_password"
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="250dp"
             android:hint="enter pin"
-            android:id="@+id/editText_dialog_box_pin"
-            android:layout_below="@+id/textView"/>
+            app:startIconDrawable="@drawable/ic_baseline_lock_24"
+            app:startIconTint="@color/green"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="numberPassword"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:paddingRight="44dp"
+                android:ems="10"
+                android:textColor="@color/semiGreen"
+                android:id="@+id/editText_dialog_box_pin"
+                android:layout_below="@+id/textView"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
             android:text="Confirm"
-            android:layout_width="230dp"
-            android:layout_height="36dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:fontFamily="monospace"
             android:id="@+id/button_confirm_dialog_pin"
             android:background="@drawable/button_bg_custom"
@@ -43,6 +52,7 @@
             android:layout_marginStart="5dp" android:layout_marginEnd="5dp"
             android:layout_marginBottom="12dp"
             android:textStyle="bold" android:layout_marginTop="10dp"/>
+
     <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"

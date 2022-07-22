@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -12,20 +13,24 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.activities.MainActivity
 import com.iyke.onlinebanking.activities.VerifyPhoneNumber
+import com.iyke.onlinebanking.model.Users
+import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.EMAIL
 import com.iyke.onlinebanking.utils.Constants.NAME
 import com.iyke.onlinebanking.utils.Constants.PREFERENCE
 import com.iyke.onlinebanking.utils.Constants.PROFILE
+import com.iyke.onlinebanking.utils.Constants.USERS
 
 
-open class AuthViewModel(application: Application) : AndroidViewModel(application){
+open class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
-     private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
-     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {
         val callBox = ProgressDialog(activity)
@@ -97,17 +102,35 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
             firebaseAuth.signInWithCredential(it)
                 .addOnCompleteListener(OnCompleteListener { it ->
                     if (it.isSuccessful) {
-                        userLiveData.value = firebaseAuth.currentUser
-                        saveUserDataWithSharedPreference(
-                            firebaseAuth.currentUser!!.email.toString(),
-                            firebaseAuth.currentUser!!.displayName.toString(),
-                            firebaseAuth.currentUser!!.photoUrl.toString()
-                        )
-                        Intent(context, VerifyPhoneNumber::class.java).let { e ->
-                            e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            context.startActivity(e)
+                        FirebaseFirestore.getInstance().collection(USERS).document(firebaseAuth.currentUser!!.email.toString()).get()
+                            .addOnSuccessListener { doc ->
+                                if (!doc.exists()) {
+                                    userLiveData.value = firebaseAuth.currentUser
+                                    saveUserDataWithSharedPreference(
+                                        firebaseAuth.currentUser!!.email.toString(),
+                                        firebaseAuth.currentUser!!.displayName.toString(),
+                                        firebaseAuth.currentUser!!.photoUrl.toString()
+                                    )
+                                    Intent(context, VerifyPhoneNumber::class.java).let { e ->
+                                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        context.startActivity(e)
+                                    }
+                                    callBox.dismiss()
+                                } else {
+                                    userLiveData.postValue(firebaseAuth.currentUser)
+                                    Intent(context, MainActivity::class.java).let { e ->
+                                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        context.startActivity(e)
+                                    }
+                                    callBox.dismiss()
+                                }
+                            }.addOnFailureListener {
+                            Log.d(
+                                "VerifyActivity",
+                                "Log in failed because ${it.message}"
+                            )
                         }
-                        callBox.dismiss()
+
                     }
                 }).addOnFailureListener {
                     Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
