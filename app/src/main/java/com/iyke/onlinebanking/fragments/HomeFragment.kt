@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
     ): View {
         val v: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         v.lifecycleOwner = this
-        userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
+        userDataViewModel = activity?.let { ViewModelProvider(it).get(UserDataViewModel::class.java) }
         v.viewmodel = userDataViewModel
         v.executePendingBindings()
         v.viewmodel?.fetchUserDetails()

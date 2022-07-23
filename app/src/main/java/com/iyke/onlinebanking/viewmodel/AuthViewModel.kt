@@ -29,7 +29,6 @@ import com.iyke.onlinebanking.utils.Constants.USERS
 open class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
-    private val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {
@@ -38,9 +37,9 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
         firebaseAuth.signInWithEmailAndPassword(email!!, password)
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
-                    userLiveData.postValue(firebaseAuth.currentUser)
+
                     Intent(context, MainActivity::class.java).let { e ->
-                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                         context.startActivity(e)
                     }
                     callBox.dismiss()
@@ -67,7 +66,6 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
                     saveUserDataWithSharedPreference(email, name, "null")
-                    userLiveData.postValue(firebaseAuth.currentUser)
                     Intent(context, VerifyPhoneNumber::class.java).let { e ->
                         e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context.startActivity(e)
@@ -105,7 +103,6 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
                         FirebaseFirestore.getInstance().collection(USERS).document(firebaseAuth.currentUser!!.email.toString()).get()
                             .addOnSuccessListener { doc ->
                                 if (!doc.exists()) {
-                                    userLiveData.value = firebaseAuth.currentUser
                                     saveUserDataWithSharedPreference(
                                         firebaseAuth.currentUser!!.email.toString(),
                                         firebaseAuth.currentUser!!.displayName.toString(),
@@ -117,9 +114,8 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
                                     }
                                     callBox.dismiss()
                                 } else {
-                                    userLiveData.postValue(firebaseAuth.currentUser)
                                     Intent(context, MainActivity::class.java).let { e ->
-                                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                                         context.startActivity(e)
                                     }
                                     callBox.dismiss()

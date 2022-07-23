@@ -2,12 +2,16 @@ package com.iyke.onlinebanking.viewmodel
 
 import android.app.Application
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Timestamp
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,6 +28,7 @@ import com.iyke.onlinebanking.intface.StatementInterface
 import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.Statement
 import com.iyke.onlinebanking.model.Users
+import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.AMOUNT
 import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
 import com.iyke.onlinebanking.utils.Constants.FROM
@@ -33,7 +38,7 @@ import com.iyke.onlinebanking.utils.Constants.TIME
 import kotlin.random.Random
 
 
-class UserDataViewModel(application: Application) : AuthViewModel(application),
+class UserDataViewModel(application: Application) : AndroidViewModel(application),
     UserInterface<Users>, StatementInterface<Statement> {
 
 
@@ -50,6 +55,9 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     val addMoney = MutableLiveData<String>()
     val message = MutableLiveData<String>()
     private lateinit var clickedUser: Users
+    val sh: SharedPreferences = context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+    private val firebaseEmail = sh.getString(Constants.EMAIL, "")
+    private val displayName = sh.getString(Constants.NAME, "")
 
 
     init {
@@ -58,12 +66,13 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
         message.value=""
     }
 
+
     private fun addFunds(view: View) {
         if (addMoney.value!!.isNotEmpty()) {
             val progressDialog = ProgressDialog(view.context)
             progressDialog.show()
             val docRef = FirebaseFirestore.getInstance().collection(USERS)
-                .document(firebaseAuth.currentUser!!.email.toString())
+                .document(firebaseEmail!!)
             docRef.get().addOnSuccessListener { doc ->
 
                 docRef.update(BALANCE, doc[BALANCE].toString().toInt() + addMoney.value!!.toInt())
@@ -78,7 +87,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
 
                 val txId = "TID-SM-" + Random.nextBytes(9)
                 db.collection(USERS)
-                    .document(firebaseAuth.currentUser?.email.toString())
+                    .document(firebaseEmail)
                     .collection(STATEMENT).document(txId).set(myStatementData)
                     .addOnSuccessListener {
                         Toast.makeText(
@@ -107,7 +116,8 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     }
 
     fun fetchUserDetails() {
-        db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
+
+        db.collection(USERS).document(firebaseEmail!!)
             .get().addOnSuccessListener { doc ->
                 val user = doc.toObject(Users::class.java)
                 userData.value = user
@@ -132,7 +142,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
     private fun verifyAmount(view: View) {
         val db = FirebaseFirestore.getInstance()
         val docRef =
-            db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
+            db.collection(USERS).document(firebaseEmail!!)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document[BALANCE] != null) {
@@ -194,7 +204,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                         }
 
                     db.collection(USERS)
-                        .document(firebaseAuth.currentUser?.email.toString())
+                        .document(firebaseEmail!!)
                         .update("balance", myBalance - amountAdded.value!!.toInt())
                         .addOnSuccessListener {
                         }
@@ -212,7 +222,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
                     )
                     val txId = "TID-SM-" + Random.nextBytes(9)
                     db.collection(USERS)
-                        .document(firebaseAuth.currentUser?.email.toString())
+                        .document(firebaseEmail)
                         .collection(
                             STATEMENT
                         ).document(txId).set(myStatementData)
@@ -228,7 +238,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
 
                     val clientStatementData = hashMapOf(
                         AMOUNT to "Credited $"+amountAdded.value.toString().toInt(),
-                        CLIENT_NAME to "from "+firebaseAuth.currentUser?.displayName,
+                        CLIENT_NAME to "from $displayName",
                         FROM to "client",
                         TIME to Timestamp.now(),
                         MESSAGE to message.value.toString()
@@ -270,7 +280,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
         db.collection(USERS).get().addOnSuccessListener { doc ->
             for (user in doc) {
                     val user = user.toObject(Users::class.java)
-                if (user.email != firebaseAuth.currentUser!!.email){
+                if (user.email != firebaseEmail){
                     tempArr.add(user)
                 }
             }
@@ -291,7 +301,7 @@ class UserDataViewModel(application: Application) : AuthViewModel(application),
         progressDialog.show()
         homeFragment = fragment
         val statementArray = ArrayList<Statement>()
-        db.collection(USERS).document(firebaseAuth.currentUser?.email.toString())
+        db.collection(USERS).document(firebaseEmail!!)
             .collection(STATEMENT).orderBy("time", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
