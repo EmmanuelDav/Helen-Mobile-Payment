@@ -18,4 +18,5 @@ object Constants {
     const val CLIENT_NAME = "client_name"
     const val TIME = "time"
     const val MESSAGE = "message"
+    const val TYPE = "type"
 }

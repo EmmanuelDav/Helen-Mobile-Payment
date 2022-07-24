@@ -35,6 +35,7 @@ import com.iyke.onlinebanking.utils.Constants.FROM
 import com.iyke.onlinebanking.utils.Constants.MESSAGE
 import com.iyke.onlinebanking.utils.Constants.PIN
 import com.iyke.onlinebanking.utils.Constants.TIME
+import com.iyke.onlinebanking.utils.Constants.TYPE
 import kotlin.random.Random
 
 
@@ -59,7 +60,6 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     private val firebaseEmail = sh.getString(Constants.EMAIL, "")
     private val displayName = sh.getString(Constants.NAME, "")
 
-
     init {
         addMoney.value = ""
         amountAdded.value = ""
@@ -80,9 +80,9 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
 
                 val myStatementData = hashMapOf(
                     AMOUNT to "Added $"+addMoney.value!!.toInt(),
-                    FROM to "me",
                     CLIENT_NAME to "my Bank",
-                    TIME to Timestamp.now()
+                    TIME to Timestamp.now(),
+                    TYPE to "Credited"
                 )
 
                 val txId = "TID-SM-" + Random.nextBytes(9)
@@ -214,11 +214,11 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                         }
 
                     val myStatementData = hashMapOf(
-                        AMOUNT to "Debited $"+amountAdded.value.toString().toInt(),
+                        AMOUNT to +amountAdded.value.toString().toInt(),
                         CLIENT_NAME to "to "+clickedUser.name,
-                        FROM to "me",
                         TIME to Timestamp.now(),
-                        MESSAGE to message.value.toString()
+                        MESSAGE to message.value.toString(),
+                       TYPE to "Debited"
                     )
                     val txId = "TID-SM-" + Random.nextBytes(9)
                     db.collection(USERS)
@@ -237,11 +237,12 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                         }
 
                     val clientStatementData = hashMapOf(
-                        AMOUNT to "Credited $"+amountAdded.value.toString().toInt(),
+                        AMOUNT to amountAdded.value.toString().toInt(),
                         CLIENT_NAME to "from $displayName",
-                        FROM to "client",
                         TIME to Timestamp.now(),
-                        MESSAGE to message.value.toString()
+                        MESSAGE to message.value.toString(),
+                        TYPE to "Credited"
+
                     )
                     db.collection(USERS).document(clickedUser.email).collection(STATEMENT)
                         .document(txId).set(clientStatementData)
@@ -308,7 +309,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                 for (doc in documents) {
                     val statement = Statement(
                         doc[AMOUNT].toString(),
-                        doc[FROM].toString(),
+                        doc[TYPE].toString(),
                         doc[CLIENT_NAME].toString(),
                         doc[TIME] as Timestamp
                     )

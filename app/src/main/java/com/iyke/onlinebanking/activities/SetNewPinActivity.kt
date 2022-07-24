@@ -2,6 +2,7 @@ package com.iyke.onlinebanking.activities
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.utils.Constants
 import kotlinx.android.synthetic.main.activity_set_new_pin.*
 
 class SetNewPinActivity : AppCompatActivity() {
@@ -21,6 +23,8 @@ class SetNewPinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_new_pin)
+        val sh: SharedPreferences = this.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+        val firebaseEmail = sh.getString(Constants.EMAIL, "")
 
         button_confirm_pin.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action) {
@@ -61,7 +65,7 @@ class SetNewPinActivity : AppCompatActivity() {
                     progressDialog.show()
                     val db = FirebaseFirestore.getInstance()
                     db.collection("users")
-                        .document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                        .document(firebaseEmail!!)
                         .update("pin", set_new_pin_1.text.toString())
                         .addOnSuccessListener {
                             finish()

@@ -1,6 +1,5 @@
 package com.iyke.onlinebanking.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,30 +11,58 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.model.MonthlySalesData
 
 
 class StatisticsFragment : Fragment() {
 
     lateinit var barEntriesList: ArrayList<BarEntry>
    lateinit var  pieChart: PieChart
+    var barChart: BarChart? = null
+    var barEntriesArrayList: ArrayList<BarEntry> = ArrayList()
+    var lableName: ArrayList<String> = ArrayList()
+    var monthlySalesDataArrayList: ArrayList<MonthlySalesData> = ArrayList()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val v =  inflater.inflate(R.layout.fragment_statistics, container, false)
-        val chart: BarChart = v.findViewById(R.id.chart) as BarChart
-        val barDataSet1 = BarDataSet(getBarChartDataForSet1(), "Brand 1")
-        barDataSet1.color = Color.rgb(0, 155, 0)
-        val barDataSet2 = BarDataSet(getBarChartDataForSet2(), "Brand 2")
-        barDataSet2.setColors(*ColorTemplate.COLORFUL_COLORS)
-        val data  = BarData(barDataSet1, barDataSet2)
-        chart.data = data
-        chart.animateXY(2000, 2000)
-        chart.invalidate()
+        barChart = v.findViewById(R.id.chart) as BarChart
+        fillMonthlySalesArrayList();
+        for (i in monthlySalesDataArrayList.indices) {
+            val month = monthlySalesDataArrayList[i].month
+            val sales = monthlySalesDataArrayList[i].sales
+            barEntriesArrayList.add(BarEntry(i.toFloat(), sales.toFloat()))
+            lableName.add(month)
+        }
+        val barDataSet = BarDataSet(barEntriesArrayList, "Monthly Sales")
+        barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        val description = Description()
+        description.text = "Months"
+        barChart!!.description = description
+        val barData = BarData(barDataSet)
+        barChart!!.data = barData
+
+        val xAxis = XAxis()
+        xAxis.valueFormatter = IndexAxisValueFormatter(lableName);
+        xAxis.setDrawGridLines(false);
+        xAxis.setDrawAxisLine(false);
+        xAxis.granularity = 1f;
+        xAxis.labelCount = lableName!!.size
+        xAxis.labelRotationAngle = 270F;
+        barChart!!.animateY(2000);
+        barChart!!.invalidate();
+
 
         val spinnerPeriods: Spinner = v.findViewById(R.id.spinnerPeriods)
         val adapter = ArrayAdapter.createFromResource(
@@ -53,25 +80,19 @@ class StatisticsFragment : Fragment() {
 
         return v
     }
-
-    private fun getBarChartDataForSet1(): ArrayList<BarEntry> {
-        barEntriesList = ArrayList()
-        barEntriesList.add(BarEntry(1f, 1f))
-        barEntriesList.add(BarEntry(2f, 2f))
-        barEntriesList.add(BarEntry(3f, 3f))
-        barEntriesList.add(BarEntry(4f, 4f))
-        barEntriesList.add(BarEntry(5f, 5f))
-        return barEntriesList
+    private fun fillMonthlySalesArrayList() {
+        monthlySalesDataArrayList.clear()
+        monthlySalesDataArrayList.add(MonthlySalesData("Jan", 242000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Feb", 300000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Mar", 150000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Apr", 250000))
+        monthlySalesDataArrayList.add(MonthlySalesData("May", 242000))
+        monthlySalesDataArrayList.add(MonthlySalesData("June", 300000))
+        monthlySalesDataArrayList.add(MonthlySalesData("July", 150000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Aug", 210000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Sep", 242000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Oct", 320000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Nov", 150000))
+        monthlySalesDataArrayList.add(MonthlySalesData("Dec EGypt", 200000))
     }
-
-    private fun getBarChartDataForSet2(): ArrayList<BarEntry> {
-        barEntriesList = ArrayList()
-        barEntriesList.add(BarEntry(1f, 10f))
-        barEntriesList.add(BarEntry(2f, 8f))
-        barEntriesList.add(BarEntry(3f, 6f))
-        barEntriesList.add(BarEntry(4f, 4f))
-        barEntriesList.add(BarEntry(5f, 2f))
-        return barEntriesList
-    }
-
 }
