@@ -24,8 +24,6 @@ import com.iyke.onlinebanking.model.MonthlySalesData
 
 class StatisticsFragment : Fragment() {
 
-    lateinit var barEntriesList: ArrayList<BarEntry>
-   lateinit var  pieChart: PieChart
     var barChart: BarChart? = null
     var barEntriesArrayList: ArrayList<BarEntry> = ArrayList()
     var lableName: ArrayList<String> = ArrayList()
@@ -53,7 +51,7 @@ class StatisticsFragment : Fragment() {
         val barData = BarData(barDataSet)
         barChart!!.data = barData
 
-        val xAxis = XAxis()
+        val xAxis = barChart!!.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(lableName);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
