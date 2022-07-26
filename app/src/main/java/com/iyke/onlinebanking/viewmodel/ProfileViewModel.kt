@@ -2,12 +2,15 @@ package com.iyke.onlinebanking.viewmodel
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,9 +18,15 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.databinding.FragmentEditProfileBinding
 import com.iyke.onlinebanking.utils.Constants
+import com.iyke.onlinebanking.utils.Constants.EMAIL
 import com.iyke.onlinebanking.utils.Constants.IMAGES
+import com.iyke.onlinebanking.utils.Constants.NAME
+import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.utils.Constants.USERS
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.*
 
 
@@ -33,7 +42,6 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
 
     val name = MutableLiveData<String>()
-    val email = MutableLiveData<String>()
     val phoneNumber = MutableLiveData<String>()
 
 
@@ -46,19 +54,23 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         name.value = ""
-        email.value = ""
         phoneNumber.value = ""
     }
 
     private fun updateUserData(progressDialog :android.app.ProgressDialog) {
+
+
         val user = hashMapOf(
-            Constants.CLIENT_NAME to "to " + name.value.toString(),
-            Constants.EMAIL to email.value.toString(),
-            Constants.PHONE_NUMBER to phoneNumber.value.toString(),
+            NAME to  name.value.toString(),
+            PHONE_NUMBER to phoneNumber.value.toString(),
+            PROFILE to filePath.toString()
         )
+
         db.collection(USERS).document(firebaseEmail!!).update(user as Map<String, Any>)
             .addOnSuccessListener {
                 progressDialog.dismiss()
+                Toast.makeText(context, "updated successfully", Toast.LENGTH_SHORT).show()
+
 
             }.addOnFailureListener {
                 progressDialog.dismiss()
@@ -67,15 +79,6 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             }
     }
 
-    fun chooseImage(context: Activity) {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        context.startActivityForResult(
-            Intent.createChooser(intent, "Select Picture"),
-            PICK_IMAGE_REQUEST
-        )
-    }
 
     fun profileNavigation(view: View) {
         when (view.id) {
@@ -83,7 +86,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun uploadImage(view: View) {
+    private fun uploadImage(view: View) {
         val progressDialog =  android.app.ProgressDialog(view.context);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();

@@ -36,6 +36,7 @@
                     android:layout_width="110dp"
                     android:src="@drawable/me"
                     android:padding="5dp"
+                    android:scaleType="centerCrop"
                     android:id="@+id/changeImage"
                     android:layout_gravity="center_horizontal"
                     app:strokeWidth="4dp"
@@ -59,30 +60,13 @@
                     android:text="@={profileViewModel.name}"
                     android:layout_marginTop="10dp"
                     android:textSize="18sp"
+                    android:inputType="text"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/white"
-                android:hint="Email">
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:textColor="@color/textGrey"
-                    android:layout_marginTop="10dp"
-                    android:text="@={profileViewModel.email}"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_height="wrap_content" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -98,6 +82,7 @@
                     android:textSize="18sp"
                     android:text="@={profileViewModel.phoneNumber}"
                     android:textStyle="bold"
+                    android:inputType="number"
                     android:layout_height="wrap_content" />
 
 
