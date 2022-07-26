@@ -31,7 +31,6 @@ import com.iyke.onlinebanking.model.Users
 import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.AMOUNT
 import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
-import com.iyke.onlinebanking.utils.Constants.FROM
 import com.iyke.onlinebanking.utils.Constants.MESSAGE
 import com.iyke.onlinebanking.utils.Constants.PIN
 import com.iyke.onlinebanking.utils.Constants.TIME

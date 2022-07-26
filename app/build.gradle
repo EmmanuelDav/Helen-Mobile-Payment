@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.andrognito.pinlockview:pinlockview:2.1.0'
     androidTestImplementation 'androidx.test:runner:1.4.0'

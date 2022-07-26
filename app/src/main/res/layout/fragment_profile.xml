@@ -12,6 +12,7 @@
             android:layout_width="54dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
+            android:id="@+id/editProfile"
             android:layout_gravity="end"
             android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"

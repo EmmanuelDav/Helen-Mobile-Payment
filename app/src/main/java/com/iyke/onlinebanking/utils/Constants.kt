@@ -1,5 +1,7 @@
 package com.iyke.onlinebanking.utils
 
+import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 object Constants {
@@ -14,9 +16,9 @@ object Constants {
     const val RC_SIGN_IN = 101
     const val STATEMENT = "statements"
     const val AMOUNT = "amount"
-    const val FROM = "from"
     const val CLIENT_NAME = "client_name"
     const val TIME = "time"
     const val MESSAGE = "message"
     const val TYPE = "type"
+    const val IMAGES = "images/"
 }

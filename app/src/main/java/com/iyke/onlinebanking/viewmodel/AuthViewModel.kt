@@ -37,6 +37,7 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
         firebaseAuth.signInWithEmailAndPassword(email!!, password)
             .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
+                    saveUserDataWithSharedPreference(email, "null", "null")
 
                     Intent(context, MainActivity::class.java).let { e ->
                         e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
@@ -114,6 +115,12 @@ open class AuthViewModel(application: Application) : AndroidViewModel(applicatio
                                     }
                                     callBox.dismiss()
                                 } else {
+                                    saveUserDataWithSharedPreference(
+                                        firebaseAuth.currentUser!!.email.toString(),
+                                        firebaseAuth.currentUser!!.displayName.toString(),
+                                        firebaseAuth.currentUser!!.photoUrl.toString()
+                                    )
+
                                     Intent(context, MainActivity::class.java).let { e ->
                                         e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
                                         context.startActivity(e)

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.navigation.Navigation
 import com.google.android.material.textview.MaterialTextView
@@ -45,9 +46,9 @@ class ProfileFragment : Fragment() {
         v.findViewById<LinearLayoutCompat>(R.id.connection).setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_connectionFragment)
         }
-//        v.findViewById<LinearLayoutCompat>(R.id.editProfile).setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_editProfileFragment)
-//        }
+        v.findViewById<ImageButton>(R.id.editProfile).setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
 
 
         return v

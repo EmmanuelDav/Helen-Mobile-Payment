@@ -4,15 +4,18 @@ package com.iyke.onlinebanking
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.utils.CheckInternet
+import com.iyke.onlinebanking.utils.Constants
 import kotlinx.android.synthetic.main.dialog_confirm_pin.*
 
 class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
@@ -27,7 +30,8 @@ class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
         setOnCancelListener {
             dismiss()
         }
-
+        val sh: SharedPreferences = context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+        val firebaseEmail = sh.getString(Constants.EMAIL, "")
         button_confirm_dialog_pin.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
@@ -50,7 +54,7 @@ class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
                     progressBar_confirm_pin.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
-                    val docRef = db.collection("users").document(FirebaseAuth.getInstance().currentUser?.email.toString())
+                    val docRef = db.collection("users").document(firebaseEmail!!)
                     docRef.get()
                         .addOnSuccessListener { document ->
                             if (document != null)

@@ -32,9 +32,4 @@ class SendMoney : Fragment() {
         v.model?.getUsers(user)
         return v.root
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 }

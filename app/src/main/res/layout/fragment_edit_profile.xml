@@ -4,6 +4,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+                name="profileViewModel"
+                type="com.iyke.onlinebanking.viewmodel.ProfileViewModel" />
 
     </data>
 
@@ -33,7 +36,7 @@
                     android:layout_width="110dp"
                     android:src="@drawable/me"
                     android:padding="5dp"
-                    android:id="@+id/item_image"
+                    android:id="@+id/changeImage"
                     android:layout_gravity="center_horizontal"
                     app:strokeWidth="4dp"
                     app:strokeColor="@color/grey"
@@ -53,6 +56,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
+                    android:text="@={profileViewModel.name}"
                     android:layout_marginTop="10dp"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -72,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
+                    android:text="@={profileViewModel.email}"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
@@ -91,6 +96,7 @@
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
                     android:textSize="18sp"
+                    android:text="@={profileViewModel.phoneNumber}"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
@@ -101,9 +107,11 @@
                 android:layout_width="match_parent"
                 android:paddingStart="90dp"
                 android:paddingEnd="90dp"
+                android:id="@+id/profileUpdate"
                 android:padding="17dp"
                 android:layout_marginTop="30dp"
                 android:textSize="15sp"
+                android:onClick="@{profileViewModel.profileNavigation}"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green"
                 android:text="Save"
