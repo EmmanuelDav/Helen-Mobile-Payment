@@ -21,4 +21,5 @@ object Constants {
     const val MESSAGE = "message"
     const val TYPE = "type"
     const val IMAGES = "images/"
+    const val CARDS = "Cards"
 }

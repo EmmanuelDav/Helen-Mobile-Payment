@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
+                    android:id="@+id/cardLabel"
                     android:text="HPay"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -64,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
+                    android:id="@+id/cardName"
                     android:text="Ikechukwu Emmanuel David"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -85,6 +87,7 @@
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
                     android:text="0345069***7688"
+                    android:id="@+id/cardNumber"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
@@ -106,6 +109,7 @@
                     android:layout_marginTop="10dp"
                     android:text="06/23"
                     android:textSize="18sp"
+                    android:id="@+id/cardDate"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
@@ -126,6 +130,7 @@
                     android:layout_marginTop="10dp"
                     android:text="001"
                     android:textSize="18sp"
+                    android:id="@+id/cvv"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
@@ -146,6 +151,7 @@
                     android:layout_marginTop="10dp"
                     android:text="1234"
                     android:textSize="18sp"
+                    android:id="@+id/zipCode"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
 
@@ -167,6 +173,7 @@
                     android:text="Owerri"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    android:id="@+id/city"
                     android:layout_height="wrap_content" />
 
 
@@ -179,6 +186,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green"
+                android:id="@+id/addCard"
                 android:text="Add Card"
                 android:textAllCaps="false"
                 android:layout_marginBottom="15dp"

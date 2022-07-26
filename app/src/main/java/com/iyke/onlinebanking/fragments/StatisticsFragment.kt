@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
@@ -20,6 +24,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.model.MonthlySalesData
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel

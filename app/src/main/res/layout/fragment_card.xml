@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".fragments.CardFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:text="All Cards"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content" />
+    <data>
+<variable
+        name="viewmodel"
+        type="com.iyke.onlinebanking.viewmodel.StatisticsViewModel" />
+    </data>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".fragments.CardFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="All Cards"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -33,10 +40,20 @@
                 android:textColor="@color/black"
                 android:text="Add card " />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recentActivities"
-            tools:listitem="@layout/card_items"/>
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:onclick="@{}"
+                tools:card="@{viewmodel.cards}"
+                android:layout_marginBottom="60dp"
+                tools:layout="@{@layout/card_items}"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+    </LinearLayout>
+</layout>

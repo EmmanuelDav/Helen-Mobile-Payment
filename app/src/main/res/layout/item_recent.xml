@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:text="@{statement.amount}"
+                android:text="@{statement.type+` $`+statement.amount}"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"

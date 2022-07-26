@@ -39,7 +39,6 @@ class SendMoneyActivity : AppCompatActivity() {
                     //initiate barcode scanner
                     IntentIntegrator(this).initiateScan()
 
-
                 }
             }
             return@OnTouchListener true
