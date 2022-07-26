@@ -34,6 +34,7 @@ class EditProfileFragment : Fragment() {
         v = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_profile, container, false)
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         v.profileViewModel = profileViewModel
+        v.executePendingBindings()
         v.exitEdit.setOnClickListener { findNavController().popBackStack() }
         v.changeImage.setOnClickListener { chooseImage() }
         return v.root

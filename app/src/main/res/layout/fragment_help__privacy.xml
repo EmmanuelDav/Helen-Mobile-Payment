@@ -5,6 +5,9 @@
     <data>
 
     </data>
+<androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -100,4 +103,7 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>
+
 </layout>

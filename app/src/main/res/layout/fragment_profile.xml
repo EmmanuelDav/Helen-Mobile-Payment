@@ -1,342 +1,357 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".fragments.ProfileFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="54dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:id="@+id/editProfile"
-            android:layout_gravity="end"
-            android:src="@drawable/ic_baseline_edit_24"
-            app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:backgroundTint="@color/white"
-            android:tint="@color/green"
-            android:background="@drawable/rounded" />
+    <data>
+        <variable
+                name="profModel"
+                type="com.iyke.onlinebanking.viewmodel.ProfileViewModel" />
 
+    </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".fragments.ProfileFragment">
 
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/editProfile"
+                android:onClick="@{profModel.profileNavigation}"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:backgroundTint="@color/white"
+                android:tint="@color/green"
+                android:background="@drawable/rounded" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="110dp"
-                android:src="@drawable/me"
-                android:padding="5dp"
-                android:id="@+id/item_image"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
-                app:strokeWidth="4dp"
-                app:strokeColor="@color/grey"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                android:layout_height="110dp" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Iyke Emmanuel"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="(+234) 706 858 9988"
-                android:textColor="@color/textGrey"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_baseline_alternate_email_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:tint="@color/green"
-                android:background="@drawable/rounded" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Iyke Emmanuel"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:text="emmanueldav987@..."
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textColor="@color/semiGreen"
-                app:drawableTint="@color/semiGreen"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:tint="@color/green"
-                android:src="@drawable/ic_baseline_call_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:background="@drawable/rounded" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Phone number"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:text="07068589978"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textColor="@color/semiGreen"
-                app:drawableTint="@color/semiGreen"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/connection"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:tint="@color/green"
-
-                android:src="@drawable/ic_baseline_heart_broken_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:background="@drawable/rounded" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Connections"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:text=""
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textColor="@color/semiGreen"
-                app:drawableTint="@color/semiGreen"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:tint="@color/green"
-                android:src="@drawable/ic_round_notifications_none_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"/>
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Notification"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <androidx.appcompat.widget.SwitchCompat
-                android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textOff="off"
-                android:padding="10dp"
-                android:textOn="on"
-                android:thumb="@drawable/thumb"
-                app:showText="true"
-                app:track="@drawable/track" />
+                android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="110dp"
+                    android:src="@drawable/me"
+                    android:padding="5dp"
+                    android:id="@+id/item_image"
+                    android:layout_gravity="center_horizontal"
+                    app:strokeWidth="4dp"
+                    app:strokeColor="@color/grey"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    android:layout_height="110dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="@{profModel.userData.name}"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="@{profModel.userData.phoneNumber}"
+                    android:textColor="@color/textGrey"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_baseline_alternate_email_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:tint="@color/green"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Iyke Emmanuel"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:text="@{profModel.userData.email}"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/semiGreen"
+                    app:drawableTint="@color/semiGreen"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:tint="@color/green"
+                    android:src="@drawable/ic_baseline_call_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Phone number"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:text="@{profModel.userData.phoneNumber}"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/semiGreen"
+                    app:drawableTint="@color/semiGreen"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/connection"
+                android:onClick="@{profModel.profileNavigation}"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:tint="@color/green"
+
+                    android:src="@drawable/ic_baseline_heart_broken_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Connections"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/semiGreen"
+                    app:drawableTint="@color/semiGreen"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:tint="@color/green"
+                    android:src="@drawable/ic_round_notifications_none_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Notification"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textOff="off"
+                    android:padding="10dp"
+                    android:textOn="on"
+                    android:thumb="@drawable/thumb"
+                    app:showText="true"
+                    app:track="@drawable/track" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/privacy"
+                android:onClick="@{profModel.profileNavigation}"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:tint="@color/green"
+                    android:src="@drawable/ic_baseline_privacy_tip_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Privacy"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/semiGreen"
+                    app:drawableTint="@color/semiGreen"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:tint="@color/green"
+                    android:src="@drawable/ic_baseline_help_24"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:backgroundTint="@color/white"
+                    android:background="@drawable/rounded" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="Help"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/semiGreen"
+                    app:drawableTint="@color/semiGreen"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:tint="@color/green"
-                android:src="@drawable/ic_baseline_privacy_tip_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"/>
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Privacy"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:text=""
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textColor="@color/semiGreen"
-                app:drawableTint="@color/semiGreen"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:tint="@color/green"
-                android:src="@drawable/ic_baseline_help_24"
-                app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:backgroundTint="@color/white"
-                android:background="@drawable/rounded"/>
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="Help"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:fontFamily="@font/source_sans_pro"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:text=""
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textColor="@color/semiGreen"
-                app:drawableTint="@color/semiGreen"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_height="wrap_content" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
