@@ -56,14 +56,19 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
 
     init {
-        name.value = userData.value!!.name
-        phoneNumber.value = userData.value!!.phoneNumber
+        name.value = ""
+        phoneNumber.value = ""
     }
 
     private fun updateUserData(progressDialog :android.app.ProgressDialog,view: View) {
+
+            val inputName = if (name.value!!.isEmpty()) userData.value!!.name else name.value.toString()
+            val inputNum = if (phoneNumber.value!!.isEmpty()) userData.value!!.phoneNumber else phoneNumber.value.toString()
+
+
         val user = hashMapOf(
-            NAME to  name.value.toString(),
-            PHONE_NUMBER to phoneNumber.value.toString(),
+            NAME to  inputName,
+            PHONE_NUMBER to inputNum,
             PROFILE to filePath.toString()
         )
 

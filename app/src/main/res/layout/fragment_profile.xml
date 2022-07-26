@@ -41,8 +41,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="110dp"
-                    android:src="@drawable/me"
                     android:padding="5dp"
+                    app:profileImage="@{profModel.userData.profileUri}"
                     android:id="@+id/item_image"
                     android:layout_gravity="center_horizontal"
                     app:strokeWidth="4dp"
@@ -57,6 +57,7 @@
                     android:textColor="@color/black"
                     android:layout_margin="5dp"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:textAlignment="center"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:fontFamily="@font/source_sans_pro"

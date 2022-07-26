@@ -36,6 +36,7 @@ class EditProfileFragment : Fragment() {
         v.profileViewModel = profileViewModel
         v.executePendingBindings()
         v.exitEdit.setOnClickListener { findNavController().popBackStack() }
+        v.profileViewModel?.fetchUserDetails()
         v.changeImage.setOnClickListener { chooseImage() }
         return v.root
     }

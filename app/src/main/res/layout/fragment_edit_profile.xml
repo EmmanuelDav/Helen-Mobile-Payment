@@ -34,8 +34,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="110dp"
-                    android:src="@drawable/me"
                     android:padding="5dp"
+                    app:profileImage="@{profileViewModel.userData.profileUri}"
                     android:scaleType="centerCrop"
                     android:id="@+id/changeImage"
                     android:layout_gravity="center_horizontal"
