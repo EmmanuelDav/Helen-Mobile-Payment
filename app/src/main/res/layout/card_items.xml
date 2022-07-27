@@ -6,11 +6,17 @@
         <variable
                 name="card"
                 type="com.iyke.onlinebanking.model.CardDetails" />
+
+        <variable
+                name="listener"
+                type="com.iyke.onlinebanking.intface.CardClicked" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_margin="10dp"
+            android:onClick="@{() ->listener.onCardClick(card)}"
             android:layout_height="wrap_content">
 
         <RelativeLayout

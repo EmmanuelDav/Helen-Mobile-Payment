@@ -38,7 +38,7 @@ class CardFragment : Fragment() {
         }
         v.viewmodel = statisticsViewModel
         v.executePendingBindings()
-        v.viewmodel?.fetchCards()
+        v.viewmodel?.fetchCards(v.root)
         return v.root
     }
 }

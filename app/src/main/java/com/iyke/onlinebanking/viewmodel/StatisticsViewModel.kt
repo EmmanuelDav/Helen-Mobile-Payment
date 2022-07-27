@@ -3,6 +3,7 @@ package com.iyke.onlinebanking.viewmodel
 import android.app.Application
 import android.app.ProgressDialog
 import android.content.SharedPreferences
+import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.intface.CardClicked
 import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.CardDetails
@@ -34,6 +36,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
     var statementArrayList:ArrayList<Statement> = ArrayList()
     val cards = MutableLiveData<ArrayList<CardDetails>>(ArrayList<CardDetails>())
+    lateinit var cardDetails: View
 
 
 
@@ -57,7 +60,10 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             }.addOnFailureListener {}
     }
 
-    fun fetchCards() {
+    fun fetchCards(view: View) {
+
+        cardDetails = view
+
         db.collection(Constants.USERS).document(firebaseEmail!!)
             .collection(Constants.CARDS)
             .get()
@@ -80,8 +86,9 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     override fun onCardClick(cards: CardDetails) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable("Cards", cards)
+        Navigation.findNavController(cardDetails).navigate(R.id.action_cardFragment_to_cardDetails, bundle)
     }
-
 
 }
