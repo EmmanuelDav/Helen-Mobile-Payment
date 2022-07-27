@@ -310,7 +310,8 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                         doc[AMOUNT].toString(),
                         doc[TYPE].toString(),
                         doc[CLIENT_NAME].toString(),
-                        doc[TIME] as Timestamp
+                        doc[TIME] as Timestamp,
+                        doc[MESSAGE].toString()
                     )
                     statementArray.add(statement)
                 }
@@ -320,8 +321,10 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     }
 
     override fun onItemClick(statement: Statement) {
+        val bundle = Bundle()
+        bundle.putParcelable("statement", statement)
         Navigation.findNavController(homeFragment)
-            .navigate(R.id.action_homeFragment_to_transactFragment)
+            .navigate(R.id.action_homeFragment_to_transactFragment,bundle)
     }
 
     fun getUsers(user: Users) {

@@ -17,7 +17,7 @@ class CardDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        var v :FragmentCardDetailsBinding = DataBindingUtil.inflate(inflater ,R.layout.fragment_card_details, container, false)
+        val v :FragmentCardDetailsBinding = DataBindingUtil.inflate(inflater ,R.layout.fragment_card_details, container, false)
         val mBundle: Bundle = requireArguments()
         val user: CardDetails = mBundle.getParcelable<CardDetails>("Cards")!!
         v.cards = user

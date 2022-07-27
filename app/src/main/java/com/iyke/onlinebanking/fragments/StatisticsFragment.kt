@@ -25,7 +25,6 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
-import com.iyke.onlinebanking.model.MonthlySalesData
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel
 

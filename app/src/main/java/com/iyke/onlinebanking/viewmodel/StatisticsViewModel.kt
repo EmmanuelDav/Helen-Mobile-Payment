@@ -53,7 +53,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                         doc[Constants.AMOUNT].toString(),
                         doc[Constants.TYPE].toString(),
                         doc[Constants.CLIENT_NAME].toString(),
-                        doc[Constants.TIME] as Timestamp
+                        doc[Constants.TIME] as Timestamp,
+                    doc[Constants.MESSAGE].toString()
                     )
                     statementArrayList.add(statement)
                 }
