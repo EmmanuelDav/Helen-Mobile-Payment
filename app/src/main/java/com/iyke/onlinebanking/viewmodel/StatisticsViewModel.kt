@@ -19,15 +19,18 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.iyke.onlinebanking.intface.CardClicked
+import com.iyke.onlinebanking.intface.UserInterface
 import com.iyke.onlinebanking.model.CardDetails
 import com.iyke.onlinebanking.model.Statement
 import com.iyke.onlinebanking.model.Users
 import com.iyke.onlinebanking.utils.Constants
 
-class StatisticsViewModel(application: Application) : AndroidViewModel(application) {
+class StatisticsViewModel(application: Application) : AndroidViewModel(application),CardClicked<CardDetails> {
 
     private val context = getApplication<Application>().applicationContext
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
+    var cardListener: CardClicked<CardDetails> = this
 
     var statementArrayList:ArrayList<Statement> = ArrayList()
     val cards = MutableLiveData<ArrayList<CardDetails>>(ArrayList<CardDetails>())
@@ -74,6 +77,10 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 }
                 cards.value = cardDetails
             }.addOnFailureListener {}
+    }
+
+    override fun onCardClick(cards: CardDetails) {
+        TODO("Not yet implemented")
     }
 
 

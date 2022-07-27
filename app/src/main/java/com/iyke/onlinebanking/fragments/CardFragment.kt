@@ -31,8 +31,8 @@ class CardFragment : Fragment() {
     ): View {
 
         val v:FragmentCardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_card, container, false)
+        v.lifecycleOwner = this
         statisticsViewModel = ViewModelProvider(this).get(StatisticsViewModel::class.java)
-
         v.addCards.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_cardFragment_to_addCardFragemnt)
         }
@@ -44,7 +44,7 @@ class CardFragment : Fragment() {
 }
 
 
-@BindingAdapter(value = ["tools:card", "tools:layout", "tools:onclick"], requireAll = false)
+@BindingAdapter(value = ["tools:card", "tools:cardItem", "tools:cardClick"], requireAll = false)
 fun <T> setCardAdapter(
     recyclerView: RecyclerView,
     statement: MutableLiveData<ArrayList<T>>,

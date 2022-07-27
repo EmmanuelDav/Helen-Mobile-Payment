@@ -4,9 +4,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-<variable
-        name="viewmodel"
-        type="com.iyke.onlinebanking.viewmodel.StatisticsViewModel" />
+
+        <variable
+                name="viewmodel"
+                type="com.iyke.onlinebanking.viewmodel.StatisticsViewModel" />
     </data>
 
     <LinearLayout
@@ -49,10 +50,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:onclick="@{}"
+                tools:cardClick="@{viewmodel.cardListener}"
                 tools:card="@{viewmodel.cards}"
                 android:layout_marginBottom="60dp"
-                tools:layout="@{@layout/card_items}"
+                tools:cardItem="@{@layout/card_items}"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
     </LinearLayout>

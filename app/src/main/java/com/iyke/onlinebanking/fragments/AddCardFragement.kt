@@ -27,9 +27,6 @@ class AddCardFragement : Fragment() {
     private var statisticsViewModel: StatisticsViewModel? = null
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
 
-    val sh: SharedPreferences = requireContext().getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
-    private val firebaseEmail = sh.getString(Constants.EMAIL, "")
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +38,8 @@ class AddCardFragement : Fragment() {
         v.exitAddC.setOnClickListener {
             findNavController().popBackStack()
         }
+        val sh: SharedPreferences = requireActivity().getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+        val firebaseEmail = sh.getString(Constants.EMAIL, "")
         v.addCard.setOnClickListener {
             val pcardName = cardName.text.toString()
             val pcardLabel = cardLabel.text.toString()

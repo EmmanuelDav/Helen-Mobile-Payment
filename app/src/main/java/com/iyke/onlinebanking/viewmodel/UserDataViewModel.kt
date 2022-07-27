@@ -78,10 +78,10 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                 Log.d("VerifyActivity", "${addMoney.value!!.toInt()}  signInWithCredential:success")
 
                 val myStatementData = hashMapOf(
-                    AMOUNT to "Added $"+addMoney.value!!.toInt(),
+                    AMOUNT to addMoney.value!!.toInt(),
                     CLIENT_NAME to "my Bank",
                     TIME to Timestamp.now(),
-                    TYPE to "Credited"
+                    TYPE to "Added"
                 )
 
                 val txId = "TID-SM-" + Random.nextBytes(9)
