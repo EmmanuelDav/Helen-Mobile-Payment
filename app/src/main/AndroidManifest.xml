@@ -33,7 +33,6 @@
         <activity android:name=".activities.TollFeeActivity" />
         <activity android:name=".activities.SendMoneyActivity" />
         <activity android:name=".activities.SetNewPinActivity" />
-        <activity android:name=".activities.UserActivity" />
         <activity android:name=".activities.VerifyPhoneNumber" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
