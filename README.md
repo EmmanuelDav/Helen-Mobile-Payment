@@ -11,7 +11,8 @@ Try it out using this email and password
 kuradavis987@gmail.com
 COnYFW1$1cZEGaC
 ```
-
+## Get it on
+[<img src="app/screenshot/play_store_badge.png" width="250">](https://play.google.com/store/apps/details?id=com.iyke.onlinebanking)
 ## Tech
 * Bar Chat
 * Firebase Firestore

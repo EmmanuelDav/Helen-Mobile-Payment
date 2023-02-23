@@ -11,4 +11,5 @@
 /build
 /captures
 .externalNativeBuild
+app/sign
 app/src/main/java/com/iyke/onlinebanking/auth/secrets.kt
