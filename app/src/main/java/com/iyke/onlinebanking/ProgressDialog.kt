@@ -7,8 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_progress_dialog.*
 
 class ProgressDialog( activity:Context ) : Dialog(activity) {
     override fun onCreate(savedInstanceState: Bundle?) {

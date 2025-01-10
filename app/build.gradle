@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 
 
 android {
     compileSdkVersion 32
+    namespace = "com.iyke.onlinebanking"
+
     defaultConfig {
         applicationId "com.iyke.onlinebanking"
         minSdkVersion 19
