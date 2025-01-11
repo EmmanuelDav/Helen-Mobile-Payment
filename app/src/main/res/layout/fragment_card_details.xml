@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="cards"
-                type="com.iyke.onlinebanking.model.CardDetails" />
+                type="com.iyke.onlinebanking.models.CardDetails" />
 
 
     </data>

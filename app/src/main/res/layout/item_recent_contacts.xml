@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="model"
-                type="com.iyke.onlinebanking.model.Users" />
+                type="com.iyke.onlinebanking.models.Users" />
         <variable
                 name="listener"
                 type="com.iyke.onlinebanking.intface.UserInterface" />

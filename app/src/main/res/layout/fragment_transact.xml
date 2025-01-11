@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="statement"
-                type="com.iyke.onlinebanking.model.Statement" />
+                type="com.iyke.onlinebanking.models.Statement" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

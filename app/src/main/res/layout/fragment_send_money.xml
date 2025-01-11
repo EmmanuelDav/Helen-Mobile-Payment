@@ -11,7 +11,7 @@
 
         <variable
                 name="data"
-                type="com.iyke.onlinebanking.model.Users" />
+                type="com.iyke.onlinebanking.models.Users" />
 
     </data>
 

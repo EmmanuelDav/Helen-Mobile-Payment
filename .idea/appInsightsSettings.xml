@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.iyke.onlinebanking" />
+                  <option name="mobileSdkAppId" value="1:649805191880:android:38153e3d00aaeaa7bd63fd" />
+                  <option name="projectId" value="helene-socials" />
+                  <option name="projectNumber" value="649805191880" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
