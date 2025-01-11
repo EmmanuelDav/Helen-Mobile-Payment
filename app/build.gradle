@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
 
 
 android {
@@ -43,7 +44,7 @@ android {
 dependencies {
 
     // General settings for .jar libraries in the `libs` folder
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin Standard Library
     implementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.0" // Updated to the latest stable Kotlin version
@@ -111,6 +112,8 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
 
-
+    //Hilt
+    implementation 'com.google.dagger:hilt-android:2.51'
+    kapt 'com.google.dagger:hilt-compiler:2.46.1'
 
 }
