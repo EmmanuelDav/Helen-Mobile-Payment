@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "649805191880",
+    "firebase_url": "https://helene-socials-default-rtdb.firebaseio.com",
+    "project_id": "helene-socials",
+    "storage_bucket": "helene-socials.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649805191880:android:cea9ff473cb15f89bd63fd",
+        "android_client_info": {
+          "package_name": "com.cyberiyke.fintech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqhmdN7U9cLCvALzm7jd6o9LT8fa-SFqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649805191880:android:38153e3d00aaeaa7bd63fd",
+        "android_client_info": {
+          "package_name": "com.iyke.onlinebanking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqhmdN7U9cLCvALzm7jd6o9LT8fa-SFqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649805191880-8266j5ficihgq6kvh1pgs12piam7oluc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

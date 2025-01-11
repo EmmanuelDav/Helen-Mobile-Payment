@@ -5,24 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
-import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.auth.secrets.clientId
+import com.iyke.onlinebanking.databinding.ActivityWelcomeBinding
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
-import kotlinx.android.synthetic.main.activity_welcome.*
 
 
 class WelcomeActivity : AppCompatActivity() {
 
     lateinit var authViewModel: AuthViewModel
+    private lateinit var binding: ActivityWelcomeBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
@@ -34,14 +33,14 @@ class WelcomeActivity : AppCompatActivity() {
         val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
-        createAccount.setOnClickListener {
+        binding.createAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-        login.setOnClickListener {
+        binding.login.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
         }
 
-        googleLogin.setOnClickListener {
+        binding.googleLogin.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
         }
 
