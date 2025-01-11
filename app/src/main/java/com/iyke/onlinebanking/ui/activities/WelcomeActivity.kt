@@ -2,13 +2,14 @@ package com.iyke.onlinebanking.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
 import com.iyke.onlinebanking.databinding.ActivityWelcomeBinding
+import com.iyke.onlinebanking.ui.auth.SignInActivity
+import com.iyke.onlinebanking.ui.auth.SignUpActivity
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
 

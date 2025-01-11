@@ -2,9 +2,11 @@ package com.iyke.onlinebanking.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.data.local.dao.UsersDao
 import com.iyke.onlinebanking.data.local.database.AppDatabase
 import com.iyke.onlinebanking.data.local.database.MIGRATION_1_2
+import com.iyke.onlinebanking.data.remote.FirebaseService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,5 +38,10 @@ object AppModules {
         appDatabase.getBankStatementDao()
     }
 
+    @Provides
+    @Singleton
+    fun provideFirebaseFireStore():FirebaseFirestore{
+        return FirebaseFirestore.getInstance()
+    }
 
 }

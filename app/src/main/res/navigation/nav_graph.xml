@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/homeFragment"
-            android:name="com.iyke.onlinebanking.fragments.HomeFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.HomeFragment"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
             android:id="@+id/cardFragment"
-            android:name="com.iyke.onlinebanking.fragments.CardFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.CardDetails"
             android:label="fragment_card"
             tools:layout="@layout/fragment_card" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
             android:id="@+id/profileFragment"
-            android:name="com.iyke.onlinebanking.fragments.ProfileFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.ProfileFragment"
             android:label="fragment_profile"
             tools:layout="@layout/fragment_profile" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
             android:id="@+id/statisticsFragment"
-            android:name="com.iyke.onlinebanking.fragments.StatisticsFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.StatisticsFragment"
             android:label="StatisticsFragment" >
         <action
                 android:id="@+id/action_statisticsFragment_to_historyFragment"
@@ -60,40 +60,40 @@
     </fragment>
     <fragment
             android:id="@+id/addMoney"
-            android:name="com.iyke.onlinebanking.fragments.AddMoney"
+            android:name="com.iyke.onlinebanking.ui.fragments.AddMoney"
             android:label="fragment_add_money"
             tools:layout="@layout/fragment_add_money" />
     <fragment
             android:id="@+id/historyFragment"
-            android:name="com.iyke.onlinebanking.fragments.HistoryFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.HistoryFragment"
             android:label="HistoryFragment" />
     <fragment
             android:id="@+id/addCardFragemnt"
-            android:name="com.iyke.onlinebanking.fragments.AddCardFragement"
+            android:name="com.iyke.onlinebanking.ui.fragments.AddCardFragement"
             android:label="fragment_add_card_fragemnt"
             tools:layout="@layout/fragment_add_card_fragemnt" />
     <fragment
             android:id="@+id/help_PrivacyFragment"
-            android:name="com.iyke.onlinebanking.fragments.Help_PrivacyFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.Help_PrivacyFragment"
             android:label="fragment_help__privacy"
             tools:layout="@layout/fragment_help__privacy" />
     <fragment
             android:id="@+id/connectionFragment"
-            android:name="com.iyke.onlinebanking.fragments.ConnectionFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.ConnectionFragment"
             android:label="fragment_connection"
             tools:layout="@layout/fragment_connection" />
     <fragment
             android:id="@+id/editProfileFragment"
-            android:name="com.iyke.onlinebanking.fragments.EditProfileFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.EditProfileFragment"
             android:label="fragment_edit_profile"
             tools:layout="@layout/fragment_edit_profile" />
     <fragment
             android:id="@+id/cardDetails"
-            android:name="com.iyke.onlinebanking.fragments.CardDetails"
+            android:name="com.iyke.onlinebanking.ui.fragments.CardDetails"
             android:label="CardDetails" />
     <fragment
             android:id="@+id/sentFragment"
-            android:name="com.iyke.onlinebanking.fragments.SentFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.SentFragment"
             android:label="fragment_sent"
             tools:layout="@layout/fragment_sent" >
         <action
@@ -102,11 +102,11 @@
     </fragment>
     <fragment
             android:id="@+id/sendMoney2"
-            android:name="com.iyke.onlinebanking.fragments.SendMoney"
+            android:name="com.iyke.onlinebanking.ui.fragments.SendMoney"
             android:label="SendMoney" />
     <fragment
             android:id="@+id/transactFragment"
-            android:name="com.iyke.onlinebanking.fragments.TransactFragment"
+            android:name="com.iyke.onlinebanking.ui.fragments.TransactFragment"
             android:label="fragment_transact"
             tools:layout="@layout/fragment_transact" />
 </navigation>

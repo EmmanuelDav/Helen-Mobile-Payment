@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking.ui.activities
+package com.iyke.onlinebanking.ui.auth
 
 import android.content.Context
 import android.content.Intent

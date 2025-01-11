@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking.ui.activities
+package com.iyke.onlinebanking.ui.auth
 
 import android.content.Context
 import android.content.Intent
@@ -27,6 +27,7 @@ import com.iyke.onlinebanking.utils.Constants.PREFERENCE
 import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.ui.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_verify.*
 import java.util.concurrent.TimeUnit
 
