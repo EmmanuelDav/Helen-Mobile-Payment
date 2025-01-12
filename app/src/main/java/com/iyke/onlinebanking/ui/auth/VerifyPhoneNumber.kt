@@ -7,25 +7,28 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
-import kotlinx.android.synthetic.main.activity_verify_phone_number.*
+import com.iyke.onlinebanking.databinding.ActivityVerifyPhoneNumberBinding
+import com.iyke.onlinebanking.ui.utils.CheckInternet
 
 class VerifyPhoneNumber : AppCompatActivity() {
+    lateinit var binding:ActivityVerifyPhoneNumberBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify_phone_number)
+        binding = ActivityVerifyPhoneNumberBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        editText_phone_register.setSelection(4)
+        binding.editTextPhoneRegister.setSelection(4)
 
-        button_sendcode.setOnTouchListener OnTouchListener@{ v, event ->
+        binding.buttonSendcode.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    button_sendcode.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    binding.buttonSendcode.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_sendcode.setBackgroundResource(R.drawable.button_bg_custom)
+                    binding.buttonSendcode.setBackgroundResource(R.drawable.button_bg_custom)
 
                     //hide keyboard
                     val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -37,7 +40,7 @@ class VerifyPhoneNumber : AppCompatActivity() {
                     }
 
 
-                    val phoneNumber: String = editText_phone_register.text.toString()
+                    val phoneNumber: String = binding.editTextPhoneRegister.text.toString()
                     if (phoneNumber.length == 14)
                     {
                         val intent = Intent(this, VerifyActivity::class.java)
@@ -46,7 +49,7 @@ class VerifyPhoneNumber : AppCompatActivity() {
                     }
                     else
                     {
-                        editText_phone_register.error = "Invalid phone number add your country code"
+                       binding.editTextPhoneRegister.error = "Invalid phone number add your country code"
                         Log.d("RegistrationActivity","Invalid phone number!")
                     }
 

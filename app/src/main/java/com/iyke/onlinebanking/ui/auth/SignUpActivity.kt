@@ -6,53 +6,53 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.auth.secrets
-import com.iyke.onlinebanking.viewmodel.AuthViewModel
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import com.iyke.onlinebanking.databinding.ActivitySignUpBinding
+import com.iyke.onlinebanking.ui.viewmodel.AuthViewModel
 
 class SignUpActivity : AppCompatActivity() {
 
 
     lateinit var authViewModel: AuthViewModel
+    private lateinit var binding:ActivitySignUpBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
-        login.setOnClickListener {
+        binding.login.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
         }
-        next.setOnClickListener {
-            val name = nameInput.text.toString()
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
-            val cpassword = confirmPasswordInput.text.toString()
+        binding.next.setOnClickListener {
+            val name = binding.nameInput.text.toString()
+            val email = binding.emailInput.text.toString()
+            val password = binding.passwordInput.text.toString()
+            val cpassword = binding.confirmPasswordInput.text.toString()
 
             if (email.isEmpty()) {
-                emailInput.error = "Please Enter Email"
-                emailInput.requestFocus()
+                binding.emailInput.error = "Please Enter Email"
+                binding.emailInput.requestFocus()
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                emailInput.error = "Please Enter Valid Email"
-                emailInput.requestFocus()
+                binding.emailInput.error = "Please Enter Valid Email"
+                binding.emailInput.requestFocus()
                 return@setOnClickListener
             }
             if (password.isEmpty()) {
-                passwordInput.error = "Please Enter Password"
-                passwordInput.requestFocus()
+                binding.passwordInput.error = "Please Enter Password"
+                binding.passwordInput.requestFocus()
                 return@setOnClickListener
             }
             if (cpassword.isEmpty()) {
-                passwordInput.error = "Please Confirm Your Password"
-                passwordInput.requestFocus()
+                binding.passwordInput.error = "Please Confirm Your Password"
+                binding.passwordInput.requestFocus()
                 return@setOnClickListener
             }
             if (password != cpassword) {

@@ -97,7 +97,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7' // LiveData library
 
     // PinLockView
-    implementation 'com.andrognito.pinlockview:pinlockview:2.1.0' // No updates available
+
+    implementation 'com.andrognito.pinlockview:pinlockview:2.1.0'
 
     // Droid GIF Library
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25' // Updated GIF library

@@ -2,7 +2,7 @@ buildscript {
     ext.kotlin_version = '1.9.10'
     repositories {
         google()
-        jcenter() // Warning: this repository is going to shut down soon
+        mavenCentral() // Warning: this repository is going to shut down soon
         maven { url='https://jitpack.io'}
 
     }
@@ -20,11 +20,11 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter() // Warning: this repository is going to shut down soon
+        mavenCentral() // Warning: this repository is going to shut down soon
         maven { url='https://jitpack.io'}
     }
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

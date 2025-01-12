@@ -8,8 +8,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.andrognito.pinlockview.IndicatorDots
-import com.andrognito.pinlockview.PinLockListener
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
@@ -17,18 +15,17 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.utils.CheckInternet
-import com.iyke.onlinebanking.utils.Constants.BALANCE
-import com.iyke.onlinebanking.utils.Constants.EMAIL
-import com.iyke.onlinebanking.utils.Constants.NAME
-import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
-import com.iyke.onlinebanking.utils.Constants.PIN
-import com.iyke.onlinebanking.utils.Constants.PREFERENCE
-import com.iyke.onlinebanking.utils.Constants.PROFILE
-import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.databinding.ActivityVerifyBinding
 import com.iyke.onlinebanking.ui.activities.MainActivity
-import kotlinx.android.synthetic.main.activity_verify.*
+import com.iyke.onlinebanking.ui.utils.Constants.BALANCE
+import com.iyke.onlinebanking.ui.utils.Constants.EMAIL
+import com.iyke.onlinebanking.ui.utils.Constants.NAME
+import com.iyke.onlinebanking.ui.utils.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.ui.utils.Constants.PIN
+import com.iyke.onlinebanking.ui.utils.Constants.PREFERENCE
+import com.iyke.onlinebanking.ui.utils.Constants.PROFILE
+import com.iyke.onlinebanking.ui.utils.Constants.USERS
 import java.util.concurrent.TimeUnit
 
 
@@ -36,19 +33,21 @@ class VerifyActivity : AppCompatActivity() {
 
     private lateinit var storedVerificationId: String
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding:ActivityVerifyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify)
+        binding = ActivityVerifyBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
         val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
 
-        pinCodeView.setPinLockListener(mPinLockListener)
-        pinCodeView.attachIndicatorDots(indicatorDots)
-        pinCodeView.pinLength = 5
-        pinCodeView.textColor = ContextCompat.getColor(this, R.color.black)
-        indicatorDots.indicatorType = IndicatorDots.IndicatorType.FILL_WITH_ANIMATION
+        binding.pinCodeView.setPinLockListener(mPinLockListener)
+        binding.pinCodeView.attachIndicatorDots(indicatorDots)
+        binding. pinCodeView.pinLength = 5
+        binding. pinCodeView.textColor = ContextCompat.getColor(this, R.color.black)
+        binding.indicatorDots.indicatorType = IndicatorDots.IndicatorType.FILL_WITH_ANIMATION
         sendVerificationCode(phoneNumber)
     }
 
