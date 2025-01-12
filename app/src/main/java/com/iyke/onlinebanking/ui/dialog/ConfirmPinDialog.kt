@@ -1,30 +1,36 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.ui.dialog
 
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.utils.CheckInternet
+import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.databinding.DialogConfirmPinBinding
 import com.iyke.onlinebanking.utils.Constants
-import kotlinx.android.synthetic.main.dialog_confirm_pin.*
+import com.iyke.onlinebanking.utils.NetworkInformation
 
 class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
 
     var confirmed = false
+    private lateinit var binding:DialogConfirmPinBinding
 
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dialog_confirm_pin)
+        binding = DialogConfirmPinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setCanceledOnTouchOutside(false)
         setOnCancelListener {
@@ -32,26 +38,26 @@ class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
         }
         val sh: SharedPreferences = context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
         val firebaseEmail = sh.getString(Constants.EMAIL, "")
-        button_confirm_dialog_pin.setOnTouchListener OnTouchListener@{ v, event ->
+        binding.buttonConfirmDialogPin.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    button_confirm_dialog_pin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    binding.buttonConfirmDialogPin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_confirm_dialog_pin.setBackgroundResource(R.drawable.button_bg_custom)
+                    binding.buttonConfirmDialogPin.setBackgroundResource(R.drawable.button_bg_custom)
 
-                    if(editText_dialog_box_pin.length() < 6)
+                    if(binding.editTextDialogBoxPin.length() < 6)
                     {
-                        editText_dialog_box_pin.error = "insert 6 digit pin"
+                        binding.editTextDialogBoxPin.error = "insert 6 digit pin"
                         return@OnTouchListener true
                     }
 
-                    if(!CheckInternet(activity).checkNow())
+                    if(!NetworkInformation(activity).checkNow())
                     {
                         return@OnTouchListener true
                     }
 
-                    progressBar_confirm_pin.visibility = View.VISIBLE
+                    binding.progressBarConfirmPin.visibility = View.VISIBLE
 
                     val db = FirebaseFirestore.getInstance()
                     val docRef = db.collection("users").document(firebaseEmail!!)
@@ -60,10 +66,10 @@ class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
                             if (document != null)
                             {
                                 Log.d("ConfirmPinActivity", "DocumentSnapshot data: ${document.data}")
-                                if(document["pin"].toString() != editText_dialog_box_pin.text.toString())
+                                if(document["pin"].toString() != binding.editTextDialogBoxPin.text.toString())
                                 {
-                                    progressBar_confirm_pin.visibility = View.INVISIBLE
-                                    editText_dialog_box_pin.error = "incorrect pin"
+                                   binding. progressBarConfirmPin.visibility = View.INVISIBLE
+                                    binding.editTextDialogBoxPin.error = "incorrect pin"
                                 }
                                 else
                                 {
@@ -79,8 +85,8 @@ class ConfirmPinDialog(private val activity: Context) : Dialog(activity) {
                         }
                         .addOnFailureListener { exception ->
                             Log.d("ConfirmPinActivity", "get failed with ", exception)
-                            progressBar_confirm_pin.visibility = View.INVISIBLE
-                            editText_dialog_box_pin.error = "failed"
+                            binding.progressBarConfirmPin.visibility = View.INVISIBLE
+                         //   binding.progressBarConfirmPin.error = "failed"
                         }
 
 

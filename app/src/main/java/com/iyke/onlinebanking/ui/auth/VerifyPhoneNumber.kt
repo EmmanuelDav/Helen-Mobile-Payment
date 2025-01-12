@@ -9,7 +9,7 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyPhoneNumberBinding
-import com.iyke.onlinebanking.ui.utils.NetworkInformation
+import com.iyke.onlinebanking.utils.NetworkInformation
 
 class VerifyPhoneNumber : AppCompatActivity() {
     lateinit var binding:ActivityVerifyPhoneNumberBinding

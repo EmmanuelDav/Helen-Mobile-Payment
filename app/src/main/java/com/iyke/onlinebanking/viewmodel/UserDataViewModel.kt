@@ -14,8 +14,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.iyke.onlinebanking.ConfirmPinDialog
-import com.iyke.onlinebanking.ProgressDialog
+import com.iyke.onlinebanking.ui.dialog.ConfirmPinDialog
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS

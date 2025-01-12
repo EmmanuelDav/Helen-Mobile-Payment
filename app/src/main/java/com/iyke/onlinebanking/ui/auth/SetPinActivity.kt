@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivitySetpinBinding
-import com.iyke.onlinebanking.ui.utils.NetworkInformation
+import com.iyke.onlinebanking.utils.NetworkInformation
 
 class SetPinActivity : AppCompatActivity() {
 

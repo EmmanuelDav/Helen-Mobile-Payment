@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.firestore.PropertyName
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.ui.utils.Constants.BALANCE
-import com.iyke.onlinebanking.ui.utils.Constants.EMAIL
-import com.iyke.onlinebanking.ui.utils.Constants.NAME
-import com.iyke.onlinebanking.ui.utils.Constants.PHONE_NUMBER
-import com.iyke.onlinebanking.ui.utils.Constants.PROFILE
+import com.iyke.onlinebanking.utils.Constants.BALANCE
+import com.iyke.onlinebanking.utils.Constants.EMAIL
+import com.iyke.onlinebanking.utils.Constants.NAME
+import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.utils.Constants.PROFILE
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

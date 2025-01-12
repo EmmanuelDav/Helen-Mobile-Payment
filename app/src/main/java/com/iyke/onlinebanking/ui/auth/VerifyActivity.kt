@@ -18,14 +18,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyBinding
 import com.iyke.onlinebanking.MainActivity
-import com.iyke.onlinebanking.ui.utils.Constants.BALANCE
-import com.iyke.onlinebanking.ui.utils.Constants.EMAIL
-import com.iyke.onlinebanking.ui.utils.Constants.NAME
-import com.iyke.onlinebanking.ui.utils.Constants.PHONE_NUMBER
-import com.iyke.onlinebanking.ui.utils.Constants.PIN
-import com.iyke.onlinebanking.ui.utils.Constants.PREFERENCE
-import com.iyke.onlinebanking.ui.utils.Constants.PROFILE
-import com.iyke.onlinebanking.ui.utils.Constants.USERS
+import com.iyke.onlinebanking.utils.Constants.BALANCE
+import com.iyke.onlinebanking.utils.Constants.EMAIL
+import com.iyke.onlinebanking.utils.Constants.NAME
+import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
+import com.iyke.onlinebanking.utils.Constants.PIN
+import com.iyke.onlinebanking.utils.Constants.PREFERENCE
+import com.iyke.onlinebanking.utils.Constants.PROFILE
+import com.iyke.onlinebanking.utils.Constants.USERS
 import java.util.concurrent.TimeUnit
 
 

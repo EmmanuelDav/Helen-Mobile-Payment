@@ -1,12 +1,11 @@
-package com.iyke.onlinebanking
+package com.iyke.onlinebanking.ui.dialog
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.iyke.onlinebanking.R
 
 class ProgressDialog( activity:Context ) : Dialog(activity) {
     override fun onCreate(savedInstanceState: Bundle?) {

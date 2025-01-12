@@ -1,26 +1,19 @@
 package com.iyke.onlinebanking.viewmodel
 
-import android.app.Activity
 import android.app.Application
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.databinding.FragmentEditProfileBinding
 import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.EMAIL
 import com.iyke.onlinebanking.utils.Constants.IMAGES

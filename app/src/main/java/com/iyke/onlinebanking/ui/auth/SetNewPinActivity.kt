@@ -1,5 +1,6 @@
 package com.iyke.onlinebanking.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -9,16 +10,17 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.ProgressDialog
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivitySetNewPinBinding
-import com.iyke.onlinebanking.ui.utils.NetworkInformation
-import com.iyke.onlinebanking.ui.utils.Constants
+import com.iyke.onlinebanking.utils.NetworkInformation
+import com.iyke.onlinebanking.utils.Constants
 
 class SetNewPinActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySetNewPinBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySetNewPinBinding.inflate(layoutInflater)

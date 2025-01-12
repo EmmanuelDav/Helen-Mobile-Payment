@@ -7,25 +7,17 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.ProgressDialog
-import com.iyke.onlinebanking.activities.MainActivity
-import com.iyke.onlinebanking.activities.VerifyPhoneNumber
-import com.iyke.onlinebanking.utils.Constants
-import com.iyke.onlinebanking.utils.Constants.EMAIL
-import com.iyke.onlinebanking.utils.Constants.NAME
-import com.iyke.onlinebanking.utils.Constants.PREFERENCE
-import com.iyke.onlinebanking.utils.Constants.PROFILE
-import com.iyke.onlinebanking.utils.Constants.USERS
+import com.iyke.onlinebanking.repository.AuthRepository
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 
 
-open class AuthViewModel(application: Application) : AndroidViewModel(application) {
+open class AuthViewModel(authRepository: AuthRepository) : ViewModel() {
 
     private val context = getApplication<Application>().applicationContext
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()

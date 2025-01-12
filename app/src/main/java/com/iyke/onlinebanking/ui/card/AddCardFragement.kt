@@ -14,8 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentAddCardFragemntBinding
-import com.iyke.onlinebanking.ui.utils.Constants
-import com.iyke.onlinebanking.ui.utils.Constants.CARDS
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
+import com.iyke.onlinebanking.utils.Constants
+import com.iyke.onlinebanking.utils.Constants.CARDS
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 
 class AddCardFragement : Fragment() {
@@ -88,7 +89,7 @@ class AddCardFragement : Fragment() {
             if (pcvv.isNotEmpty() && pcity.isNotEmpty() && pexpirtation.isNotEmpty() &&
                 pcardLabel.isNotEmpty() && pcardName.isNotEmpty() && pzipCode.isNotEmpty() && pzipCode.isNotEmpty()){
 
-                val progressDialog = com.iyke.onlinebanking.ProgressDialog(requireView().context)
+                val progressDialog = ProgressDialog(requireView().context)
                 progressDialog.show()
 
                 val cardDetails = hashMapOf(
