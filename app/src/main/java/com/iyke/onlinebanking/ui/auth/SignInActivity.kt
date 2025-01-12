@@ -5,50 +5,46 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.iyke.onlinebanking.utils.Constants
-import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.auth.secrets
-import com.iyke.onlinebanking.viewmodel.AuthViewModel
-import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlinx.android.synthetic.main.activity_sign_in.emailInput
-import kotlinx.android.synthetic.main.activity_sign_in.passwordInput
+import com.iyke.onlinebanking.databinding.ActivitySignInBinding
+import com.iyke.onlinebanking.ui.utils.Constants
+import com.iyke.onlinebanking.ui.viewmodel.AuthViewModel
 
 class SignInActivity : AppCompatActivity() {
 
     lateinit var authViewModel: AuthViewModel
+    lateinit var binding:ActivitySignInBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
-
+        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
-        signUp.setOnClickListener {
+        binding.signUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
 
         }
-        signIn.setOnClickListener {
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
+        binding.signIn.setOnClickListener {
+            val email = binding.emailInput.text.toString()
+            val password = binding.passwordInput.text.toString()
 
 
             if (email.isEmpty()) {
-                emailInput.error = "Please Enter Email"
-                emailInput.requestFocus()
+                binding.emailInput.error = "Please Enter Email"
+                binding.emailInput.requestFocus()
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                emailInput.error = "Please Enter Valid Email"
-                emailInput.requestFocus()
+               binding.emailInput.error = "Please Enter Valid Email"
+                binding.emailInput.requestFocus()
                 return@setOnClickListener
             }
             if (password.isEmpty()) {
-                passwordInput.error = "Please Enter Password"
-                passwordInput.requestFocus()
+                binding.passwordInput.error = "Please Enter Password"
+                binding.passwordInput.requestFocus()
                 return@setOnClickListener
             }
 
@@ -67,10 +63,10 @@ class SignInActivity : AppCompatActivity() {
 
 
 
-        googleLogin.setOnClickListener {
+        binding.googleLogin.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, Constants.RC_SIGN_IN)
         }
-        forPassword.setOnClickListener {
+        binding.forPassword.setOnClickListener {
             startActivity(Intent(this, ForgottenPasswordActivity::class.java))
         }
     }

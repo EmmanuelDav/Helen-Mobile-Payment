@@ -10,38 +10,43 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.ProgressDialog
-import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.utils.Constants
-import kotlinx.android.synthetic.main.activity_set_new_pin.*
+import com.iyke.onlinebanking.databinding.ActivitySetNewPinBinding
+import com.iyke.onlinebanking.ui.utils.CheckInternet
+import com.iyke.onlinebanking.ui.utils.Constants
 
 class SetNewPinActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivitySetNewPinBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_new_pin)
+        binding = ActivitySetNewPinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         val sh: SharedPreferences = this.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
         val firebaseEmail = sh.getString(Constants.EMAIL, "")
 
-        button_confirm_pin.setOnTouchListener OnTouchListener@{ v, event ->
+        binding.buttonConfirmPin.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    button_confirm_pin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    binding.buttonConfirmPin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_confirm_pin.setBackgroundResource(R.drawable.button_bg_custom)
+                    binding.buttonConfirmPin.setBackgroundResource(R.drawable.button_bg_custom)
 
-                    if (set_new_pin_1.length() < 6) {
-                        set_new_pin_1.error = "insert 6 digit pin"
+                    if (binding.setNewPin1.length() < 6) {
+                        binding.setNewPin1.error = "insert 6 digit pin"
                         return@OnTouchListener true
                     }
 
-                    if (set_new_pin_2.length() < 6) {
-                        set_new_pin_2.error = "insert 6 digit pin"
+                    if (binding.setNewPin2.length() < 6) {
+                        binding.setNewPin2.error = "insert 6 digit pin"
                         return@OnTouchListener true
                     }
 
-                    if (set_new_pin_1.text.toString() != set_new_pin_2.text.toString()) {
+                    if (binding.setNewPin2.text.toString() != binding.setNewPin2.text.toString()) {
                         Toast.makeText(this, "Pin doesn't match", Toast.LENGTH_SHORT).show()
                         return@OnTouchListener true
                     }
@@ -63,7 +68,7 @@ class SetNewPinActivity : AppCompatActivity() {
                     val db = FirebaseFirestore.getInstance()
                     db.collection("users")
                         .document(firebaseEmail!!)
-                        .update("pin", set_new_pin_1.text.toString())
+                        .update("pin", binding.setNewPin1.text.toString())
                         .addOnSuccessListener {
                             finish()
                             Toast.makeText(this, "Pin setup successful", Toast.LENGTH_SHORT).show()

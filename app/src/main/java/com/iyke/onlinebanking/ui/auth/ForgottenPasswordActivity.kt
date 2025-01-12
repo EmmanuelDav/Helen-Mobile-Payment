@@ -8,9 +8,7 @@ import com.iyke.onlinebanking.databinding.ActivityForgottenPasswordBinding
 
 class ForgottenPasswordActivity : AppCompatActivity() {
 
-
     private lateinit var  binding:ActivityForgottenPasswordBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

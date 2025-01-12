@@ -10,21 +10,23 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.iyke.onlinebanking.utils.CheckInternet
 import com.iyke.onlinebanking.R
-import kotlinx.android.synthetic.main.activity_setpin.*
+import com.iyke.onlinebanking.databinding.ActivitySetpinBinding
+import com.iyke.onlinebanking.ui.utils.CheckInternet
 
 class SetPinActivity : AppCompatActivity() {
 
+    private lateinit var binding:ActivitySetpinBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setpin)
-        val db = FirebaseFirestore.getInstance();
+        binding = ActivitySetpinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         if(FirebaseAuth.getInstance().currentUser != null)
         {
-            editText_phone_login.setText(FirebaseAuth.getInstance().currentUser?.email.toString())
+            binding.editTextPhoneLogin.setText(FirebaseAuth.getInstance().currentUser?.email.toString())
         }
         else
         {
@@ -33,17 +35,17 @@ class SetPinActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        button_login.setOnTouchListener OnTouchListener@{ v, event ->
+       binding.buttonLogin.setOnTouchListener OnTouchListener@{ v, event ->
             when (event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    button_login.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
+                    binding.buttonLogin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
                 MotionEvent.ACTION_UP -> {
-                    button_login.setBackgroundResource(R.drawable.button_bg_custom)
+                    binding.buttonLogin.setBackgroundResource(R.drawable.button_bg_custom)
 
-                    if(editText2_password.length() < 6)
+                    if(binding.editText2Password.length() < 6)
                     {
-                        editText2_password.error = "enter 6 digit pin"
+                        binding.editText2Password.error = "enter 6 digit pin"
                         return@OnTouchListener true
                     }
 
@@ -65,10 +67,10 @@ class SetPinActivity : AppCompatActivity() {
                             if (document != null)
                             {
                                 Log.d("MainActivity", "DocumentSnapshot data: ${document.data}")
-                                if(document["pin"].toString() != editText2_password.text.toString())
+                                if(document["pin"].toString() != binding.editText2Password.text.toString())
                                 {
                                    // progressBar_login.visibility = View.INVISIBLE
-                                    editText2_password.error = "incorrect pin"
+                                    binding.editText2Password.error = "incorrect pin"
                                 }
                                 else
                                 {
