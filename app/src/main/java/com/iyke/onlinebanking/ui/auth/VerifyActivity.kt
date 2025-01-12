@@ -17,7 +17,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyBinding
-import com.iyke.onlinebanking.ui.activities.MainActivity
+import com.iyke.onlinebanking.MainActivity
 import com.iyke.onlinebanking.ui.utils.Constants.BALANCE
 import com.iyke.onlinebanking.ui.utils.Constants.EMAIL
 import com.iyke.onlinebanking.ui.utils.Constants.NAME

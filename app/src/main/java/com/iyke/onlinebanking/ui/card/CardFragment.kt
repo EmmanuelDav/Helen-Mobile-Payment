@@ -1,24 +1,20 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.card
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import androidx.annotation.LayoutRes
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.databinding.FragmentCardBinding
-import com.iyke.onlinebanking.viewmodel.ProfileViewModel
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 
 class CardFragment : Fragment() {

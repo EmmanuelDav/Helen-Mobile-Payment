@@ -9,7 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.databinding.ActivitySignInBinding
 import com.iyke.onlinebanking.ui.utils.Constants
-import com.iyke.onlinebanking.ui.viewmodel.AuthViewModel
+import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
 class SignInActivity : AppCompatActivity() {
 

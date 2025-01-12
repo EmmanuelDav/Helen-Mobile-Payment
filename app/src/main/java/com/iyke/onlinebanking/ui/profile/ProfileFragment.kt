@@ -1,16 +1,12 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.google.android.material.textview.MaterialTextView
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentProfileBinding
 import com.iyke.onlinebanking.viewmodel.ProfileViewModel

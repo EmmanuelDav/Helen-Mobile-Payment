@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking.ui.viewmodel
+package com.iyke.onlinebanking.viewmodel
 
 import android.app.Activity
 import android.app.Application

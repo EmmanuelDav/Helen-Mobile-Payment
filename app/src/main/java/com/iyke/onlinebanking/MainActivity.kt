@@ -1,6 +1,5 @@
-package com.iyke.onlinebanking.ui.activities
+package com.iyke.onlinebanking
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,8 +9,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
-import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 

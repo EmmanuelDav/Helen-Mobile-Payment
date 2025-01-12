@@ -1,17 +1,14 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.stats
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.adapters.ViewPagerAdapter
-import com.iyke.onlinebanking.ui.home.SendHistory
-import kotlinx.android.synthetic.main.fragment_history.*
 
 class HistoryFragment : Fragment() {
 
