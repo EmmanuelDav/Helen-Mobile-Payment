@@ -1,135 +1,42 @@
 package com.iyke.onlinebanking.viewmodel
 
-import android.app.Activity
-import android.app.Application
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.firestore.FirebaseFirestore
+import androidx.lifecycle.viewModelScope
+import com.iyke.onlinebanking.data.local.entries.UsersEntity
 import com.iyke.onlinebanking.repository.AuthRepository
-import com.iyke.onlinebanking.ui.dialog.ProgressDialog
+import com.iyke.onlinebanking.utils.NetworkResults
+import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-open class AuthViewModel(authRepository: AuthRepository) : ViewModel() {
+class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
 
-    private val context = getApplication<Application>().applicationContext
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val _authResponse = MutableStateFlow<NetworkResults<UsersEntity>>(NetworkResults.Idle)
+    val authResponse :MutableStateFlow<NetworkResults<UsersEntity>> = _authResponse
 
-    fun loginWithEmailAndPassword(email: String?, password: String, activity: Activity) {
-        val callBox = ProgressDialog(activity)
-        callBox.show()
-        firebaseAuth.signInWithEmailAndPassword(email!!, password)
-            .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
-                if (task.isSuccessful) {
-                    saveUserDataWithSharedPreference(email, "null", "null")
 
-                    Intent(context, MainActivity::class.java).let { e ->
-                        e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                        context.startActivity(e)
-                    }
-                    callBox.dismiss()
-                } else {
-                    Toast.makeText(
-                        context.applicationContext,
-                        "Login Failure: " + task.exception!!.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    callBox.dismiss()
-                }
-            })
-    }
-
-    fun registerWithEmailAndPassword(
-        email: String?,
-        password: String?,
-        name: String,
-        activity: Activity
-    ) {
-        val callBox = ProgressDialog(activity)
-        callBox.show()
-        firebaseAuth.createUserWithEmailAndPassword(email!!, password!!)
-            .addOnCompleteListener(OnCompleteListener<AuthResult?> { task ->
-                if (task.isSuccessful) {
-                    saveUserDataWithSharedPreference(email, name, "null")
-                    Intent(context, VerifyPhoneNumber::class.java).let { e ->
-                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        context.startActivity(e)
-                    }
-                    callBox.dismiss()
-                } else {
-                    callBox.dismiss()
-                    Toast.makeText(
-                        context.applicationContext,
-                        "Registration Failure: " + task.exception!!.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
-    }
-
-    private fun saveUserDataWithSharedPreference(email: String, name: String, profilePic: String) {
-
-        context.getSharedPreferences(PREFERENCE, MODE_PRIVATE).let {
-            val myEdit = it.edit()
-            myEdit.putString(EMAIL, email)
-            myEdit.putString(NAME, name)
-            myEdit.putString(PROFILE, profilePic)
-            myEdit.apply()
+    fun loginWithEmail(email:String, password:String){
+        viewModelScope.launch {
+            authResponse.value = NetworkResults.Loading
+            authResponse.value = authRepository.loginWithEmail(email, password)
         }
     }
 
-    fun firebaseLogin(idToken: String, activity: Activity) {
-        val callBox = ProgressDialog(activity)
-        callBox.show()
-        GoogleAuthProvider.getCredential(idToken, null).let { it ->
-            firebaseAuth.signInWithCredential(it)
-                .addOnCompleteListener(OnCompleteListener { it ->
-                    if (it.isSuccessful) {
-                        FirebaseFirestore.getInstance().collection(USERS).document(firebaseAuth.currentUser!!.email.toString()).get()
-                            .addOnSuccessListener { doc ->
-                                if (!doc.exists()) {
-                                    saveUserDataWithSharedPreference(
-                                        firebaseAuth.currentUser!!.email.toString(),
-                                        firebaseAuth.currentUser!!.displayName.toString(),
-                                        firebaseAuth.currentUser!!.photoUrl.toString()
-                                    )
-                                    Intent(context, VerifyPhoneNumber::class.java).let { e ->
-                                        e.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        context.startActivity(e)
-                                    }
-                                    callBox.dismiss()
-                                } else {
-                                    saveUserDataWithSharedPreference(
-                                        firebaseAuth.currentUser!!.email.toString(),
-                                        firebaseAuth.currentUser!!.displayName.toString(),
-                                        firebaseAuth.currentUser!!.photoUrl.toString()
-                                    )
-
-                                    Intent(context, MainActivity::class.java).let { e ->
-                                        e.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                                        context.startActivity(e)
-                                    }
-                                    callBox.dismiss()
-                                }
-                            }.addOnFailureListener {
-                            Log.d(
-                                "VerifyActivity",
-                                "Log in failed because ${it.message}"
-                            )
-                        }
-
-                    }
-                }).addOnFailureListener {
-                    Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
-                    callBox.dismiss()
-                }
+    fun registerWithEmail(email: String, password: String, name: String) {
+        viewModelScope.launch {
+            _authResponse.value = NetworkResults.Loading
+            _authResponse.value = authRepository.registerWithEmail(email, password, name)
         }
     }
+
+    fun loginWithGoogle(idToken: String) {
+        viewModelScope.launch {
+            _authResponse.value = NetworkResults.Loading
+            _authResponse.value = authRepository.loginWithEmail(idToken)
+        }
+    }
+
 }
