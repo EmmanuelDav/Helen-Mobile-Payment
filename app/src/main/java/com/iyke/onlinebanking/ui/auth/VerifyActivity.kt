@@ -3,6 +3,9 @@ package com.iyke.onlinebanking.ui.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -42,38 +45,27 @@ class VerifyActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
-
-        binding.pinCodeView.setPinLockListener(mPinLockListener)
-        binding.pinCodeView.attachIndicatorDots(indicatorDots)
-        binding. pinCodeView.pinLength = 5
-        binding. pinCodeView.textColor = ContextCompat.getColor(this, R.color.black)
-        binding.indicatorDots.indicatorType = IndicatorDots.IndicatorType.FILL_WITH_ANIMATION
         sendVerificationCode(phoneNumber)
-    }
+        binding.pinEditText.transformationMethod = PasswordTransformationMethod.getInstance()
 
-    private val mPinLockListener: PinLockListener = object : PinLockListener {
-        override fun onComplete(pin: String) {
-            val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
-
-            if(!CheckInternet(applicationContext).checkNow())
-            {
-
+        binding.pinEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
             }
-            verifyCode(pin)
-        }
 
-        override fun onEmpty() {
-            Log.d("debugger", "Pin empty")
-        }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Do nothing
+            }
 
-        override fun onPinChange(pinLength: Int, intermediatePin: String) {
-            Log.d(
-                "debugger",
-                "Pin changed, new length $pinLength with intermediate pin $intermediatePin"
-            )
-        }
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 4) { // Replace 4 with your desired length
+                    verifyCode(s.toString()) // Call your logic here
+                }
+            }
+        })
+
     }
+
 
 
     private fun sendVerificationCode(phoneNumber: String)

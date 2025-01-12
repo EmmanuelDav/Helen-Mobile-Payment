@@ -3,8 +3,10 @@ package com.iyke.onlinebanking.ui.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.iyke.onlinebanking.databinding.ActivityForgottenPasswordBinding
+import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
 class ForgottenPasswordActivity : AppCompatActivity() {
 

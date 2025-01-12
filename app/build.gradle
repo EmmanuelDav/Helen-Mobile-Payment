@@ -118,4 +118,8 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.51'
     kapt 'com.google.dagger:hilt-compiler:2.46.1'
 
+    // google auth
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+
+
 }

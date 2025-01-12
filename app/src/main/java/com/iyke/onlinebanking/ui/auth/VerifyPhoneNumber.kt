@@ -1,12 +1,15 @@
 package com.iyke.onlinebanking.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.RequiresApi
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyPhoneNumberBinding
 import com.iyke.onlinebanking.utils.NetworkInformation
@@ -15,6 +18,8 @@ class VerifyPhoneNumber : AppCompatActivity() {
     lateinit var binding:ActivityVerifyPhoneNumberBinding
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyPhoneNumberBinding.inflate(layoutInflater)

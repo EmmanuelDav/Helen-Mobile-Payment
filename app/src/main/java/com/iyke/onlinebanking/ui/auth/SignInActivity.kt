@@ -4,17 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.iyke.onlinebanking.MainActivity
 import com.iyke.onlinebanking.databinding.ActivitySignInBinding
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants
+import com.iyke.onlinebanking.utils.NetworkResults
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.observeOn
+import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
 
     lateinit var authViewModel: AuthViewModel
-    lateinit var binding:ActivitySignInBinding
+    lateinit var binding: ActivitySignInBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +48,7 @@ class SignInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-               binding.emailInput.error = "Please Enter Valid Email"
+                binding.emailInput.error = "Please Enter Valid Email"
                 binding.emailInput.requestFocus()
                 return@setOnClickListener
             }
@@ -50,9 +60,35 @@ class SignInActivity : AppCompatActivity() {
 
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                authViewModel.loginWithEmailAndPassword(email, password, this)
+                authViewModel.loginWithEmail(email, password)
             }
         }
+
+        val progressDialog = ProgressDialog(applicationContext)
+
+        lifecycleScope.launch {
+            authViewModel.authResponse.collectLatest { result ->
+                when (result) {
+                    is NetworkResults.Loading -> {
+                        progressDialog.show()
+                    }
+                    is NetworkResults.Success -> {
+                        progressDialog.hide()
+
+                        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    is NetworkResults.Error -> {
+                        progressDialog.hide()
+
+                        Toast.makeText(this@SignInActivity, "Error: ${result.message}", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {}
+                }
+            }
+        }
+
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(secrets.clientId)
@@ -76,7 +112,7 @@ class SignInActivity : AppCompatActivity() {
         if (requestCode == Constants.RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            authViewModel.firebaseLogin(account.idToken!!, this)
+            authViewModel.loginWithGoogle(account.idToken!!)
         }
     }
 }

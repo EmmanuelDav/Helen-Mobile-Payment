@@ -9,8 +9,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.iyke.onlinebanking.databinding.ActivityMainBinding
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,13 +18,16 @@ class MainActivity : AppCompatActivity() {
     private var authStateListener: AuthStateListener? = null
     var userDataViewModel: UserDataViewModel? = null
     var firebaseAuth:FirebaseAuth?= null
+    private  lateinit var  binding:ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setContentView(R.layout.activity_main)
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
-        val bottomNavigationView = bottom_navigatin_view
+        val bottomNavigationView = binding.bottomNavigatinView
 
 
         val navController = findNavController(R.id.nav_fragment)

@@ -8,20 +8,21 @@ import com.iyke.onlinebanking.repository.AuthRepository
 import com.iyke.onlinebanking.utils.NetworkResults
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
 
-    private val _authResponse = MutableStateFlow<NetworkResults<UsersEntity>>(NetworkResults.Idle)
-    val authResponse :MutableStateFlow<NetworkResults<UsersEntity>> = _authResponse
+    private var _authResponse = MutableStateFlow<NetworkResults<UsersEntity>>(NetworkResults.Idle)
+    val authResponse : StateFlow<NetworkResults<UsersEntity>> get() = _authResponse
 
 
     fun loginWithEmail(email:String, password:String){
         viewModelScope.launch {
-            authResponse.value = NetworkResults.Loading
-            authResponse.value = authRepository.loginWithEmail(email, password)
+            _authResponse.value = NetworkResults.Loading
+            _authResponse.value = authRepository.loginWithEmail(email, password)
         }
     }
 
