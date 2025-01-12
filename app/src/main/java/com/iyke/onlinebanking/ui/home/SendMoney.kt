@@ -1,30 +1,34 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.databinding.FragmentAddMoneyBinding
+import com.iyke.onlinebanking.databinding.FragmentSendMoneyBinding
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel
 
-class AddMoney : Fragment() {
+class SendMoney : Fragment() {
 
-    var userDataViewModel: UserDataViewModel? = null
-
+    lateinit var userDataViewModel: UserDataViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v: FragmentAddMoneyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_money, container, false)
+
+        val v:FragmentSendMoneyBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_send_money, container, false)
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
-        v.exitAddM.setOnClickListener { findNavController().popBackStack() }
+        v.exitSend.setOnClickListener { findNavController().popBackStack() }
         v.model = userDataViewModel
         v.executePendingBindings()
+        val mBundle: Bundle = requireArguments()
+        val user:Users = mBundle.getParcelable<Users>("User")!!
+        v.data = user
+        v.model?.getUsers(user)
         return v.root
     }
 }

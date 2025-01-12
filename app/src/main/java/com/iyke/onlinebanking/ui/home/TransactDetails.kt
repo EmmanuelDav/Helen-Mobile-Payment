@@ -1,4 +1,4 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

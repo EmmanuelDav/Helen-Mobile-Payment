@@ -1,23 +1,28 @@
 package com.iyke.onlinebanking.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivitySetpinBinding
-import com.iyke.onlinebanking.ui.utils.CheckInternet
+import com.iyke.onlinebanking.ui.utils.NetworkInformation
 
 class SetPinActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivitySetpinBinding
 
+    @SuppressLint("ClickableViewAccessibility")
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySetpinBinding.inflate(layoutInflater)
@@ -53,7 +58,7 @@ class SetPinActivity : AppCompatActivity() {
                     val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
 
-                    if(!CheckInternet(this).checkNow())
+                    if(!NetworkInformation(this).checkNow())
                     {
                         return@OnTouchListener true
                     }

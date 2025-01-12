@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/homeFragment"
-            android:name="com.iyke.onlinebanking.ui.fragments.HomeFragment"
+            android:name="com.iyke.onlinebanking.ui.home.HomeFragment"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home" >
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
             android:id="@+id/addMoney"
-            android:name="com.iyke.onlinebanking.ui.fragments.AddMoney"
+            android:name="com.iyke.onlinebanking.ui.home.AddMoney"
             android:label="fragment_add_money"
             tools:layout="@layout/fragment_add_money" />
     <fragment
@@ -93,7 +93,7 @@
             android:label="CardDetails" />
     <fragment
             android:id="@+id/sentFragment"
-            android:name="com.iyke.onlinebanking.ui.fragments.SentFragment"
+            android:name="com.iyke.onlinebanking.ui.home.SentFragment"
             android:label="fragment_sent"
             tools:layout="@layout/fragment_sent" >
         <action
@@ -102,11 +102,11 @@
     </fragment>
     <fragment
             android:id="@+id/sendMoney2"
-            android:name="com.iyke.onlinebanking.ui.fragments.SendMoney"
+            android:name="com.iyke.onlinebanking.ui.home.SendMoney"
             android:label="SendMoney" />
     <fragment
             android:id="@+id/transactFragment"
-            android:name="com.iyke.onlinebanking.ui.fragments.TransactFragment"
+            android:name="com.iyke.onlinebanking.ui.home.TransactFragment"
             android:label="fragment_transact"
             tools:layout="@layout/fragment_transact" />
 </navigation>

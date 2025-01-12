@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivitySetNewPinBinding
-import com.iyke.onlinebanking.ui.utils.CheckInternet
+import com.iyke.onlinebanking.ui.utils.NetworkInformation
 import com.iyke.onlinebanking.ui.utils.Constants
 
 class SetNewPinActivity : AppCompatActivity() {
@@ -59,7 +59,7 @@ class SetNewPinActivity : AppCompatActivity() {
                         InputMethodManager.SHOW_FORCED
                     )
 
-                    if (!CheckInternet(this).checkNow()) {
+                    if (!NetworkInformation(this).checkNow()) {
                         return@OnTouchListener true
                     }
 

@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.adapters.ViewPagerAdapter
+import com.iyke.onlinebanking.ui.home.SendHistory
 import kotlinx.android.synthetic.main.fragment_history.*
 
 class HistoryFragment : Fragment() {
@@ -34,7 +35,7 @@ class HistoryFragment : Fragment() {
     }
     private fun intiView() {
         adapter = ViewPagerAdapter(requireActivity())
-        adapter.addFragment(com.iyke.onlinebanking.ui.fragments.SendHistory())
+        adapter.addFragment(SendHistory())
         adapter.addFragment(ReceiveFragment())
         viewPager.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

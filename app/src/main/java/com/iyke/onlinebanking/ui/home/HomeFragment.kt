@@ -1,7 +1,6 @@
-package com.iyke.onlinebanking.ui.fragments
+package com.iyke.onlinebanking.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,8 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.databinding.FragmentHomeBinding

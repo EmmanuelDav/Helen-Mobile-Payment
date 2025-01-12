@@ -9,7 +9,7 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyPhoneNumberBinding
-import com.iyke.onlinebanking.ui.utils.CheckInternet
+import com.iyke.onlinebanking.ui.utils.NetworkInformation
 
 class VerifyPhoneNumber : AppCompatActivity() {
     lateinit var binding:ActivityVerifyPhoneNumberBinding
@@ -34,7 +34,7 @@ class VerifyPhoneNumber : AppCompatActivity() {
                     val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
 
-                    if(!CheckInternet(this).checkNow())
+                    if(!NetworkInformation(this).checkNow())
                     {
                         return@OnTouchListener true
                     }
