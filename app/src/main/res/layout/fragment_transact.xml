@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="statement"
-                type="com.iyke.onlinebanking.models.Statement" />
+                type="com.iyke.onlinebanking.models.BankStatements" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     style="@style/TextAppearance.MaterialComponents.Headline5"
-                android:text="@{statement.client}"/>
+                android:text="@{statement.sender}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"

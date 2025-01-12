@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.databinding.FragmentCardBinding
+import com.iyke.onlinebanking.ui.adapters.UniversalRecyclerAdapter
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 
 class CardFragment : Fragment() {

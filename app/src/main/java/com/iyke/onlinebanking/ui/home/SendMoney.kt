@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentSendMoneyBinding
+import com.iyke.onlinebanking.models.Users
 import com.iyke.onlinebanking.viewmodel.UserDataViewModel
 
 class SendMoney : Fragment() {
@@ -26,7 +27,7 @@ class SendMoney : Fragment() {
         v.model = userDataViewModel
         v.executePendingBindings()
         val mBundle: Bundle = requireArguments()
-        val user:Users = mBundle.getParcelable<Users>("User")!!
+        val user: Users = mBundle.getParcelable<Users>("User")!!
         v.data = user
         v.model?.getUsers(user)
         return v.root

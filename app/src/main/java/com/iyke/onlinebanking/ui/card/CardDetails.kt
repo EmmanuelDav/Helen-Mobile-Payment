@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentCardDetailsBinding
+import com.iyke.onlinebanking.models.CardInfo
 
 class CardDetails : Fragment() {
 
@@ -17,7 +18,7 @@ class CardDetails : Fragment() {
     ): View {
         val v :FragmentCardDetailsBinding = DataBindingUtil.inflate(inflater ,R.layout.fragment_card_details, container, false)
         val mBundle: Bundle = requireArguments()
-        val user: CardDetails = mBundle.getParcelable<CardDetails>("Cards")!!
+        val user: CardInfo = mBundle.getParcelable<CardInfo>("Cards")!!
         v.cards = user
         return v.root
     }

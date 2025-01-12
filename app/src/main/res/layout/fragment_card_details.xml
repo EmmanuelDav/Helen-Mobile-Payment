@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="cards"
-                type="com.iyke.onlinebanking.models.CardDetails" />
+                type="com.iyke.onlinebanking.models.CardInfo" />
 
 
     </data>
@@ -145,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
-                    android:text="@{cards.cardDate}"
+                    android:text="@{cards.cardExpiryDate}"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
@@ -209,7 +209,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
-                    android:text="@{cards.zipCode}"
+                    android:text="@{cards.usersZipCode}"
 
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -242,7 +242,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/textGrey"
                     android:layout_marginTop="10dp"
-                    android:text="@{cards.city}"
+                    android:text="@{cards.usersCity}"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />

@@ -16,6 +16,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentStatisticsBinding
+import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
 
 class StatisticsFragment : Fragment() {
 

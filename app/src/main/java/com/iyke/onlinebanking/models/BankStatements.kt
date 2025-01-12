@@ -10,6 +10,6 @@ class BankStatements(
     var amount: String? = "",
     var type: String? = "",
     var sender: String? = "",
-    var timestamp: Timestamp,
+    val time: com.google.firebase.Timestamp,
     var message: String? = ""
 ) : Parcelable

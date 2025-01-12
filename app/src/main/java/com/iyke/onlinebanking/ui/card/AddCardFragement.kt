@@ -14,76 +14,75 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.FragmentAddCardFragemntBinding
-import com.iyke.onlinebanking.utils.Constants
-import com.iyke.onlinebanking.utils.Constants.CARDS
+import com.iyke.onlinebanking.ui.utils.Constants
+import com.iyke.onlinebanking.ui.utils.Constants.CARDS
 import com.iyke.onlinebanking.viewmodel.StatisticsViewModel
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.fragment_add_card_fragemnt.*
 
 class AddCardFragement : Fragment() {
-
     private var statisticsViewModel: StatisticsViewModel? = null
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
+
+    private lateinit var binding: FragmentAddCardFragemntBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val v: FragmentAddCardFragemntBinding =
+        binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_card_fragemnt, container, false)
         statisticsViewModel = ViewModelProvider(this).get(StatisticsViewModel::class.java)
-        v.exitAddC.setOnClickListener {
+        binding.exitAddC.setOnClickListener {
             findNavController().popBackStack()
         }
         val sh: SharedPreferences = requireActivity().getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
         val firebaseEmail = sh.getString(Constants.EMAIL, "")
-        v.addCard.setOnClickListener {
-            val pcardName = cardName.text.toString()
-            val pcardLabel = cardLabel.text.toString()
-            val pcardNumber = cardNumber.text.toString()
-            val pcvv = cvv.text.toString()
-            val pcity = city.text.toString()
-            val pexpirtation = cardDate.text.toString()
-            val pzipCode = zipCode.text.toString()
+        binding.addCard.setOnClickListener {
+            val pcardName = binding.cardName.text.toString()
+            val pcardLabel = binding.cardLabel.text.toString()
+            val pcardNumber = binding.cardNumber.text.toString()
+            val pcvv = binding.cvv.text.toString()
+            val pcity = binding.city.text.toString()
+            val pexpirtation = binding.cardDate.text.toString()
+            val pzipCode = binding.zipCode.text.toString()
 
             if (pcardName.isEmpty()) {
-                cardName.error = "Please Enter cardName"
-                cardName.requestFocus()
+                binding.cardName.error = "Please Enter cardName"
+                binding.cardName.requestFocus()
                 return@setOnClickListener
             }
 
             if (pcardLabel.isEmpty()) {
-                cardLabel.error = "Please Enter bank"
-                cardLabel.requestFocus()
+                binding.cardLabel.error = "Please Enter bank"
+                binding.cardLabel.requestFocus()
                 return@setOnClickListener
             }
 
             if (pcardNumber.isEmpty()) {
-                cardNumber.error = "Please Enter cardNumber"
-                cardNumber.requestFocus()
+                binding.cardNumber.error = "Please Enter cardNumber"
+                binding.cardNumber.requestFocus()
                 return@setOnClickListener
             }
             if (pcvv.isEmpty()) {
-                cvv.error = "Please enter Your cvv "
-                cvv.requestFocus()
+                binding.cvv.error = "Please enter Your cvv "
+                binding.cvv.requestFocus()
                 return@setOnClickListener
             }
 
             if (pcity.isEmpty()) {
-                city.error = "Please enter your city "
-                city.requestFocus()
+                binding.city.error = "Please enter your city "
+                binding.city.requestFocus()
                 return@setOnClickListener
             }
             if (pexpirtation.isEmpty()) {
-                cardDate.error = "Please enter card Date "
-                cardDate.requestFocus()
+                binding.cardDate.error = "Please enter card Date "
+                binding.cardDate.requestFocus()
                 return@setOnClickListener
             }
 
             if (pzipCode.isEmpty()) {
-                zipCode.error = "Please enter your city's zipcode "
-                zipCode.requestFocus()
+                binding.zipCode.error = "Please enter your city's zipcode "
+                binding.zipCode.requestFocus()
                 return@setOnClickListener
             }
             if (pcvv.isNotEmpty() && pcity.isNotEmpty() && pexpirtation.isNotEmpty() &&
@@ -116,6 +115,6 @@ class AddCardFragement : Fragment() {
                     }
             }
         }
-        return v.root
+        return binding.root
     }
 }
