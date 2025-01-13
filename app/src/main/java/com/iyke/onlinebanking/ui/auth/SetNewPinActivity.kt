@@ -9,16 +9,21 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivitySetNewPinBinding
 import com.iyke.onlinebanking.utils.NetworkInformation
 import com.iyke.onlinebanking.utils.Constants
+import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import kotlinx.coroutines.launch
 
 class SetNewPinActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySetNewPinBinding
+    private lateinit var viewModel: AuthViewModel
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +31,10 @@ class SetNewPinActivity : AppCompatActivity() {
         binding = ActivitySetNewPinBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this)[AuthViewModel::class]
 
-        val sh: SharedPreferences = this.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+        val sh: SharedPreferences =
+            this.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
         val firebaseEmail = sh.getString(Constants.EMAIL, "")
 
         binding.buttonConfirmPin.setOnTouchListener OnTouchListener@{ v, event ->
@@ -35,6 +42,7 @@ class SetNewPinActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                     binding.buttonConfirmPin.setBackgroundResource(R.drawable.icon_menu_bg_custom_2)
                 }
+
                 MotionEvent.ACTION_UP -> {
                     binding.buttonConfirmPin.setBackgroundResource(R.drawable.button_bg_custom)
 
@@ -67,23 +75,22 @@ class SetNewPinActivity : AppCompatActivity() {
 
                     val progressDialog = ProgressDialog(this)
                     progressDialog.show()
-                    val db = FirebaseFirestore.getInstance()
-                    db.collection("users")
-                        .document(firebaseEmail!!)
-                        .update("pin", binding.setNewPin1.text.toString())
-                        .addOnSuccessListener {
+                    lifecycleScope.launch {
+                        val result =
+                            viewModel.updatePin(firebaseEmail!!, binding.setNewPin1.text.toString())
+                        if (result == "Upload successful") {
                             finish()
-                            Toast.makeText(this, "Pin setup successful", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@SetNewPinActivity, "Pin setup successful", Toast.LENGTH_SHORT).show()
                             progressDialog.dismiss()
 
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "Pin setup failed. try again!", Toast.LENGTH_SHORT)
+                        } else {
+                            Toast.makeText(this@SetNewPinActivity, "Pin setup failed. try again!", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("SettNewPinActivity :", "error ${it.message}")
+                            Log.d("SettNewPinActivity :", "error ${result}")
                             finish()
                             progressDialog.dismiss()
                         }
+                    }
 
                 }
             }

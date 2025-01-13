@@ -11,6 +11,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.iyke.onlinebanking.R
 import com.iyke.onlinebanking.databinding.ActivityVerifyBinding
 import com.iyke.onlinebanking.MainActivity
+import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.EMAIL
 import com.iyke.onlinebanking.utils.Constants.NAME
@@ -29,21 +32,27 @@ import com.iyke.onlinebanking.utils.Constants.PIN
 import com.iyke.onlinebanking.utils.Constants.PREFERENCE
 import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.utils.Constants.USERS
+import com.iyke.onlinebanking.utils.NetworkResults
+import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 
 class VerifyActivity : AppCompatActivity() {
 
     private lateinit var storedVerificationId: String
-    private lateinit var auth: FirebaseAuth
     private lateinit var binding:ActivityVerifyBinding
+    private lateinit var viewModel: AuthViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        viewModel = ViewModelProvider(this)[AuthViewModel::class]
+
         val phoneNumber: String = intent.getStringExtra("phoneNumber")!!
         sendVerificationCode(phoneNumber)
         binding.pinEditText.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -64,6 +73,31 @@ class VerifyActivity : AppCompatActivity() {
             }
         })
 
+
+        val progressDialog = ProgressDialog(applicationContext)
+
+        lifecycleScope.launch {
+            viewModel.authResponse.collectLatest { result ->
+                when (result) {
+                    is NetworkResults.Loading -> {
+                        progressDialog.show()
+                    }
+                    is NetworkResults.Success -> {
+                        progressDialog.hide()
+
+                        val intent = Intent(this@VerifyActivity, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    is NetworkResults.Error -> {
+                        progressDialog.hide()
+
+                        Toast.makeText(this@VerifyActivity, "Error: ${result.message}", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {}
+                }
+            }
+        }
     }
 
 
@@ -94,7 +128,7 @@ class VerifyActivity : AppCompatActivity() {
            // editText_ver_code.setText(code)
             Log.d("VerifyActivity", "code complete:" + code.toString())
           //  verify_progressBar.visibility = View.VISIBLE
-            signInWithPhoneAuthCredential(credential)
+            viewModel.loginWithPhoneNumber(credential)
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
@@ -130,63 +164,12 @@ class VerifyActivity : AppCompatActivity() {
         }
     }
 
+
     private fun verifyCode(code: String)
     {
         val credential:PhoneAuthCredential = PhoneAuthProvider.getCredential(storedVerificationId, code)
-        signInWithPhoneAuthCredential(credential)
+        viewModel.loginWithPhoneNumber(credential)
     }
 
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val sh = getSharedPreferences(PREFERENCE, MODE_PRIVATE)
-                    val email = sh.getString(EMAIL, "")
-                    val name = sh.getString(NAME, "")
-                    val profilePic = sh.getString(PROFILE, "")
-
-
-                    val data = hashMapOf(
-                        EMAIL to email,
-                        NAME to name,
-                        PROFILE to profilePic,
-                        PHONE_NUMBER to auth.currentUser!!.phoneNumber,
-                        BALANCE to null,
-                        PIN to null
-                    )
-
-                    FirebaseFirestore.getInstance().collection(USERS).document(email!!)
-                        .set(data)
-                        .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully written!") }
-                        .addOnFailureListener { e -> Log.w("TAG", "Error writing document", e) }
-
-                    val docRef = FirebaseFirestore.getInstance().collection(USERS).document(email)
-                       docRef.get()
-                           .addOnSuccessListener { doc ->
-                               if(doc[BALANCE] == null)
-                               {
-                                   docRef.update(BALANCE,1000)
-                               }
-                               intent = Intent(this, MainActivity::class.java)
-                               intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //kills previous activities
-                               startActivity(intent)
-                               Log.d("VerifyActivity", "signInWithCredential:success")
-                           }
-                           .addOnFailureListener {   Log.d("VerifyActivity", "Log in failed because ${it.message}") }
-
-
-                    // Sign in success, update UI with the signed-in user's information
-                } else {
-                    // Sign in failed, display a message and update the UI
-                   // verify_progressBar.visibility = View.INVISIBLE
-                    Log.w("VerifyActivity", "signInWithCredential:failure", task.exception)
-                    Toast.makeText(this@VerifyActivity,"signInWithCredential:failure",Toast.LENGTH_SHORT).show()
-                    finish() //finish this activity and get back to registration activity
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                        Toast.makeText(this@VerifyActivity,"code entered was invalid",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-    }
 }
