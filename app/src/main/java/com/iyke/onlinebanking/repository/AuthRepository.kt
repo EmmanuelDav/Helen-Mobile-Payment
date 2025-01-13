@@ -22,7 +22,13 @@ class AuthRepository @Inject constructor(
     suspend fun loginWithEmail(email: String, password: String): NetworkResults<UsersEntity> {
         return try {
             auth.signInWithEmailAndPassword(email, password).await()
-            val user = UsersEntity(email = email)
+            val existingUser = usersDao.getExistingUser()
+            val user = UsersEntity(email = email,
+                name = existingUser?.name,
+                profileUrl = existingUser?.profileUrl,
+                balance = existingUser?.balance,
+                phoneNumber = existingUser?.phoneNumber
+            )
             NetworkResults.Success(user)
         } catch (e: Exception) {
             NetworkResults.Error(e.message!!)
@@ -37,8 +43,17 @@ class AuthRepository @Inject constructor(
     ): NetworkResults<UsersEntity> {
         return try {
             auth.createUserWithEmailAndPassword(email, password).await()
-            val user = UsersEntity(email = email, name = name)
-            val firestore = uploadUserDataToFireStore(user.email!!, "", "")
+            val firestore = uploadUserDataToFireStore(email, name, "")
+
+            val existingUser = usersDao.getExistingUser()
+            val user = UsersEntity(email = email,
+                name = existingUser?.name,
+                profileUrl = existingUser?.profileUrl,
+                balance = existingUser?.balance,
+                phoneNumber = existingUser?.phoneNumber,
+                userId = firestore.getOrNull()?:existingUser?.userId
+            )
+
             if (firestore.isSuccess){
                 usersDao.insertUsers(user)
                 NetworkResults.Success(user)
@@ -56,14 +71,15 @@ class AuthRepository @Inject constructor(
             val credentials = GoogleAuthProvider.getCredential(idToken, null)
             auth.signInWithCredential(credentials)
             val firebaseUser = auth.currentUser ?: throw Exception("Google auth failed")
+            val firestore = uploadUserDataToFireStore(firebaseUser.email!!, firebaseUser.displayName!!, firebaseUser.photoUrl.toString())
             val user = UsersEntity(
                 email = firebaseUser.email,
                 name = firebaseUser.displayName,
                 profileUrl = firebaseUser.photoUrl.toString(),
                 balance = "0.00",
-                phoneNumber = ""
+                phoneNumber = "",
+                userId = firestore.getOrNull()?:""
             )
-            val firestore = uploadUserDataToFireStore(firebaseUser.email!!, firebaseUser.displayName!!, firebaseUser.photoUrl.toString())
             if (firestore.isSuccess){
                 usersDao.insertUsers(user)
                 NetworkResults.Success(user)
@@ -79,14 +95,16 @@ class AuthRepository @Inject constructor(
         return try {
             auth.signInWithCredential(credential)
             val firebaseUser = auth.currentUser ?: throw Exception("Google auth failed")
+            val firestore = uploadUserDataToFireStore(firebaseUser.email!!, firebaseUser.displayName!!, firebaseUser.photoUrl.toString())
+
             val user = UsersEntity(
                 email = firebaseUser.email,
                 name = firebaseUser.displayName,
                 profileUrl = firebaseUser.photoUrl.toString(),
                 balance = "0.00",
-                phoneNumber = ""
+                phoneNumber = "",
+                userId = firestore.getOrNull()?:""
             )
-            val firestore = uploadUserDataToFireStore(firebaseUser.email!!, firebaseUser.displayName!!, firebaseUser.photoUrl.toString())
             if (firestore.isSuccess){
                 usersDao.insertUsers(user)
                 NetworkResults.Success(user)
@@ -99,7 +117,7 @@ class AuthRepository @Inject constructor(
     }
 
 
-    private suspend fun uploadUserDataToFireStore(email: String, name: String, profileUrl:String):Result<Unit>{
+    private suspend fun uploadUserDataToFireStore(email: String, name: String, profileUrl: String): Result<String> {
         return try {
             val users = hashMapOf(
                 "name" to name,
@@ -107,15 +125,14 @@ class AuthRepository @Inject constructor(
                 "profileUrl" to profileUrl,
                 "balance" to "0.00",
                 "phoneNumber" to "",
-                "balance" to "1000"
+                "balance" to "1000" // Note: You have two "balance" keys here.
             )
-            firestore.collection(USERS).document(email).set(users).await()
-            Result.success(Unit)
-        } catch (e: Exception){
-            Result.failure(e.cause!!)
+            val documentReference = firestore.collection(USERS).document(email)
+            documentReference.set(users).await()
+            Result.success(documentReference.id)
+        } catch (e: Exception) {
+            Result.failure(e)
         }
     }
-
-
 
 }

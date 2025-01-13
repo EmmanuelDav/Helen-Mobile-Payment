@@ -20,10 +20,11 @@ import com.iyke.onlinebanking.utils.Constants.BALANCE
 import com.iyke.onlinebanking.utils.Constants.STATEMENT
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.activities.SetNewPinActivity
-import com.iyke.onlinebanking.intface.StatementInterface
-import com.iyke.onlinebanking.intface.UserInterface
-import com.iyke.onlinebanking.models.Statement
+import com.iyke.onlinebanking.models.BankStatements
+import com.iyke.onlinebanking.models.Users
+import com.iyke.onlinebanking.ui.auth.SetNewPinActivity
+import com.iyke.onlinebanking.ui.bind.StatementInterface
+import com.iyke.onlinebanking.ui.bind.UserInterface
 import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.AMOUNT
 import com.iyke.onlinebanking.utils.Constants.CLIENT_NAME
@@ -35,16 +36,16 @@ import kotlin.random.Random
 
 
 class UserDataViewModel(application: Application) : AndroidViewModel(application),
-    UserInterface<Users>, StatementInterface<Statement> {
+    UserInterface<Users>, StatementInterface<BankStatements> {
 
 
     private val context = getApplication<Application>().applicationContext
     var basicListener: UserInterface<Users> = this
-    var statementlistener: StatementInterface<Statement> = this
+    var statementlistener: StatementInterface<BankStatements> = this
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
-    val statements = MutableLiveData<ArrayList<Statement>>(ArrayList<Statement>())
-    var userData = MutableLiveData<Users>()
-    val users = MutableLiveData<ArrayList<Users>>(ArrayList<Users>())
+    val statements = MutableLiveData(ArrayList<BankStatements>())
+    var userData = MutableLiveData<Users?>()
+    val users = MutableLiveData(ArrayList<Users>())
     lateinit var homeFragment: View
     lateinit var sendFragment: View
     val amountAdded = MutableLiveData<String>()
@@ -155,7 +156,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
                             }
 
                         } else{
-                            view.context.startActivity(Intent(context,SetNewPinActivity::class.java))
+                            view.context.startActivity(Intent(context, SetNewPinActivity::class.java))
                         }
                     }
                     if (document[BALANCE].toString().toInt() < amountAdded.value!!.toInt()) {
@@ -296,13 +297,13 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
         val progressDialog = ProgressDialog(fragment.context)
         progressDialog.show()
         homeFragment = fragment
-        val statementArray = ArrayList<Statement>()
+        val statementArray = ArrayList<BankStatements>()
         db.collection(USERS).document(firebaseEmail!!)
             .collection(STATEMENT).orderBy("time", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
                 for (doc in documents) {
-                    val statement = Statement(
+                    val statement = BankStatements(
                         doc[AMOUNT].toString(),
                         doc[TYPE].toString(),
                         doc[CLIENT_NAME].toString(),
@@ -316,7 +317,7 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
             }.addOnFailureListener {}
     }
 
-    override fun onItemClick(statement: Statement) {
+    override fun onItemClick(statement: BankStatements) {
         val bundle = Bundle()
         bundle.putParcelable("statement", statement)
         Navigation.findNavController(homeFragment)

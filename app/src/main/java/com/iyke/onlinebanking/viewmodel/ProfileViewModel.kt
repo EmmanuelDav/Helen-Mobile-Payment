@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.iyke.onlinebanking.R
+import com.iyke.onlinebanking.models.Users
 import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.utils.Constants.EMAIL
 import com.iyke.onlinebanking.utils.Constants.IMAGES
@@ -21,7 +22,6 @@ import com.iyke.onlinebanking.utils.Constants.NAME
 import com.iyke.onlinebanking.utils.Constants.PHONE_NUMBER
 import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.utils.Constants.USERS
-import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.*
 
 

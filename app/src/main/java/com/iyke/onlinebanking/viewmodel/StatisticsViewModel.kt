@@ -12,19 +12,21 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.iyke.onlinebanking.R
-import com.iyke.onlinebanking.intface.CardClicked
-import com.iyke.onlinebanking.models.CardDetails
-import com.iyke.onlinebanking.models.Statement
+import com.iyke.onlinebanking.models.BankStatements
+import com.iyke.onlinebanking.models.CardInfo
+import com.iyke.onlinebanking.ui.bind.CardClicked
+import com.iyke.onlinebanking.ui.card.CardDetails
 import com.iyke.onlinebanking.utils.Constants
 
-class StatisticsViewModel(application: Application) : AndroidViewModel(application),CardClicked<CardDetails> {
+class StatisticsViewModel(application: Application) : AndroidViewModel(application),
+    CardClicked<CardInfo> {
 
     private val context = getApplication<Application>().applicationContext
     private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
-    var cardListener: CardClicked<CardDetails> = this
+    var cardListener: CardClicked<CardInfo> = this
 
-    var statementArrayList:ArrayList<Statement> = ArrayList()
-    val cards = MutableLiveData<ArrayList<CardDetails>>(ArrayList<CardDetails>())
+    var statementArrayList:ArrayList<BankStatements> = ArrayList()
+    val cards = MutableLiveData<ArrayList<CardInfo>>(ArrayList<CardInfo>())
     lateinit var cardDetails: View
 
 
@@ -38,7 +40,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             .get()
             .addOnSuccessListener { documents ->
                 for (doc in documents) {
-                    val statement = Statement(
+                    val statement = BankStatements(
                         doc[Constants.AMOUNT].toString(),
                         doc[Constants.TYPE].toString(),
                         doc[Constants.CLIENT_NAME].toString(),
@@ -58,9 +60,9 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             .collection(Constants.CARDS)
             .get()
             .addOnSuccessListener { documents ->
-                val cardDetails = ArrayList<CardDetails>()
+                val cardDetails = ArrayList<CardInfo>()
                 for (doc in documents) {
-                    val card = CardDetails(
+                    val card = CardInfo(
                         doc["CardLabel"].toString(),
                         doc["CardName"].toString(),
                         doc["CardNumber"].toString(),
@@ -75,7 +77,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             }.addOnFailureListener {}
     }
 
-    override fun onCardClick(cards: CardDetails) {
+    override fun onCardClick(cards: CardInfo) {
         val bundle = Bundle()
         bundle.putParcelable("Cards", cards)
         Navigation.findNavController(cardDetails).navigate(R.id.action_cardFragment_to_cardDetails, bundle)

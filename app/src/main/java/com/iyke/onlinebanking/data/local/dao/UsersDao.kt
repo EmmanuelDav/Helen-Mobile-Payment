@@ -13,9 +13,12 @@ interface UsersDao {
     suspend fun insertUsers(users: UsersEntity):Long
 
     @Query("SELECT * FROM db_users WHERE userId = :id")
-    suspend fun getUserByID(id: Int):UsersEntity
+    suspend fun getUserByID(id: String):UsersEntity
 
     @Delete
     suspend fun deleteUser(users: UsersEntity)
+
+    @Query("SELECT * FROM db_users LIMIT 1")
+    suspend fun getExistingUser(): UsersEntity?
 
 }
