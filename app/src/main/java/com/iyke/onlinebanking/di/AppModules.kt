@@ -46,9 +46,8 @@ object AppModules {
 
     @Provides
     @Singleton
-    fun providersStatementDao(appDatabase: AppDatabase) {
-        appDatabase.getBankStatementDao()
-    }
+    fun providersStatementDao(appDatabase: AppDatabase) = appDatabase.getBankStatementDao()
+
 
     @Provides
     @Singleton

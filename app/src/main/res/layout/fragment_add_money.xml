@@ -82,7 +82,7 @@
                 android:textSize="15sp"
                 android:id="@+id/confirmAddMoney"
                 android:textColor="@color/white"
-                android:onClick="@{model.navigateView}"
+                android:onClick="@{model::navigateView}"
                 android:backgroundTint="@color/green"
                 android:text="Confirm"
                 android:textAllCaps="false"

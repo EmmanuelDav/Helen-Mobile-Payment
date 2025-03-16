@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
@@ -15,7 +16,7 @@ import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
 class WelcomeActivity : AppCompatActivity() {
 
-    lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: AuthViewModel
     private lateinit var binding: ActivityWelcomeBinding
 
 
@@ -24,14 +25,14 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(clientId)
-            .requestEmail()
-            .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(clientId)
+//            .requestEmail()
+//            .build()
+//
+//        val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
         binding.createAccount.setOnClickListener {
@@ -42,7 +43,7 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
         binding.googleLogin.setOnClickListener {
-            startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
+            //startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
         }
 
     }
@@ -52,7 +53,7 @@ class WelcomeActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)!!
-            authViewModel.firebaseLogin(account.idToken!!, this)
+            authViewModel.loginWithGoogle(account.idToken!!)
         }
     }
 }

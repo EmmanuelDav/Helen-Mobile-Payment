@@ -14,25 +14,25 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activities.ForgottenPasswordActivity"
+                android:name=".ui.auth.ForgottenPasswordActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.MainActivity"
+                android:name=".MainActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.SignInActivity"
+                android:name=".ui.auth.SignInActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.VerifyActivity"
+                android:name=".ui.auth.VerifyActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.SetPinActivity"
+                android:name=".ui.auth.SetPinActivity"
                 android:exported="false" />
-        <activity android:name=".activities.SetNewPinActivity" />
-        <activity android:name=".activities.VerifyPhoneNumber" />
-        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".ui.auth.SetNewPinActivity" />
+        <activity android:name=".ui.auth.VerifyPhoneNumber" />
+        <activity android:name=".ui.auth.SignUpActivity" />
         <activity
-                android:name=".activities.WelcomeActivity"
+                android:name=".WelcomeActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

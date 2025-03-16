@@ -13,10 +13,7 @@ interface BankStatementDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStatement(statement: BankStatementsEntity)
 
-    @Query("SELECT * FROM db_statement WHERE userId = :id")
+    @Query("SELECT * FROM db_statement WHERE id = :id")
     suspend fun getStatementsByUserId(id :Long): List<BankStatementsEntity>
-
-    @Delete
-    suspend fun deleteStatement(id:Long)
 
 }

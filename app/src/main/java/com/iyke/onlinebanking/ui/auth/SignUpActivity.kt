@@ -72,15 +72,15 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(secrets.clientId)
-            .requestEmail()
-            .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(secrets.clientId)
+//            .requestEmail()
+//            .build()
+//
+//        val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.googleLogin.setOnClickListener {
-            startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
+          //  startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
         }
 
         val progressDialog = ProgressDialog(applicationContext)

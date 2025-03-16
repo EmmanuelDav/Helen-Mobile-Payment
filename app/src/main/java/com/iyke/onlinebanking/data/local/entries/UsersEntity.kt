@@ -10,7 +10,8 @@ import androidx.room.PrimaryKey
 )
 data class UsersEntity(
 
-    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Optional primary key
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0, // Optional primary key
 
     var userId:Long? = 0,
     var name:String?="",

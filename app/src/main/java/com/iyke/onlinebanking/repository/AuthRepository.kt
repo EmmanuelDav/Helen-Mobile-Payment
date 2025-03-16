@@ -51,7 +51,7 @@ class AuthRepository @Inject constructor(
                 profileUrl = existingUser?.profileUrl,
                 balance = existingUser?.balance,
                 phoneNumber = existingUser?.phoneNumber,
-                userId = firestore.getOrNull()?:existingUser?.userId
+                userId = existingUser?.userId
             )
 
             if (firestore.isSuccess){
@@ -78,7 +78,7 @@ class AuthRepository @Inject constructor(
                 profileUrl = firebaseUser.photoUrl.toString(),
                 balance = "0.00",
                 phoneNumber = "",
-                userId = firestore.getOrNull()?:""
+                userId = 0
             )
             if (firestore.isSuccess){
                 usersDao.insertUsers(user)
@@ -103,7 +103,7 @@ class AuthRepository @Inject constructor(
                 profileUrl = firebaseUser.photoUrl.toString(),
                 balance = "0.00",
                 phoneNumber = "",
-                userId = firestore.getOrNull()?:""
+                userId = 0
             )
             if (firestore.isSuccess){
                 usersDao.insertUsers(user)

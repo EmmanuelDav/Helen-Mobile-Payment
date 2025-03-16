@@ -89,18 +89,18 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(secrets.clientId)
-            .requestEmail()
-            .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-
+//
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(secrets.clientId)
+//            .requestEmail()
+//            .build()
+//
+//        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+//
 
 
         binding.googleLogin.setOnClickListener {
-            startActivityForResult(googleSignInClient.signInIntent, Constants.RC_SIGN_IN)
+           // startActivityForResult(googleSignInClient.signInIntent, Constants.RC_SIGN_IN)
         }
         binding.forPassword.setOnClickListener {
             startActivity(Intent(this, ForgottenPasswordActivity::class.java))

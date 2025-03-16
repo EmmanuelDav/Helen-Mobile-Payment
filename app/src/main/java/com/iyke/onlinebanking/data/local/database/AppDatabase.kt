@@ -22,7 +22,8 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun getUsersDao():UsersDao
-    abstract fun getBankStatementDao():BankStatementDao
+
+    abstract fun getBankStatementDao(): BankStatementDao
 
     companion object{
         const val DATABASE_NAME = "helen_db"

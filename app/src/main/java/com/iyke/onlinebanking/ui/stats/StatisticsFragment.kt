@@ -42,10 +42,10 @@ class StatisticsFragment : Fragment() {
 
     private fun stats(v: FragmentStatisticsBinding) {
         for (i in statementViewModel!!.statementArrayList.indices) {
-            val month = statementViewModel!!.statementArrayList[i].client
-            val sales = statementViewModel!!.statementArrayList[i].amount.toInt()
-            barEntriesArrayList.add(BarEntry(i.toFloat(), sales.toFloat()))
-            lableName.add(month)
+            val month = statementViewModel!!.statementArrayList[i].sender
+            val sales = statementViewModel!!.statementArrayList[i].amount?.toInt()
+            barEntriesArrayList.add(BarEntry(i.toFloat(), sales!!.toFloat()))
+            lableName.add(month!!)
         }
         val barDataSet = BarDataSet(barEntriesArrayList, "Monthly Sales")
         barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)

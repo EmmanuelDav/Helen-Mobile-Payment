@@ -25,7 +25,7 @@ import javax.inject.Inject
 import kotlin.random.Random
 
 @HiltViewModel
-abstract class UserRefactoredViewModel @Inject constructor(
+class UserRefactoredViewModel @Inject constructor(
     private val userRepo: UserRepository,
     private val application: Application
 ) : AndroidViewModel(application), UserInterface<Users>, StatementInterface<BankStatements> {
@@ -135,5 +135,13 @@ abstract class UserRefactoredViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    override fun onItemClick(user: Users) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemClick(statement: BankStatements) {
+        TODO("Not yet implemented")
     }
 }

@@ -32,12 +32,12 @@ class HistoryFragment : Fragment() {
         return view
     }
     private fun intiView() {
-        adapter = ViewPagerAdapter(requireActivity())
-        adapter.addFragment(SendHistory())
-        adapter.addFragment(ReceiveFragment())
-        viewPager.adapter = adapter
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabTitle[position]
-        }.attach()
+//        adapter = ViewPagerAdapter(requireActivity())
+//        adapter.addFragment(SendHistory())
+//        adapter.addFragment(ReceiveFragment())
+//        viewPager.adapter = adapter
+//        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+//            tab.text = tabTitle[position]
+//        }.attach()
     }
 }

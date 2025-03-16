@@ -11,6 +11,7 @@ import com.iyke.onlinebanking.data.local.entries.UsersEntity
 import com.iyke.onlinebanking.repository.AuthRepository
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.utils.NetworkResults
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-
+@HiltViewModel
 class AuthViewModel @Inject constructor(private val authRepository: AuthRepository, val firestore: FirebaseFirestore) : ViewModel() {
 
     private var _authResponse = MutableStateFlow<NetworkResults<UsersEntity>>(NetworkResults.Idle)
