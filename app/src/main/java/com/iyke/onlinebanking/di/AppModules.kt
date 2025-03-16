@@ -32,16 +32,6 @@ object AppModules {
 
     @Provides
     @Singleton
-    fun providerAuthRepository(
-        firebaseAuth: FirebaseAuth,
-        usersDao: UsersDao,
-        firebaseFirestore: FirebaseFirestore
-    ): AuthRepository {
-        return AuthRepository(firebaseFirestore, firebaseAuth, usersDao)
-    }
-
-    @Provides
-    @Singleton
     fun providerUserDao(appDatabase: AppDatabase) = appDatabase.getUsersDao()
 
     @Provides
@@ -59,4 +49,14 @@ object AppModules {
     @Singleton
     fun providerFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
+
+    @Provides
+    @Singleton
+    fun providerAuthRepository(
+        firebaseAuth: FirebaseAuth,
+        usersDao: UsersDao,
+        firebaseFirestore: FirebaseFirestore
+    ): AuthRepository {
+        return AuthRepository(firebaseFirestore, firebaseAuth, usersDao)
+    }
 }

@@ -2,6 +2,7 @@ package com.iyke.onlinebanking
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -12,11 +13,13 @@ import com.iyke.onlinebanking.databinding.ActivityWelcomeBinding
 import com.iyke.onlinebanking.ui.auth.SignInActivity
 import com.iyke.onlinebanking.ui.auth.SignUpActivity
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class WelcomeActivity : AppCompatActivity() {
 
-    private lateinit var authViewModel: AuthViewModel
+    private val authViewModel: AuthViewModel by viewModels() // Use by viewModels()
     private lateinit var binding: ActivityWelcomeBinding
 
 
@@ -25,7 +28,6 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
 //        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 //            .requestIdToken(clientId)

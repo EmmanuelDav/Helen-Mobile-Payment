@@ -20,7 +20,8 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(private val authRepository: AuthRepository, val firestore: FirebaseFirestore) : ViewModel() {
+class AuthViewModel @Inject constructor(private val authRepository: AuthRepository,
+                                        val firestore: FirebaseFirestore) : ViewModel() {
 
     private var _authResponse = MutableStateFlow<NetworkResults<UsersEntity>>(NetworkResults.Idle)
     val authResponse : StateFlow<NetworkResults<UsersEntity>> get() = _authResponse
