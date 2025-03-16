@@ -5,11 +5,11 @@
     <data>
         <variable
                 name="statement"
-                type="com.iyke.onlinebanking.models.Statement" />
+                type="com.iyke.onlinebanking.models.BankStatements" />
 
         <variable
                 name="listener"
-                type="com.iyke.onlinebanking.intface.StatementInterface" />
+                type="com.iyke.onlinebanking.ui.bind.StatementInterface" />
 
         <variable name="client"
                 type="String"/>

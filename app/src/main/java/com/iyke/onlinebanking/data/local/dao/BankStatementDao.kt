@@ -1,12 +1,13 @@
 package com.iyke.onlinebanking.data.local.dao
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.iyke.onlinebanking.data.local.entries.BankStatementsEntity
 
-
+@Dao
 interface BankStatementDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

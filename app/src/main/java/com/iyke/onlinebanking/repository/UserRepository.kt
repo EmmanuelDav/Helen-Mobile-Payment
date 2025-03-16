@@ -88,7 +88,7 @@ class UserRepository @Inject constructor(
         return usersDao.getExistingUser()?.email
     }
 
-    suspend fun getDisplayName(id: String): String? {
+    suspend fun getDisplayName(id: Long): String? {
         return usersDao.getUserByID(id).name
     }
 }

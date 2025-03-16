@@ -22,7 +22,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:id="@+id/editProfile"
-                android:onClick="@{profModel.profileNavigation}"
+                android:onClick="@{profModel::profileNavigation}"
                 android:layout_gravity="end"
                 android:src="@drawable/ic_baseline_edit_24"
                 app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/connection"
-                android:onClick="@{profModel.profileNavigation}"
+                android:onClick="@{profModel::profileNavigation}"
                 android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -264,7 +264,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/privacy"
-                android:onClick="@{profModel.profileNavigation}"
+                android:onClick="@{profModel::profileNavigation}"
                 android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageButton

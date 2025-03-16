@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-parcelize'
@@ -12,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.iyke.onlinebanking"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
@@ -27,18 +26,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
     buildFeatures{
         dataBinding = true
         viewBinding = true
-    }
-    kapt {
-        generateStubs = true
     }
 }
 
@@ -48,7 +44,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin Standard Library
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.0" // Updated to the latest stable Kotlin version
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22" // Updated to the latest stable Kotlin version
 
     // AndroidX Libraries
     implementation 'androidx.appcompat:appcompat:1.7.0' // Latest version of AppCompat
@@ -80,10 +76,6 @@ dependencies {
     // Firebase UI for Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.0' // Latest version
 
-    // Groupie for RecyclerView
-    implementation "com.xwray:groupie:2.9.0" // Updated to the latest stable version
-    implementation "com.xwray:groupie-viewbinding:2.9.0" // Extensions for ViewBinding (replaces Kotlin Android Extensions)
-
     // Navigation Components
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.3' // Replaced with AndroidX Navigation
     implementation 'androidx.navigation:navigation-ui-ktx:2.8.5'
@@ -96,21 +88,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2' // Lifecycle runtime
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7' // LiveData library
 
-    // PinLockView
-
-    implementation 'com.andrognito.pinlockview:pinlockview:2.1.0'
-
     // Droid GIF Library
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25' // Updated GIF library
 
    // Testing Libraries
     testImplementation 'junit:junit:4.13.2' // Latest stable JUnit
     androidTestImplementation 'androidx.test:runner:1.5.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.2'
 
     //Room Database
     implementation "androidx.room:room-runtime:2.6.1"
     kapt "androidx.room:room-compiler:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1" // Room KTX for coroutine support
+
 
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
 
@@ -120,6 +109,5 @@ dependencies {
 
     // google auth
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
-
 
 }

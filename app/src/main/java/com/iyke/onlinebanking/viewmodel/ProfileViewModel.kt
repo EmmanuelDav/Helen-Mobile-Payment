@@ -40,11 +40,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     val phoneNumber = MutableLiveData<String>()
 
 
-    private val sh: SharedPreferences = context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
+    private val sh: SharedPreferences =
+        context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
     private val firebaseEmail = sh.getString(EMAIL, "")
     val PICK_IMAGE_REQUEST = 71
-    var userData = MutableLiveData<Users>()
-
+    var userData = MutableLiveData<Users?>()
 
 
     init {
@@ -52,14 +52,14 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         phoneNumber.value = ""
     }
 
-    private fun updateUserData(progressDialog :android.app.ProgressDialog,view: View) {
+    private fun updateUserData(progressDialog: android.app.ProgressDialog, view: View) {
 
-            val inputName = if (name.value!!.isEmpty()) userData.value!!.name else name.value.toString()
-            val inputNum = if (phoneNumber.value!!.isEmpty()) userData.value!!.phoneNumber else phoneNumber.value.toString()
-
+        val inputName = if (name.value!!.isEmpty()) userData.value!!.name else name.value.toString()
+        val inputNum =
+            if (phoneNumber.value!!.isEmpty()) userData.value!!.phoneNumber else phoneNumber.value.toString()
 
         val user = hashMapOf(
-            NAME to  inputName,
+            NAME to inputName,
             PHONE_NUMBER to inputNum,
             PROFILE to filePath.toString()
         )
@@ -82,14 +82,19 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     fun profileNavigation(view: View) {
         when (view.id) {
             R.id.profileUpdate -> uploadImage(view)
-            R.id.privacy -> Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_help_PrivacyFragment)
-            R.id.connection -> Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_connectionFragment)
-            R.id.editProfile ->Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment)
+            R.id.privacy -> Navigation.findNavController(view)
+                .navigate(R.id.action_profileFragment_to_help_PrivacyFragment)
+
+            R.id.connection -> Navigation.findNavController(view)
+                .navigate(R.id.action_profileFragment_to_connectionFragment)
+
+            R.id.editProfile -> Navigation.findNavController(view)
+                .navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
     }
 
     private fun uploadImage(view: View) {
-        val progressDialog =  android.app.ProgressDialog(view.context);
+        val progressDialog = android.app.ProgressDialog(view.context);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
         if (filePath != null) {
@@ -98,7 +103,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                     progressDialog.dismiss()
-                    updateUserData(progressDialog,view)
+                    updateUserData(progressDialog, view)
 
                 }
                 .addOnFailureListener { e ->
@@ -111,8 +116,8 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
                         .totalByteCount
                     progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
                 }
-        }else{
-            updateUserData(progressDialog,view)
+        } else {
+            updateUserData(progressDialog, view)
         }
     }
 

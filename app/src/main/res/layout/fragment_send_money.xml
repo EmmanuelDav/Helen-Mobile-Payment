@@ -133,7 +133,7 @@
                 android:id="@+id/confirmSend"
                 android:textSize="15sp"
                 android:textColor="@color/white"
-                android:onClick="@{model.navigateView}"
+                android:onClick="@{model::navigateView}"
                 android:backgroundTint="@color/green"
                 android:text="Confirm"
                 android:textAllCaps="false"

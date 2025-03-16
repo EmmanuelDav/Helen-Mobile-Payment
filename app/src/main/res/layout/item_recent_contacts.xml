@@ -8,7 +8,7 @@
                 type="com.iyke.onlinebanking.models.Users" />
         <variable
                 name="listener"
-                type="com.iyke.onlinebanking.intface.UserInterface" />
+                type="com.iyke.onlinebanking.ui.bind.UserInterface" />
     </data>
     <RelativeLayout
             android:layout_width="match_parent"
