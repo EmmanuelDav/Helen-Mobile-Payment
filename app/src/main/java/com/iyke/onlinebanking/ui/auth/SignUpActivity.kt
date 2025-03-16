@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -17,22 +18,20 @@ import com.iyke.onlinebanking.ui.dialog.ProgressDialog
 import com.iyke.onlinebanking.utils.Constants.RC_SIGN_IN
 import com.iyke.onlinebanking.utils.NetworkResults
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
 
-
-    lateinit var authViewModel: AuthViewModel
+    private val authViewModel: AuthViewModel by viewModels()
     private lateinit var binding:ActivitySignUpBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
         binding.login.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))

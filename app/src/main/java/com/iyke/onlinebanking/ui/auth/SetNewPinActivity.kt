@@ -18,8 +18,10 @@ import com.iyke.onlinebanking.databinding.ActivitySetNewPinBinding
 import com.iyke.onlinebanking.utils.NetworkInformation
 import com.iyke.onlinebanking.utils.Constants
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SetNewPinActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySetNewPinBinding

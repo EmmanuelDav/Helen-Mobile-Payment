@@ -34,11 +34,13 @@ import com.iyke.onlinebanking.utils.Constants.PROFILE
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.utils.NetworkResults
 import com.iyke.onlinebanking.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 
+@AndroidEntryPoint
 class VerifyActivity : AppCompatActivity() {
 
     private lateinit var storedVerificationId: String
