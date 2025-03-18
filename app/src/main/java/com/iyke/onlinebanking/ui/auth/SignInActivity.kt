@@ -74,7 +74,7 @@ class SignInActivity : AppCompatActivity() {
             authViewModel.authResponse.collectLatest { result ->
                 when (result) {
                     is NetworkResults.Loading -> {
-                        progressDialog.show()
+                       //  progressDialog.show()
                     }
                     is NetworkResults.Success -> {
                         progressDialog.hide()

@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
@@ -25,21 +26,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
-        userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
+        userDataViewModel = ViewModelProvider(this)[UserDataViewModel::class.java]
         val bottomNavigationView = binding.bottomNavigatinView
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_fragment) as? NavHostFragment
+        val navController = navHostFragment!!.navController
 
-        val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
+
+        val visibleDestinations = setOf(
+            R.id.homeFragment, R.id.cardFragment, R.id.statisticsFragment, R.id.profileFragment
+        )
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.homeFragment -> bottomNavigationView.visibility = View.VISIBLE
-                R.id.cardFragment -> bottomNavigationView.visibility = View.VISIBLE
-                R.id.statisticsFragment -> bottomNavigationView.visibility = View.VISIBLE
-                R.id.profileFragment -> bottomNavigationView.visibility = View.VISIBLE
-                else -> bottomNavigationView.visibility = View.GONE
-            }
+            bottomNavigationView.visibility = if (destination.id in visibleDestinations) View.VISIBLE else View.GONE
         }
         firebaseAuth = FirebaseAuth.getInstance()
         authStateListener = AuthStateListener { firebaseAuth ->

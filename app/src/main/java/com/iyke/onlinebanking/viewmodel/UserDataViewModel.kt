@@ -12,6 +12,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Timestamp
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.iyke.onlinebanking.ui.dialog.ConfirmPinDialog
@@ -52,9 +53,9 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     val addMoney = MutableLiveData<String>()
     val message = MutableLiveData<String>()
     private lateinit var clickedUser: Users
-    val sh: SharedPreferences = context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
-    private val firebaseEmail = sh.getString(Constants.EMAIL, "")
-    private val displayName = sh.getString(Constants.NAME, "")
+    private val firebaseUser = FirebaseAuth.getInstance().currentUser
+    val firebaseEmail = firebaseUser?.email  // User's email
+    val displayName = firebaseUser?.displayName
 
     init {
         addMoney.value = ""
@@ -112,7 +113,6 @@ class UserDataViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun fetchUserDetails() {
-
         db.collection(USERS).document(firebaseEmail!!)
             .get().addOnSuccessListener { doc ->
                 val user = doc.toObject(Users::class.java)

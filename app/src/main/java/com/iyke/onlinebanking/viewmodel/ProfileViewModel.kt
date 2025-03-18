@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -39,10 +40,9 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     val name = MutableLiveData<String>()
     val phoneNumber = MutableLiveData<String>()
 
+    private val firebaseUser = FirebaseAuth.getInstance().currentUser
+    val firebaseEmail = firebaseUser?.email  // User's email
 
-    private val sh: SharedPreferences =
-        context.getSharedPreferences(Constants.PREFERENCE, AppCompatActivity.MODE_PRIVATE)
-    private val firebaseEmail = sh.getString(EMAIL, "")
     val PICK_IMAGE_REQUEST = 71
     var userData = MutableLiveData<Users?>()
 
