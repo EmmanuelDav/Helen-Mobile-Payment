@@ -12,7 +12,6 @@ import com.iyke.onlinebanking.repository.AuthRepository
 import com.iyke.onlinebanking.utils.Constants.USERS
 import com.iyke.onlinebanking.utils.NetworkResults
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

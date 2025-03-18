@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.iyke.onlinebanking.databinding.ActivityForgottenPasswordBinding
-import com.iyke.onlinebanking.viewmodel.AuthViewModel
 
 class ForgottenPasswordActivity : AppCompatActivity() {
 

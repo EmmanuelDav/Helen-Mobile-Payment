@@ -36,6 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.login.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
         }
+
         binding.next.setOnClickListener {
             val name = binding.nameInput.text.toString()
             val email = binding.emailInput.text.toString()

@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SignInActivity : AppCompatActivity() {
 
-    private val authViewModel: AuthViewModel by viewModels() // Use by viewModels()
+    private lateinit var authViewModel: AuthViewModel // Use by viewModels()
     lateinit var binding: ActivitySignInBinding
 
 
@@ -34,6 +34,8 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+
 
         binding.signUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))

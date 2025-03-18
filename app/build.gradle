@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: 'kotlin-parcelize'
 
@@ -105,7 +106,7 @@ dependencies {
 
     //Hilt
     implementation 'com.google.dagger:hilt-android:2.51'
-    kapt 'com.google.dagger:hilt-compiler:2.46.1'
+    kapt 'com.google.dagger:hilt-compiler:2.51'
 
     // google auth
     implementation 'com.google.android.gms:play-services-auth:20.7.0'

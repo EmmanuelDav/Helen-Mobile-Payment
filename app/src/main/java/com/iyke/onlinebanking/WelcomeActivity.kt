@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WelcomeActivity : AppCompatActivity() {
 
-    private val authViewModel: AuthViewModel by viewModels() // Use by viewModels()
+    private lateinit var  authViewModel: AuthViewModel // Use by viewModels()
     private lateinit var binding: ActivityWelcomeBinding
 
 
@@ -27,6 +27,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
 
 //        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
